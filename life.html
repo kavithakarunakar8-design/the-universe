@@ -8,67 +8,376 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:#02040a;color:#f4f6fa;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
-#stars{position:fixed;inset:0;z-index:-1}
-.star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:drift linear infinite}
-@keyframes drift{to{transform:translateY(-100px);opacity:.1}}
-nav{position:fixed;top:0;width:100%;min-height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;background:#02040abd;backdrop-filter:blur(18px);border-bottom:1px solid #ffffff10;z-index:100}
-.logo{font-size:14px;letter-spacing:4px;font-weight:bold}.navlinks{display:flex;gap:28px;list-style:none}.navlinks a{color:#aeb5c0;text-decoration:none;font-size:11px;letter-spacing:1.5px}.navlinks a:hover,.navlinks .active{color:#fff}
-.music{position:fixed;right:25px;bottom:25px;z-index:100;border:1px solid #ffffff2d;background:#080b12df;color:white;padding:12px 17px;border-radius:30px;cursor:pointer;font-size:11px;letter-spacing:1.5px}
-.hero{min-height:78vh;padding:170px 9% 100px;display:flex;align-items:center;background:radial-gradient(circle at 65% 45%,#a0aabd10,transparent 38%)}
-.label,.section-label{font-size:10px;letter-spacing:4px;color:#778291;margin-bottom:22px}
-h1{font-size:clamp(55px,9vw,115px);line-height:.88;letter-spacing:-5px}
-.hero p{max-width:700px;color:#9ca5b1;line-height:1.8;margin-top:30px}
-.hero strong{display:block;color:#fff;margin-top:25px;font-size:18px;letter-spacing:2px}
+body{
+    background:#02040a;
+    color:#f4f6fa;
+    font-family:Arial,Helvetica,sans-serif;
+    overflow-x:hidden
+}
+
+#stars{
+    position:fixed;
+    inset:0;
+    z-index:-1
+}
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:#fff;
+    border-radius:50%;
+    animation:drift linear infinite
+}
+
+@keyframes drift{
+    to{
+        transform:translateY(-100px);
+        opacity:.1
+    }
+}
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    min-height:76px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+    background:#02040abd;
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid #ffffff10;
+    z-index:100
+}
+
+.logo{
+    font-size:14px;
+    letter-spacing:4px;
+    font-weight:bold
+}
+
+.navlinks{
+    display:flex;
+    gap:28px;
+    list-style:none
+}
+
+.navlinks a{
+    color:#aeb5c0;
+    text-decoration:none;
+    font-size:11px;
+    letter-spacing:1.5px
+}
+
+.navlinks a:hover,
+.navlinks .active{
+    color:#fff
+}
+
+.music{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    z-index:100;
+    border:1px solid #ffffff2d;
+    background:#080b12e8;
+    color:white;
+    padding:12px 17px;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:11px;
+    letter-spacing:1.5px
+}
+
+.music:hover{background:#ffffff1c}
+
+.hero{
+    min-height:78vh;
+    padding:170px 9% 100px;
+    display:flex;
+    align-items:center;
+    background:radial-gradient(circle at 65% 45%,#a0aabd10,transparent 38%)
+}
+
+.label,
+.section-label{
+    font-size:10px;
+    letter-spacing:4px;
+    color:#778291;
+    margin-bottom:22px
+}
+
+h1{
+    font-size:clamp(55px,9vw,115px);
+    line-height:.88;
+    letter-spacing:-5px
+}
+
+.hero p{
+    max-width:700px;
+    color:#9ca5b1;
+    line-height:1.8;
+    margin-top:30px
+}
+
+.hero strong{
+    display:block;
+    color:#fff;
+    margin-top:25px;
+    font-size:18px;
+    letter-spacing:2px
+}
+
 section{padding:100px 9%}
-h2{font-size:clamp(40px,6vw,72px);letter-spacing:-3px;line-height:.95}
-.signal-section{text-align:center;background:radial-gradient(circle at center,#8391a512,transparent 50%)}
-.signal-box{max-width:900px;margin:55px auto 0;border:1px solid #ffffff18;background:#ffffff04;padding:55px 30px}
+
+h2{
+    font-size:clamp(40px,6vw,72px);
+    letter-spacing:-3px;
+    line-height:.95
+}
+
+.signal-section{
+    text-align:center;
+    background:radial-gradient(circle at center,#8391a512,transparent 50%)
+}
+
+.signal-box{
+    max-width:900px;
+    margin:55px auto 0;
+    border:1px solid #ffffff18;
+    background:#ffffff04;
+    padding:55px 30px
+}
+
 .signal{
     height:130px;
     display:flex;
     align-items:center;
     justify-content:center;
     gap:5px;
-    overflow:hidden;
+    overflow:hidden
 }
-.bar{width:4px;height:20px;background:#c9d0d9;opacity:.4;animation:pulse .8s ease-in-out infinite alternate}
-@keyframes pulse{to{height:100px;opacity:.9}}
-.status{margin:25px 0;color:#8994a3;font-size:11px;letter-spacing:3px}
+
+.bar{
+    width:4px;
+    height:20px;
+    background:#c9d0d9;
+    opacity:.4;
+    animation:pulse .8s ease-in-out infinite alternate
+}
+
+@keyframes pulse{
+    to{
+        height:100px;
+        opacity:.9
+    }
+}
+
+.status{
+    margin:25px 0;
+    color:#8994a3;
+    font-size:11px;
+    letter-spacing:3px
+}
+
 .scan{
-    border:1px solid #ffffff40;background:#ffffff05;color:white;
-    padding:17px 28px;cursor:pointer;letter-spacing:2px;font-size:11px;
+    border:1px solid #ffffff40;
+    background:#ffffff05;
+    color:white;
+    padding:17px 28px;
+    cursor:pointer;
+    letter-spacing:2px;
+    font-size:11px
 }
-.scan:hover{background:white;color:#05070c}
-.result{display:none;margin-top:35px;border-top:1px solid #ffffff15;padding-top:30px}
-.result.show{display:block;animation:appear .8s}
-@keyframes appear{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
-.result h3{font-size:25px;letter-spacing:3px}
-.result p{color:#939ca8;line-height:1.8;margin-top:12px}
-.worlds{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:55px}
-.world{padding:35px;min-height:250px;border:1px solid #ffffff14;background:#ffffff04;cursor:pointer;transition:.4s}
-.world:hover,.world.active{transform:translateY(-7px);border-color:#ffffff45}
-.world h3{margin-top:65px;font-size:20px;letter-spacing:2px}
-.world-info{color:#8e98a5;line-height:1.7;margin-top:15px;font-size:13px}
-.criteria{margin-top:55px;border-top:1px solid #ffffff15}
-.item{border-bottom:1px solid #ffffff15;padding:24px 5px;cursor:pointer}
-.item-head{display:flex;justify-content:space-between;font-size:13px;letter-spacing:2px}
-.item-body{max-height:0;overflow:hidden;color:#8993a0;line-height:1.7;transition:.4s}
-.item.open .item-body{max-height:120px;padding-top:18px}
-.final{min-height:70vh;display:flex;flex-direction:column;justify-content:center}
+
+.scan:hover{
+    background:white;
+    color:#05070c
+}
+
+.result{
+    display:none;
+    margin-top:35px;
+    border-top:1px solid #ffffff15;
+    padding-top:30px
+}
+
+.result.show{
+    display:block;
+    animation:appear .8s
+}
+
+@keyframes appear{
+    from{
+        opacity:0;
+        transform:translateY(15px)
+    }
+    to{
+        opacity:1;
+        transform:none
+    }
+}
+
+.result h3{
+    font-size:25px;
+    letter-spacing:3px
+}
+
+.result p{
+    color:#939ca8;
+    line-height:1.8;
+    margin-top:12px
+}
+
+.worlds{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-top:55px
+}
+
+.world{
+    padding:35px;
+    min-height:250px;
+    border:1px solid #ffffff14;
+    background:#ffffff04;
+    cursor:pointer;
+    transition:.4s
+}
+
+.world:hover{
+    transform:translateY(-7px);
+    border-color:#ffffff45
+}
+
+.world h3{
+    margin-top:65px;
+    font-size:20px;
+    letter-spacing:2px
+}
+
+.world-info{
+    color:#8e98a5;
+    line-height:1.7;
+    margin-top:15px;
+    font-size:13px
+}
+
+.criteria{
+    margin-top:55px;
+    border-top:1px solid #ffffff15
+}
+
+.item{
+    border-bottom:1px solid #ffffff15;
+    padding:24px 5px;
+    cursor:pointer
+}
+
+.item-head{
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+    letter-spacing:2px
+}
+
+.item-body{
+    max-height:0;
+    overflow:hidden;
+    color:#8993a0;
+    line-height:1.7;
+    transition:.4s
+}
+
+.item.open .item-body{
+    max-height:120px;
+    padding-top:18px
+}
+
+.final{
+    min-height:70vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center
+}
+
 .final h2{max-width:900px}
-.listen{font-size:clamp(45px,8vw,110px);letter-spacing:10px;margin-top:40px}
-.btn{display:inline-block;padding:16px 24px;border:1px solid #ffffff40;color:#fff;text-decoration:none;font-size:11px;letter-spacing:2px;margin-top:30px}
-footer{padding:35px 9%;border-top:1px solid #ffffff0d;color:#555e6b;font-size:10px;letter-spacing:2px}
-@media(max-width:850px){nav{padding:14px 5%;align-items:flex-start}.logo{display:none}.navlinks{gap:10px;flex-wrap:wrap;justify-content:center}.navlinks a{font-size:9px}.hero,section{padding-left:7%;padding-right:7%}.worlds{grid-template-columns:1fr}.music{right:15px;bottom:15px}}
+
+.listen{
+    font-size:clamp(45px,8vw,110px);
+    letter-spacing:10px;
+    margin-top:40px
+}
+
+.btn{
+    display:inline-block;
+    padding:16px 24px;
+    border:1px solid #ffffff40;
+    color:#fff;
+    text-decoration:none;
+    font-size:11px;
+    letter-spacing:2px;
+    margin-top:30px
+}
+
+.btn:hover{
+    background:white;
+    color:#05070c
+}
+
+footer{
+    padding:35px 9%;
+    border-top:1px solid #ffffff0d;
+    color:#555e6b;
+    font-size:10px;
+    letter-spacing:2px
+}
+
+@media(max-width:850px){
+
+ nav{
+    padding:14px 5%;
+    align-items:flex-start
+ }
+
+ .logo{display:none}
+
+ .navlinks{
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:center
+ }
+
+ .navlinks a{font-size:9px}
+
+ .hero,
+ section{
+    padding-left:7%;
+    padding-right:7%
+ }
+
+ .worlds{
+    grid-template-columns:1fr
+ }
+
+ .music{
+    right:15px;
+    bottom:15px
+ }
+}
 </style>
 </head>
 
 <body>
+
 <div id="stars"></div>
 
 <nav>
+
 <div class="logo">THE UNIVERSE</div>
+
 <ul class="navlinks">
 <li><a href="index.html">HOME</a></li>
 <li><a href="journey.html">JOURNEY</a></li>
@@ -76,121 +385,320 @@ footer{padding:35px 9%;border-top:1px solid #ffffff0d;color:#555e6b;font-size:10
 <li><a class="active" href="life.html">ARE WE ALONE?</a></li>
 <li><a href="future.html">THE FUTURE</a></li>
 </ul>
+
 </nav>
 
-<audio id="spaceAudio" loop preload="none"><source src="assets/space.mp3" type="audio/mpeg"></audio>
+<audio id="spaceAudio" loop preload="auto">
+<source src="assets/space.mp3" type="audio/mpeg">
+</audio>
+
 <button class="music" id="musicBtn">♪ MUSIC OFF</button>
 
 <section class="hero">
+
 <div>
+
 <div class="label">CHAPTER 03 • THE SEARCH</div>
+
 <h1>ARE WE<br>ALONE?</h1>
-<p>Somewhere among the enormous number of stars in the universe, could another world have looked toward the sky and asked the same question?</p>
-<strong>We don't know.<br>So we search.</strong>
+
+<p>
+Somewhere among the enormous number of stars in the universe,
+could another world have looked toward the sky and asked the same question?
+</p>
+
+<strong>
+We don't know.<br>
+So we search.
+</strong>
+
 </div>
+
 </section>
 
 <section class="signal-section">
-<div class="section-label">SIMULATION • DEEP SPACE LISTENING</div>
+
+<div class="section-label">
+SIMULATION • DEEP SPACE LISTENING
+</div>
+
 <h2>SEARCH FOR<br>A SIGNAL</h2>
 
 <div class="signal-box">
+
 <div class="signal" id="signal">
+
 <script>
-for(let i=0;i<55;i++)document.write('<span class="bar" style="animation-delay:'+Math.random()+'s"></span>');
+for(let i=0;i<55;i++){
+    document.write(
+        '<span class="bar" style="animation-delay:'+Math.random()+'s"></span>'
+    );
+}
 </script>
+
 </div>
 
-<div class="status" id="status">SYSTEM READY • A VISUAL SIMULATION</div>
-<button class="scan" id="scanBtn">SCAN THE COSMOS</button>
+<div class="status" id="status">
+SYSTEM READY • A VISUAL SIMULATION
+</div>
+
+<button class="scan" id="scanBtn">
+SCAN THE COSMOS
+</button>
 
 <div class="result" id="result">
+
 <h3>SIGNAL ANALYSIS COMPLETE</h3>
-<p>A repeating pattern has been detected in this simulation.</p>
+
+<p>
+A repeating pattern has been detected in this simulation.
+</p>
+
 <p><strong>Does it represent life?</strong></p>
+
 <p>We cannot say.</p>
+
 <p><strong>THE SEARCH CONTINUES.</strong></p>
+
 </div>
+
 </div>
+
 </section>
 
 <section>
-<div class="section-label">WORLDS THAT MAKE US WONDER</div>
+
+<div class="section-label">
+WORLDS THAT MAKE US WONDER
+</div>
+
 <h2>WHERE MIGHT<br>WE LOOK?</h2>
 
 <div class="worlds">
+
 <div class="world">
 <h3>OCEAN WORLDS</h3>
-<p class="world-info">Moons such as Europa and Enceladus show evidence suggesting subsurface oceans. Water makes them scientifically fascinating places to investigate.</p>
+<p class="world-info">
+Moons such as Europa and Enceladus show evidence suggesting
+subsurface oceans. Water makes them scientifically fascinating
+places to investigate.
+</p>
 </div>
+
 <div class="world">
 <h3>EXOPLANETS</h3>
-<p class="world-info">Thousands of planets have been discovered orbiting stars beyond our Sun. Some exist in regions where conditions could potentially be suitable for life.</p>
+<p class="world-info">
+Thousands of planets have been discovered orbiting stars beyond
+our Sun. Some exist in regions where conditions could potentially
+be suitable for life.
+</p>
 </div>
+
 <div class="world">
 <h3>EXTREME WORLDS</h3>
-<p class="world-info">Life on Earth exists in surprisingly challenging environments, reminding scientists that habitability may be more diverse than once imagined.</p>
+<p class="world-info">
+Life on Earth exists in surprisingly challenging environments,
+reminding scientists that habitability may be more diverse
+than once imagined.
+</p>
 </div>
+
 </div>
+
 </section>
 
 <section>
+
 <div class="section-label">THE SEARCH</div>
+
 <h2>WHAT DO<br>WE LOOK FOR?</h2>
+
 <div class="criteria">
-<div class="item"><div class="item-head"><span>01 — LIQUID WATER</span><span>+</span></div><div class="item-body">Liquid water is considered an important ingredient for life as we understand it, making environments with possible liquid water especially interesting.</div></div>
-<div class="item"><div class="item-head"><span>02 — CHEMICAL INGREDIENTS</span><span>+</span></div><div class="item-body">Scientists look for elements and molecules that could participate in chemistry associated with life.</div></div>
-<div class="item"><div class="item-head"><span>03 — ENERGY</span><span>+</span></div><div class="item-body">Life needs energy. Scientists investigate possible energy sources, from sunlight to chemical reactions.</div></div>
-<div class="item"><div class="item-head"><span>04 — STABILITY</span><span>+</span></div><div class="item-body">A potentially habitable environment may need conditions that remain suitable long enough for complex chemistry to occur.</div></div>
+
+<div class="item">
+
+<div class="item-head">
+<span>01 — LIQUID WATER</span>
+<span>+</span>
 </div>
+
+<div class="item-body">
+Liquid water is considered an important ingredient for life as we
+understand it, making environments with possible liquid water
+especially interesting.
+</div>
+
+</div>
+
+<div class="item">
+
+<div class="item-head">
+<span>02 — CHEMICAL INGREDIENTS</span>
+<span>+</span>
+</div>
+
+<div class="item-body">
+Scientists look for elements and molecules that could participate
+in chemistry associated with life.
+</div>
+
+</div>
+
+<div class="item">
+
+<div class="item-head">
+<span>03 — ENERGY</span>
+<span>+</span>
+</div>
+
+<div class="item-body">
+Life needs energy. Scientists investigate possible energy sources,
+from sunlight to chemical reactions.
+</div>
+
+</div>
+
+<div class="item">
+
+<div class="item-head">
+<span>04 — STABILITY</span>
+<span>+</span>
+</div>
+
+<div class="item-body">
+A potentially habitable environment may need conditions that
+remain suitable long enough for complex chemistry to occur.
+</div>
+
+</div>
+
+</div>
+
 </section>
 
 <section class="final">
+
 <div class="section-label">THE QUESTION REMAINS</div>
+
 <h2>IF LIFE EXISTS ELSEWHERE...</h2>
+
 <h2>...WOULD WE RECOGNISE IT?</h2>
+
 <div class="listen">LISTEN.</div>
-<a class="btn" href="future.html">THE FUTURE →</a>
+
+<a class="btn" href="future.html">
+THE FUTURE →
+</a>
+
 </section>
 
-<footer>CHAPTER 03 • THE SEARCH</footer>
+<footer>
+CHAPTER 03 • THE SEARCH
+</footer>
 
 <script>
+
+/* STAR FIELD */
+
 const stars=document.getElementById("stars");
+
 for(let i=0;i<150;i++){
- let s=document.createElement("span");s.className="star";
- s.style.left=Math.random()*100+"%";s.style.top=Math.random()*100+"%";
- s.style.animationDuration=5+Math.random()*12+"s";s.style.animationDelay=-Math.random()*10+"s";
+
+ let s=document.createElement("span");
+
+ s.className="star";
+ s.style.left=Math.random()*100+"%";
+ s.style.top=Math.random()*100+"%";
+ s.style.animationDuration=5+Math.random()*12+"s";
+ s.style.animationDelay=-Math.random()*10+"s";
+
  stars.appendChild(s);
 }
 
-const status=document.getElementById("status"),scanBtn=document.getElementById("scanBtn"),result=document.getElementById("result");
+/* SCAN SIMULATION */
+
+const status=document.getElementById("status");
+const scanBtn=document.getElementById("scanBtn");
+const result=document.getElementById("result");
+
 scanBtn.onclick=()=>{
+
  scanBtn.disabled=true;
  scanBtn.textContent="SCANNING...";
+
  status.textContent="SEARCHING DEEP SPACE";
- setTimeout(()=>status.textContent="ANALYSING SIGNAL PATTERNS",1800);
- setTimeout(()=>status.textContent="UNUSUAL PATTERN DETECTED",3600);
+
  setTimeout(()=>{
-   status.textContent="SCAN COMPLETE";
-   result.classList.add("show");
-   scanBtn.textContent="SCAN AGAIN";
-   scanBtn.disabled=false;
+    status.textContent="ANALYSING SIGNAL PATTERNS";
+ },1800);
+
+ setTimeout(()=>{
+    status.textContent="UNUSUAL PATTERN DETECTED";
+ },3600);
+
+ setTimeout(()=>{
+
+    status.textContent="SCAN COMPLETE";
+
+    result.classList.add("show");
+
+    scanBtn.textContent="SCAN AGAIN";
+    scanBtn.disabled=false;
+
  },5200);
+
 };
+
+/* EXPANDABLE ITEMS */
 
 document.querySelectorAll(".item").forEach(item=>{
- item.onclick=()=>item.classList.toggle("open");
+
+ item.onclick=()=>{
+    item.classList.toggle("open");
+ };
+
 });
 
-const audio=document.getElementById("spaceAudio"),musicBtn=document.getElementById("musicBtn");
-let musicOn=localStorage.getItem("universeMusic")==="on";
-musicBtn.textContent=musicOn?"♪ MUSIC ON":"♪ MUSIC OFF";
-musicBtn.onclick=()=>{
- musicOn=!musicOn;localStorage.setItem("universeMusic",musicOn?"on":"off");
- if(musicOn)audio.play().then(()=>musicBtn.textContent="♪ MUSIC ON").catch(()=>{});
- else{audio.pause();musicBtn.textContent="♪ MUSIC OFF"}
-};
+/* MUSIC */
+
+const audio=document.getElementById("spaceAudio");
+const musicBtn=document.getElementById("musicBtn");
+
+audio.volume=0.45;
+
+musicBtn.addEventListener("click",async function(){
+
+ if(audio.paused){
+
+  try{
+
+   await audio.play();
+
+   musicBtn.textContent="♪ MUSIC ON";
+
+   localStorage.setItem("universeMusic","on");
+
+  }catch(error){
+
+   console.log("Music error:",error);
+
+   musicBtn.textContent="♪ TRY AGAIN";
+
+  }
+
+ }else{
+
+  audio.pause();
+
+  musicBtn.textContent="♪ MUSIC OFF";
+
+  localStorage.setItem("universeMusic","off");
+
+ }
+
+});
+
 </script>
+
 </body>
 </html>
