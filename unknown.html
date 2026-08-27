@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>The Unknown | The Universe</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #010106;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           STARFIELD
+        ========================= */
+
+        .stars,
+        .stars::before,
+        .stars::after {
+            position: fixed;
+            inset: 0;
+            content: "";
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        .stars {
+            background-image:
+                radial-gradient(2px 2px at 10% 20%, white, transparent),
+                radial-gradient(1px 1px at 25% 70%, white, transparent),
+                radial-gradient(2px 2px at 40% 35%, white, transparent),
+                radial-gradient(1px 1px at 55% 15%, white, transparent),
+                radial-gradient(2px 2px at 70% 65%, white, transparent),
+                radial-gradient(1px 1px at 85% 25%, white, transparent),
+                radial-gradient(2px 2px at 95% 80%, white, transparent);
+            background-size: 600px 600px;
+            animation: starMove 50s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes starMove {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-600px);
+            }
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 22px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(1, 1, 6, 0.5);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.5;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 130px 20px 80px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .small-title {
+            font-size: 12px;
+            letter-spacing: 6px;
+            opacity: 0.5;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(55px, 10vw, 115px);
+            letter-spacing: 7px;
+            line-height: 0.95;
+        }
+
+        .hero h1 span {
+            opacity: 0.5;
+        }
+
+        .hero p {
+            max-width: 680px;
+            margin: 35px auto 0;
+            line-height: 1.9;
+            opacity: 0.6;
+        }
+
+        /* =========================
+           MYSTERY CARDS
+        ========================= */
+
+        .mysteries {
+            width: 90%;
+            max-width: 1150px;
+            margin: auto;
+            padding: 80px 0 120px;
+        }
+
+        .mystery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .mystery-card {
+            position: relative;
+            min-height: 350px;
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 25px;
+            background: rgba(255,255,255,0.035);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+            transition: 0.5s;
+        }
+
+        .mystery-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255,255,255,0.45);
+            background: rgba(255,255,255,0.06);
+        }
+
+        .mystery-number {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            opacity: 0.3;
+        }
+
+        .mystery-icon {
+            font-size: 55px;
+            margin-bottom: 25px;
+        }
+
+        .mystery-card h2 {
+            font-size: 30px;
+            margin-bottom: 18px;
+        }
+
+        .mystery-card p {
+            line-height: 1.8;
+            font-size: 14px;
+            opacity: 0.65;
+        }
+
+        .learn {
+            display: inline-block;
+            margin-top: 25px;
+            color: white;
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 2px;
+            opacity: 0.55;
+        }
+
+        /* =========================
+           BLACK HOLE
+        ========================= */
+
+        .black-hole-section {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .black-hole {
+            width: 280px;
+            height: 280px;
+            margin: 0 auto 50px;
+            border-radius: 50%;
+            background:
+                radial-gradient(circle at center,
+                #000 0%,
+                #000 30%,
+                rgba(255,255,255,0.08) 31%,
+                rgba(255,255,255,0.02) 48%,
+                transparent 70%);
+            box-shadow:
+                0 0 40px rgba(255,255,255,0.08),
+                0 0 100px rgba(255,255,255,0.04);
+            animation: blackHolePulse 5s ease-in-out infinite;
+        }
+
+        @keyframes blackHolePulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .black-hole-section h2 {
+            font-size: clamp(35px, 6vw, 70px);
+            letter-spacing: 4px;
+            margin-bottom: 25px;
+        }
+
+        .black-hole-section p {
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.9;
+            opacity: 0.65;
+        }
+
+        /* =========================
+           QUESTION SECTION
+        ========================= */
+
+        .questions {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .questions-content {
+            max-width: 850px;
+        }
+
+        .questions h2 {
+            font-size: clamp(35px, 6vw, 75px);
+            letter-spacing: 4px;
+            margin-bottom: 35px;
+        }
+
+        .questions p {
+            line-height: 1.9;
+            opacity: 0.6;
+        }
+
+        .question-list {
+            margin-top: 50px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .question-list span {
+            padding: 14px 20px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 30px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .question-list span:hover {
+            background: white;
+            color: #010106;
+        }
+
+        /* =========================
+           EASTER EGG
+        ========================= */
+
+        .secret {
+            text-align: center;
+            padding: 100px 20px 130px;
+        }
+
+        .secret-button {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.25);
+            background: transparent;
+            color: white;
+            font-size: 25px;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+
+        .secret-button:hover {
+            transform: rotate(180deg);
+            background: white;
+            color: black;
+        }
+
+        #secretMessage {
+            display: none;
+            max-width: 600px;
+            margin: 35px auto 0;
+            line-height: 1.8;
+            opacity: 0.7;
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 11px;
+            letter-spacing: 2px;
+            opacity: 0.5;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 750px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .mystery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mystery-card {
+                min-height: auto;
+            }
+
+            .black-hole {
+                width: 220px;
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="stars"></div>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            THE UNIVERSE
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="journey.html">JOURNEY</a></li>
+            <li><a href="unknown.html">THE UNKNOWN</a></li>
+            <li><a href="life.html">ARE WE ALONE?</a></li>
+            <li><a href="future.html">THE FUTURE</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="small-title">
+                BEYOND OUR UNDERSTANDING
+            </div>
+
+            <h1>
+                THE <span>UNKNOWN</span>
+            </h1>
+
+            <p>
+                The universe contains mysteries that challenge
+                everything we think we know. Some of its greatest
+                secrets cannot yet be seen, measured, or completely explained.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- MYSTERIES -->
+
+    <section class="mysteries">
+
+        <div class="mystery-grid">
+
+            <!-- BLACK HOLES -->
+
+            <div class="mystery-card">
+
+                <div class="mystery-number">
+                    01
+                </div>
+
+                <div class="mystery-icon">
+                    🕳️
+                </div>
+
+                <h2>BLACK HOLES</h2>
+
+                <p>
+                    Regions of space where gravity is so strong
+                    that nothing, not even light, can escape once
+                    it passes the event horizon.
+                </p>
+
+                <a href="#blackhole" class="learn">
+                    EXPLORE ↓
+                </a>
+
+            </div>
+
+
+            <!-- DARK MATTER -->
+
+            <div class="mystery-card">
+
+                <div class="mystery-number">
+                    02
+                </div>
+
+                <div class="mystery-icon">
+                    🌑
+                </div>
+
+                <h2>DARK MATTER</h2>
+
+                <p>
+                    Something we cannot directly see, but whose
+                    gravitational effects appear to influence the
+                    motion of galaxies and large structures.
+                </p>
+
+                <a href="#darkmatter" class="learn">
+                    THE INVISIBLE MASS ↓
+                </a>
+
+            </div>
+
+
+            <!-- DARK ENERGY -->
+
+            <div class="mystery-card">
+
+                <div class="mystery-number">
+                    03
+                </div>
+
+                <div class="mystery-icon">
+                    🌌
+                </div>
+
+                <h2>DARK ENERGY</h2>
+
+                <p>
+                    A name given to the unknown influence associated
+                    with the accelerating expansion of the universe.
+                </p>
+
+                <a href="#darkenergy" class="learn">
+                    THE EXPANDING UNIVERSE ↓
+                </a>
+
+            </div>
+
+
+            <!-- TIME -->
+
+            <div class="mystery-card">
+
+                <div class="mystery-number">
+                    04
+                </div>
+
+                <div class="mystery-icon">
+                    ⏳
+                </div>
+
+                <h2>TIME & SPACE</h2>
+
+                <p>
+                    Space and time are connected. Gravity can affect
+                    the passage of time, leading to some of the most
+                    fascinating ideas in modern physics.
+                </p>
+
+                <a href="#questions" class="learn">
+                    THINK DEEPER ↓
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- BLACK HOLE EXPERIENCE -->
+
+    <section class="black-hole-section" id="blackhole">
+
+        <div>
+
+            <div class="black-hole"></div>
+
+            <h2>
+                NOTHING ESCAPES.
+            </h2>
+
+            <p>
+                A black hole is not an empty hole in space.
+                It is an extremely compact region where gravity
+                becomes extraordinarily strong. The boundary
+                surrounding it is called the event horizon.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- DARK MATTER -->
+
+    <section class="questions" id="darkmatter">
+
+        <div class="questions-content">
+
+            <h2>
+                THE INVISIBLE UNIVERSE
+            </h2>
+
+            <p>
+                Astronomers can observe the effects of gravity
+                that cannot be explained by the visible matter alone.
+                This is one of the major reasons scientists study
+                dark matter.
+            </p>
+
+            <div class="question-list">
+
+                <span>WE CANNOT SEE IT</span>
+                <span>WE CAN OBSERVE ITS EFFECTS</span>
+                <span>ITS NATURE REMAINS UNKNOWN</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- DARK ENERGY -->
+
+    <section class="questions" id="darkenergy">
+
+        <div class="questions-content">
+
+            <h2>
+                WHY IS THE UNIVERSE EXPANDING?
+            </h2>
+
+            <p>
+                Observations show that the expansion of the universe
+                is accelerating. Scientists use the term
+                <strong>dark energy</strong> for the unknown component
+                associated with this acceleration.
+            </p>
+
+            <div class="question-list">
+
+                <span>WHAT IS IT?</span>
+                <span>WHERE DOES IT COME FROM?</span>
+                <span>WILL IT CHANGE?</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- UNANSWERED QUESTIONS -->
+
+    <section class="questions" id="questions">
+
+        <div class="questions-content">
+
+            <h2>
+                QUESTIONS WITHOUT ANSWERS
+            </h2>
+
+            <p>
+                Science grows by asking questions. Some of the
+                biggest questions about our universe remain open.
+            </p>
+
+            <div class="question-list">
+
+                <span>WHAT IS DARK MATTER?</span>
+                <span>WHAT IS DARK ENERGY?</span>
+                <span>ARE WE ALONE?</span>
+                <span>WHAT HAPPENED BEFORE THE EARLY UNIVERSE?</span>
+                <span>WHAT LIES BEYOND WHAT WE CAN OBSERVE?</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SECRET -->
+
+    <section class="secret">
+
+        <button class="secret-button" onclick="revealSecret()">
+            ?
+        </button>
+
+        <p id="secretMessage">
+            CLASSIFIED COSMIC FILE 001:<br><br>
+
+            The most fascinating part of the universe is not
+            what we know. It is how much remains to be discovered.
+            Keep questioning. Keep exploring.
+        </p>
+
+    </section>
+
+
+    <footer>
+        THE UNIVERSE • BEYOND WHAT WE SEE
+    </footer>
+
+
+    <script>
+
+        function revealSecret() {
+
+            const message = document.getElementById("secretMessage");
+
+            if (message.style.display === "none" || message.style.display === "") {
+                message.style.display = "block";
+            } else {
+                message.style.display = "none";
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
