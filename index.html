@@ -1,2146 +1,362 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>The Universe | Beyond What We See</title>
-
-
-    <style>
-
-        /* =========================================
-           BASIC RESET
-        ========================================= */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-
-            background: #010106;
-
-            color: white;
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
-            overflow-x: hidden;
-        }
-
-
-        /* =========================================
-           STAR FIELD
-        ========================================= */
-
-        .stars {
-
-            position: fixed;
-
-            inset: 0;
-
-            z-index: -10;
-
-            pointer-events: none;
-
-            background-image:
-
-                radial-gradient(
-                    2px 2px at 5% 15%,
-                    white,
-                    transparent
-                ),
-
-                radial-gradient(
-                    1px 1px at 12% 75%,
-                    white,
-                    transparent
-                ),
-
-                radial-gradient(
-                    2px 2px at 20% 35%,
-                    white,
-                    transparent
-                ),
-
-                radial-gradient(
-                    1px 1px at 30% 10%,
-                    white,
-                    transparent
-                ),
-
-                radial-gradient(
-                    2px 2px at 42% 65%,
-                    white,
-                    transparent
-                ),
-
-                radial-gradient(
-                    1px 1px at 55% 25%,
-                    white,
-                    transparent
-                ),
-
-                radial-gradient(
-                    2px 2px at 68% 80%,
-                    white,
-                    transparent
-                ),
-
-                radial-gradient(
-                    1px 1px at 78% 45%,
-                    white,
-                    transparent
-                ),
-
-                radial-gradient(
-                    2px 2px at 88% 20%,
-                    white,
-                    transparent
-                ),
-
-                radial-gradient(
-                    1px 1px at 96% 70%,
-                    white,
-                    transparent
-                );
-
-            background-size: 550px 550px;
-
-            animation:
-                starDrift 60s linear infinite;
-
-            opacity: 0.7;
-        }
-
-
-        @keyframes starDrift {
-
-            from {
-                transform:
-                    translateY(0);
-            }
-
-            to {
-                transform:
-                    translateY(-550px);
-            }
-        }
-
-
-        /* =========================================
-           SECOND STAR LAYER
-        ========================================= */
-
-        .stars2 {
-
-            position: fixed;
-
-            inset: 0;
-
-            z-index: -9;
-
-            pointer-events: none;
-
-            background-image:
-
-                radial-gradient(
-                    1px 1px at 15% 40%,
-                    white,
-                    transparent
-                ),
-
-                radial-gradient(
-                    1px 1px at 35% 85%,
-                    white,
-                    transparent
-                ),
-
-                radial-gradient(
-                    1px 1px at 60% 50%,
-                    white,
-                    transparent
-                ),
-
-                radial-gradient(
-                    1px 1px at 75% 15%,
-                    white,
-                    transparent
-                ),
-
-                radial-gradient(
-                    1px 1px at 92% 60%,
-                    white,
-                    transparent
-                );
-
-            background-size: 700px 700px;
-
-            animation:
-                starDriftReverse 90s linear infinite;
-
-            opacity: 0.35;
-        }
-
-
-        @keyframes starDriftReverse {
-
-            from {
-                transform:
-                    translateY(-700px);
-            }
-
-            to {
-                transform:
-                    translateY(0);
-            }
-        }
-
-
-        /* =========================================
-           SHOOTING STAR
-        ========================================= */
-
-        .shooting-star {
-
-            position: fixed;
-
-            width: 130px;
-
-            height: 2px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    white,
-                    transparent
-                );
-
-            transform:
-                rotate(-35deg);
-
-            opacity: 0;
-
-            pointer-events: none;
-
-            z-index: 10;
-        }
-
-
-        .shooting-star.one {
-
-            top: 25%;
-
-            left: -150px;
-
-            animation:
-                shootingOne 8s
-                2s
-                infinite;
-        }
-
-
-        .shooting-star.two {
-
-            top: 45%;
-
-            left: -150px;
-
-            animation:
-                shootingTwo 11s
-                6s
-                infinite;
-        }
-
-
-        @keyframes shootingOne {
-
-            0% {
-                left: -150px;
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            30% {
-                left: 110%;
-                opacity: 0;
-            }
-
-            100% {
-                left: 110%;
-                opacity: 0;
-            }
-        }
-
-
-        @keyframes shootingTwo {
-
-            0% {
-                left: -150px;
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 0.7;
-            }
-
-            25% {
-                left: 110%;
-                opacity: 0;
-            }
-
-            100% {
-                left: 110%;
-                opacity: 0;
-            }
-        }
-
-
-        /* =========================================
-           NAVIGATION
-        ========================================= */
-
-        nav {
-
-            position: fixed;
-
-            top: 0;
-
-            left: 0;
-
-            width: 100%;
-
-            padding:
-                22px 6%;
-
-            display: flex;
-
-            justify-content:
-                space-between;
-
-            align-items:
-                center;
-
-            background:
-                rgba(
-                    1,
-                    1,
-                    6,
-                    0.45
-                );
-
-            backdrop-filter:
-                blur(14px);
-
-            z-index: 1000;
-
-            border-bottom:
-                1px solid
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.05
-                );
-        }
-
-
-        .logo {
-
-            font-size: 17px;
-
-            font-weight: bold;
-
-            letter-spacing: 4px;
-        }
-
-
-        .nav-links {
-
-            display: flex;
-
-            gap: 28px;
-
-            list-style: none;
-        }
-
-
-        .nav-links a {
-
-            color: white;
-
-            text-decoration: none;
-
-            font-size: 11px;
-
-            letter-spacing: 1.5px;
-
-            opacity: 0.75;
-
-            transition:
-                0.3s;
-        }
-
-
-        .nav-links a:hover {
-
-            opacity: 1;
-
-            letter-spacing: 2px;
-        }
-
-
-        /* =========================================
-           HERO
-        ========================================= */
-
-        .hero {
-
-            min-height: 100vh;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            text-align: center;
-
-            padding:
-                130px 20px
-                80px;
-
-            position: relative;
-
-            overflow: hidden;
-        }
-
-
-        /* =========================================
-           GLOW BEHIND TITLE
-        ========================================= */
-
-        .hero::before {
-
-            content: "";
-
-            position: absolute;
-
-            width: 600px;
-
-            height: 600px;
-
-            border-radius: 50%;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(
-                        255,
-                        255,
-                        255,
-                        0.08
-                    ),
-                    transparent 70%
-                );
-
-            filter:
-                blur(20px);
-
-            animation:
-                glowPulse 6s
-                ease-in-out
-                infinite;
-        }
-
-
-        @keyframes glowPulse {
-
-            0%,
-            100% {
-
-                transform:
-                    scale(0.9);
-
-                opacity: 0.5;
-            }
-
-            50% {
-
-                transform:
-                    scale(1.1);
-
-                opacity: 1;
-            }
-        }
-
-
-        .hero-content {
-
-            position: relative;
-
-            z-index: 2;
-
-            max-width: 1000px;
-        }
-
-
-        .eyebrow {
-
-            font-size: 11px;
-
-            letter-spacing: 7px;
-
-            opacity: 0.45;
-
-            margin-bottom: 28px;
-
-            animation:
-                fadeUp 1.5s
-                ease forwards;
-        }
-
-
-        .hero h1 {
-
-            font-size:
-                clamp(
-                    55px,
-                    11vw,
-                    135px
-                );
-
-            line-height:
-                0.9;
-
-            letter-spacing:
-                6px;
-
-            font-weight:
-                700;
-
-            animation:
-                titleReveal 1.5s
-                ease forwards;
-        }
-
-
-        .hero h1 span {
-
-            display: block;
-
-            opacity: 0.4;
-
-            font-weight:
-                400;
-        }
-
-
-        .hero-description {
-
-            max-width: 650px;
-
-            margin:
-                40px auto;
-
-            font-size: 15px;
-
-            line-height: 1.9;
-
-            opacity: 0.6;
-
-            animation:
-                fadeUp 2s
-                ease forwards;
-        }
-
-
-        @keyframes titleReveal {
-
-            from {
-
-                opacity: 0;
-
-                transform:
-                    translateY(30px);
-
-                letter-spacing:
-                    20px;
-            }
-
-            to {
-
-                opacity: 1;
-
-                transform:
-                    translateY(0);
-
-                letter-spacing:
-                    6px;
-            }
-        }
-
-
-        @keyframes fadeUp {
-
-            from {
-
-                opacity: 0;
-
-                transform:
-                    translateY(20px);
-            }
-
-            to {
-
-                opacity: 1;
-
-                transform:
-                    translateY(0);
-            }
-        }
-
-
-        /* =========================================
-           JOURNEY BUTTON
-        ========================================= */
-
-        .journey-button {
-
-            display:
-                inline-flex;
-
-            align-items:
-                center;
-
-            gap: 15px;
-
-            padding:
-                17px 30px;
-
-            border:
-                1px solid
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.3
-                );
-
-            border-radius:
-                40px;
-
-            color: white;
-
-            text-decoration:
-                none;
-
-            font-size:
-                11px;
-
-            letter-spacing:
-                2px;
-
-            transition:
-                0.4s;
-
-            animation:
-                fadeUp 2.5s
-                ease forwards;
-        }
-
-
-        .journey-button:hover {
-
-            background:
-                white;
-
-            color:
-                black;
-
-            transform:
-                translateY(-5px);
-
-            box-shadow:
-                0 10px 40px
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.12
-                );
-        }
-
-
-        .arrow {
-
-            transition:
-                0.4s;
-        }
-
-
-        .journey-button:hover
-        .arrow {
-
-            transform:
-                translateX(7px);
-        }
-
-
-        /* =========================================
-           SCROLL INDICATOR
-        ========================================= */
-
-        .scroll {
-
-            position: absolute;
-
-            bottom: 35px;
-
-            left: 50%;
-
-            transform:
-                translateX(-50%);
-
-            font-size: 9px;
-
-            letter-spacing: 4px;
-
-            opacity: 0.35;
-        }
-
-
-        .scroll-line {
-
-            width: 1px;
-
-            height: 45px;
-
-            background:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.35
-                );
-
-            margin:
-                12px auto 0;
-
-            animation:
-                scrollMove 2s
-                infinite;
-        }
-
-
-        @keyframes scrollMove {
-
-            0% {
-                transform:
-                    scaleY(0);
-                transform-origin:
-                    top;
-            }
-
-            50% {
-                transform:
-                    scaleY(1);
-                transform-origin:
-                    top;
-            }
-
-            51% {
-                transform:
-                    scaleY(1);
-                transform-origin:
-                    bottom;
-            }
-
-            100% {
-                transform:
-                    scaleY(0);
-                transform-origin:
-                    bottom;
-            }
-        }
-
-
-        /* =========================================
-           COSMIC SCALE
-        ========================================= */
-
-        .scale-section {
-
-            min-height:
-                90vh;
-
-            padding:
-                130px 7%;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            text-align:
-                center;
-        }
-
-
-        .scale-content {
-
-            max-width:
-                1000px;
-
-            width:
-                100%;
-        }
-
-
-        .section-label {
-
-            font-size:
-                10px;
-
-            letter-spacing:
-                5px;
-
-            opacity:
-                0.4;
-
-            margin-bottom:
-                20px;
-        }
-
-
-        .scale-content h2 {
-
-            font-size:
-                clamp(
-                    35px,
-                    6vw,
-                    75px
-                );
-
-            letter-spacing:
-                4px;
-
-            margin-bottom:
-                25px;
-        }
-
-
-        .scale-description {
-
-            max-width:
-                650px;
-
-            margin:
-                0 auto 70px;
-
-            line-height:
-                1.9;
-
-            opacity:
-                0.55;
-        }
-
-
-        .scale {
-
-            display:
-                flex;
-
-            justify-content:
-                center;
-
-            align-items:
-                center;
-
-            flex-wrap:
-                wrap;
-
-            gap:
-                20px;
-        }
-
-
-        .scale-item {
-
-            width:
-                150px;
-
-            height:
-                150px;
-
-            border:
-                1px solid
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.12
-                );
-
-            border-radius:
-                50%;
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-
-            justify-content:
-                center;
-
-            align-items:
-                center;
-
-            background:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.025
-                );
-
-            transition:
-                0.5s;
-        }
-
-
-        .scale-item:hover {
-
-            transform:
-                translateY(-10px)
-                scale(1.05);
-
-            border-color:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.45
-                );
-        }
-
-
-        .scale-item .symbol {
-
-            font-size:
-                32px;
-
-            margin-bottom:
-                12px;
-        }
-
-
-        .scale-item strong {
-
-            font-size:
-                11px;
-
-            letter-spacing:
-                1px;
-        }
-
-
-        .scale-item span {
-
-            font-size:
-                9px;
-
-            opacity:
-                0.45;
-
-            margin-top:
-                6px;
-        }
-
-
-        /* =========================================
-           FLOATING WORLDS
-        ========================================= */
-
-        .worlds {
-
-            min-height:
-                90vh;
-
-            padding:
-                120px 20px;
-
-            text-align:
-                center;
-        }
-
-
-        .worlds h2 {
-
-            font-size:
-                clamp(
-                    35px,
-                    6vw,
-                    70px
-                );
-
-            letter-spacing:
-                4px;
-
-            margin-bottom:
-                20px;
-        }
-
-
-        .worlds-intro {
-
-            max-width:
-                650px;
-
-            margin:
-                0 auto 70px;
-
-            line-height:
-                1.9;
-
-            opacity:
-                0.55;
-        }
-
-
-        .world-row {
-
-            display:
-                flex;
-
-            justify-content:
-                center;
-
-            align-items:
-                center;
-
-            gap:
-                70px;
-
-            flex-wrap:
-                wrap;
-        }
-
-
-        .world {
-
-            text-align:
-                center;
-        }
-
-
-        .planet {
-
-            margin:
-                auto;
-
-            border-radius:
-                50%;
-
-            background:
-                radial-gradient(
-                    circle at 35% 30%,
-                    rgba(
-                        255,
-                        255,
-                        255,
-                        0.4
-                    ),
-                    rgba(
-                        255,
-                        255,
-                        255,
-                        0.05
-                    ) 35%,
-                    #050509 75%
-                );
-
-            box-shadow:
-                inset
-                -25px -20px 40px
-                rgba(
-                    0,
-                    0,
-                    0,
-                    0.7
-                ),
-                0 0 35px
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.08
-                );
-
-            animation:
-                floatPlanet 5s
-                ease-in-out
-                infinite;
-        }
-
-
-        .planet.small {
-
-            width:
-                90px;
-
-            height:
-                90px;
-
-            animation-delay:
-                1s;
-        }
-
-
-        .planet.medium {
-
-            width:
-                140px;
-
-            height:
-                140px;
-
-            animation-delay:
-                0.4s;
-        }
-
-
-        .planet.large {
-
-            width:
-                190px;
-
-            height:
-                190px;
-
-            animation-delay:
-                1.5s;
-        }
-
-
-        @keyframes floatPlanet {
-
-            0%,
-            100% {
-
-                transform:
-                    translateY(0);
-            }
-
-            50% {
-
-                transform:
-                    translateY(-18px);
-            }
-        }
-
-
-        .world-name {
-
-            margin-top:
-                20px;
-
-            font-size:
-                10px;
-
-            letter-spacing:
-                3px;
-
-            opacity:
-                0.5;
-        }
-
-
-        /* =========================================
-           DID YOU KNOW
-        ========================================= */
-
-        .facts {
-
-            min-height:
-                80vh;
-
-            padding:
-                120px 20px;
-
-            display:
-                flex;
-
-            justify-content:
-                center;
-
-            align-items:
-                center;
-
-            text-align:
-                center;
-        }
-
-
-        .fact-box {
-
-            max-width:
-                800px;
-
-            width:
-                100%;
-
-            padding:
-                65px 35px;
-
-            border:
-                1px solid
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.15
-                );
-
-            border-radius:
-                30px;
-
-            background:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.035
-                );
-
-            backdrop-filter:
-                blur(12px);
-        }
-
-
-        .fact-box h2 {
-
-            font-size:
-                clamp(
-                    35px,
-                    6vw,
-                    65px
-                );
-
-            letter-spacing:
-                4px;
-
-            margin-bottom:
-                20px;
-        }
-
-
-        .fact-box p {
-
-            max-width:
-                600px;
-
-            margin:
-                0 auto 35px;
-
-            line-height:
-                1.9;
-
-            opacity:
-                0.6;
-        }
-
-
-        .fact-button {
-
-            padding:
-                15px 25px;
-
-            border:
-                1px solid
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.25
-                );
-
-            border-radius:
-                30px;
-
-            background:
-                transparent;
-
-            color:
-                white;
-
-            cursor:
-                pointer;
-
-            font-size:
-                10px;
-
-            letter-spacing:
-                2px;
-
-            transition:
-                0.4s;
-        }
-
-
-        .fact-button:hover {
-
-            background:
-                white;
-
-            color:
-                black;
-        }
-
-
-        #fact {
-
-            margin-top:
-                30px;
-
-            min-height:
-                50px;
-
-            line-height:
-                1.8;
-
-            opacity:
-                0.7;
-        }
-
-
-        /* =========================================
-           EASTER EGG
-        ========================================= */
-
-        .secret-zone {
-
-            text-align:
-                center;
-
-            padding:
-                40px 20px 100px;
-        }
-
-
-        .secret {
-
-            width:
-                8px;
-
-            height:
-                8px;
-
-            border-radius:
-                50%;
-
-            background:
-                white;
-
-            border:
-                none;
-
-            opacity:
-                0.15;
-
-            cursor:
-                pointer;
-
-            transition:
-                0.5s;
-        }
-
-
-        .secret:hover {
-
-            opacity:
-                1;
-
-            transform:
-                scale(3);
-        }
-
-
-        #secretMessage {
-
-            display:
-                none;
-
-            max-width:
-                500px;
-
-            margin:
-                25px auto 0;
-
-            font-size:
-                12px;
-
-            line-height:
-                1.8;
-
-            opacity:
-                0.6;
-        }
-
-
-        /* =========================================
-           FINAL MESSAGE
-        ========================================= */
-
-        .final {
-
-            min-height:
-                75vh;
-
-            display:
-                flex;
-
-            justify-content:
-                center;
-
-            align-items:
-                center;
-
-            text-align:
-                center;
-
-            padding:
-                120px 20px;
-        }
-
-
-        .final-content {
-
-            max-width:
-                850px;
-        }
-
-
-        .final h2 {
-
-            font-size:
-                clamp(
-                    40px,
-                    7vw,
-                    85px
-                );
-
-            letter-spacing:
-                5px;
-
-            line-height:
-                1.05;
-
-            margin-bottom:
-                35px;
-        }
-
-
-        .final p {
-
-            max-width:
-                650px;
-
-            margin:
-                auto;
-
-            line-height:
-                1.9;
-
-            opacity:
-                0.55;
-        }
-
-
-        .final-word {
-
-            margin-top:
-                60px;
-
-            font-size:
-                clamp(
-                    25px,
-                    4vw,
-                    45px
-                );
-
-            letter-spacing:
-                8px;
-
-            opacity:
-                0.45;
-
-            animation:
-                breathe 4s
-                ease-in-out
-                infinite;
-        }
-
-
-        @keyframes breathe {
-
-            0%,
-            100% {
-
-                opacity:
-                    0.35;
-            }
-
-            50% {
-
-                opacity:
-                    1;
-            }
-        }
-
-
-        /* =========================================
-           FOOTER
-        ========================================= */
-
-        footer {
-
-            padding:
-                50px 20px;
-
-            text-align:
-                center;
-
-            border-top:
-                1px solid
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.1
-                );
-
-            font-size:
-                10px;
-
-            letter-spacing:
-                3px;
-
-            opacity:
-                0.4;
-        }
-
-
-        /* =========================================
-           MOBILE
-        ========================================= */
-
-        @media (max-width: 750px) {
-
-            .nav-links {
-                display: none;
-            }
-
-            .world-row {
-                gap: 45px;
-            }
-
-            .scale-item {
-                width: 120px;
-                height: 120px;
-            }
-
-            .scale-item .symbol {
-                font-size: 25px;
-            }
-
-            .hero h1 {
-                letter-spacing: 3px;
-            }
-
-        }
-
-    </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The Universe — Beyond What We See. An interactive exploration of space, mystery and humanity's future.">
+<title>THE UNIVERSE — Beyond What We See</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+    background:#02040a;
+    color:#f4f6fa;
+    font-family:Arial,Helvetica,sans-serif;
+    overflow-x:hidden;
+}
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+      radial-gradient(circle at 20% 20%,rgba(90,110,150,.09),transparent 28%),
+      radial-gradient(circle at 80% 70%,rgba(100,120,160,.07),transparent 30%);
+    z-index:-2;
+}
+#stars{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    overflow:hidden;
+}
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:#fff;
+    border-radius:50%;
+    opacity:.6;
+    animation:drift linear infinite;
+}
+@keyframes drift{
+    from{transform:translateY(0);opacity:.15}
+    50%{opacity:.8}
+    to{transform:translateY(-100px);opacity:.15}
+}
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:76px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+    background:rgba(2,4,10,.72);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    z-index:100;
+}
+.logo{
+    font-size:14px;
+    font-weight:bold;
+    letter-spacing:4px;
+}
+.navlinks{
+    display:flex;
+    gap:28px;
+    list-style:none;
+}
+.navlinks a{
+    color:#aeb5c0;
+    text-decoration:none;
+    font-size:11px;
+    letter-spacing:1.5px;
+    transition:.3s;
+}
+.navlinks a:hover,.navlinks a.active{color:#fff}
+.music{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    z-index:100;
+    border:1px solid rgba(255,255,255,.18);
+    background:rgba(8,11,18,.82);
+    color:white;
+    padding:12px 17px;
+    border-radius:30px;
+    cursor:pointer;
+    backdrop-filter:blur(12px);
+    font-size:11px;
+    letter-spacing:1.5px;
+}
+.music:hover{background:rgba(255,255,255,.12)}
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding:130px 9% 80px;
+    position:relative;
+}
+.hero:after{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    right:5%;
+    top:20%;
+    background:radial-gradient(circle,rgba(150,170,200,.09),transparent 65%);
+    filter:blur(10px);
+    pointer-events:none;
+}
+.hero-content{max-width:900px;position:relative;z-index:2}
+.label{
+    color:#8993a3;
+    font-size:11px;
+    letter-spacing:4px;
+    margin-bottom:25px;
+}
+h1{
+    font-size:clamp(54px,9vw,125px);
+    line-height:.88;
+    letter-spacing:-5px;
+    font-weight:700;
+}
+h1 span{color:#8e98a8}
+.hero p{
+    max-width:620px;
+    margin:35px 0;
+    color:#aab1bc;
+    line-height:1.8;
+    font-size:16px;
+}
+.btn{
+    display:inline-block;
+    padding:16px 24px;
+    border:1px solid rgba(255,255,255,.3);
+    color:#fff;
+    text-decoration:none;
+    font-size:11px;
+    letter-spacing:2px;
+    transition:.35s;
+    background:rgba(255,255,255,.03);
+}
+.btn:hover{
+    background:#fff;
+    color:#05070c;
+    transform:translateY(-3px);
+}
+section{
+    padding:120px 9%;
+    position:relative;
+}
+.section-label{
+    color:#697484;
+    font-size:10px;
+    letter-spacing:4px;
+    margin-bottom:20px;
+}
+h2{
+    font-size:clamp(38px,6vw,75px);
+    letter-spacing:-3px;
+    line-height:.95;
+}
+.section-text{
+    max-width:650px;
+    color:#969eaa;
+    line-height:1.8;
+    margin-top:25px;
+}
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-top:60px;
+}
+.card{
+    padding:35px;
+    min-height:250px;
+    border:1px solid rgba(255,255,255,.1);
+    background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
+    transition:.4s;
+    position:relative;
+    overflow:hidden;
+}
+.card:before{
+    content:"";
+    position:absolute;
+    width:150px;
+    height:150px;
+    right:-70px;
+    top:-70px;
+    background:radial-gradient(circle,rgba(255,255,255,.12),transparent 65%);
+}
+.card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(255,255,255,.28);
+}
+.card-number{
+    font-size:11px;
+    color:#687384;
+    letter-spacing:3px;
+}
+.card h3{
+    margin-top:65px;
+    font-size:21px;
+    letter-spacing:2px;
+}
+.card p{
+    color:#858e9b;
+    margin-top:15px;
+    line-height:1.6;
+    font-size:14px;
+}
+.closing{
+    min-height:75vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    background:radial-gradient(circle at center,rgba(100,115,140,.08),transparent 55%);
+}
+.closing h2{max-width:900px}
+footer{
+    padding:35px 9%;
+    border-top:1px solid rgba(255,255,255,.07);
+    color:#555e6b;
+    font-size:10px;
+    letter-spacing:2px;
+}
+.reveal{
+    opacity:0;
+    transform:translateY(30px);
+    transition:1s;
+}
+.reveal.show{opacity:1;transform:none}
+@media(max-width:800px){
+    nav{height:auto;min-height:68px;padding:15px 5%;align-items:flex-start}
+    .logo{display:none}
+    .navlinks{gap:10px;flex-wrap:wrap;justify-content:center}
+    .navlinks a{font-size:9px}
+    .hero{padding:130px 7% 70px}
+    h1{letter-spacing:-3px}
+    section{padding:85px 7%}
+    .cards{grid-template-columns:1fr}
+    .card{min-height:210px}
+    .music{right:15px;bottom:15px}
+}
+</style>
 </head>
 
-
 <body>
-
-
-    <!-- STAR BACKGROUND -->
-
-    <div class="stars"></div>
-
-    <div class="stars2"></div>
-
-
-    <!-- SHOOTING STARS -->
-
-    <div class="shooting-star one"></div>
-
-    <div class="shooting-star two"></div>
-
-
-    <!-- =========================================
-         NAVIGATION
-    ========================================= -->
-
-    <nav>
-
-        <div class="logo">
-            THE UNIVERSE
-        </div>
-
-
-        <ul class="nav-links">
-
-            <li>
-                <a href="index.html">
-                    HOME
-                </a>
-            </li>
-
-            <li>
-                <a href="journey.html">
-                    JOURNEY
-                </a>
-            </li>
-
-            <li>
-                <a href="unknown.html">
-                    THE UNKNOWN
-                </a>
-            </li>
-
-            <li>
-                <a href="life.html">
-                    ARE WE ALONE?
-                </a>
-            </li>
-
-            <li>
-                <a href="future.html">
-                    THE FUTURE
-                </a>
-            </li>
-
-        </ul>
-
-    </nav>
-
-
-    <!-- =========================================
-         HERO
-    ========================================= -->
-
-    <section class="hero">
-
-        <div class="hero-content">
-
-
-            <div class="eyebrow">
-                A JOURNEY BEYOND THE VISIBLE
-            </div>
-
-
-            <h1>
-
-                THE
-
-                <span>
-                    UNIVERSE
-                </span>
-
-            </h1>
-
-
-            <p class="hero-description">
-
-                Everything we see is only a fraction
-                of what exists.
-
-                <br>
-
-                Look beyond the stars.
-                Question what you know.
-                Explore what remains unseen.
-
-            </p>
-
-
-            <a
-                href="journey.html"
-                class="journey-button"
-            >
-
-                BEGIN THE JOURNEY
-
-                <span class="arrow">
-                    →
-                </span>
-
-            </a>
-
-
-        </div>
-
-
-        <div class="scroll">
-
-            SCROLL TO EXPLORE
-
-            <div class="scroll-line"></div>
-
-        </div>
-
-
-    </section>
-
-
-    <!-- =========================================
-         COSMIC SCALE
-    ========================================= -->
-
-    <section class="scale-section">
-
-        <div class="scale-content">
-
-
-            <div class="section-label">
-                PUT IT INTO PERSPECTIVE
-            </div>
-
-
-            <h2>
-                WE ARE TINY.
-            </h2>
-
-
-            <p class="scale-description">
-
-                From one planet to an entire universe,
-                every step reveals something larger,
-                stranger and more mysterious.
-
-            </p>
-
-
-            <div class="scale">
-
-
-                <div class="scale-item">
-
-                    <div class="symbol">
-                        👤
-                    </div>
-
-                    <strong>
-                        YOU
-                    </strong>
-
-                    <span>
-                        ONE PERSON
-                    </span>
-
-                </div>
-
-
-                <div class="scale-item">
-
-                    <div class="symbol">
-                        🌍
-                    </div>
-
-                    <strong>
-                        EARTH
-                    </strong>
-
-                    <span>
-                        OUR WORLD
-                    </span>
-
-                </div>
-
-
-                <div class="scale-item">
-
-                    <div class="symbol">
-                        ☀️
-                    </div>
-
-                    <strong>
-                        SOLAR SYSTEM
-                    </strong>
-
-                    <span>
-                        OUR NEIGHBOURHOOD
-                    </span>
-
-                </div>
-
-
-                <div class="scale-item">
-
-                    <div class="symbol">
-                        🌌
-                    </div>
-
-                    <strong>
-                        GALAXY
-                    </strong>
-
-                    <span>
-                        BILLIONS OF STARS
-                    </span>
-
-                </div>
-
-
-                <div class="scale-item">
-
-                    <div class="symbol">
-                        ✨
-                    </div>
-
-                    <strong>
-                        UNIVERSE
-                    </strong>
-
-                    <span>
-                        BEYOND OUR VIEW
-                    </span>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================================
-         FLOATING WORLDS
-    ========================================= -->
-
-    <section class="worlds">
-
-
-        <div class="section-label">
-            WORLDS BEYOND OURS
-        </div>
-
-
-        <h2>
-            COUNTLESS WORLDS.
-        </h2>
-
-
-        <p class="worlds-intro">
-
-            The night sky is not a collection of distant lights.
-            Every point may represent a star, a planetary system,
-            or a story we have yet to discover.
-
-        </p>
-
-
-        <div class="world-row">
-
-
-            <div class="world">
-
-                <div class="planet small"></div>
-
-                <div class="world-name">
-                    UNKNOWN WORLD
-                </div>
-
-            </div>
-
-
-            <div class="world">
-
-                <div class="planet large"></div>
-
-                <div class="world-name">
-                    DISTANT WORLD
-                </div>
-
-            </div>
-
-
-            <div class="world">
-
-                <div class="planet medium"></div>
-
-                <div class="world-name">
-                    POSSIBLE WORLD
-                </div>
-
-            </div>
-
-
-        </div>
-
-
-    </section>
-
-
-    <!-- =========================================
-         DID YOU KNOW
-    ========================================= -->
-
-    <section class="facts">
-
-
-        <div class="fact-box">
-
-
-            <div class="section-label">
-                COSMIC FILE
-            </div>
-
-
-            <h2>
-                DID YOU KNOW?
-            </h2>
-
-
-            <p>
-
-                The universe is full of facts that sound
-                almost impossible—but are supported by
-                scientific observations.
-
-            </p>
-
-
-            <button
-                class="fact-button"
-                onclick="showFact()"
-            >
-
-                REVEAL A FACT
-
-            </button>
-
-
-            <div id="fact"></div>
-
-
-        </div>
-
-
-    </section>
-
-
-    <!-- =========================================
-         SECRET EASTER EGG
-    ========================================= -->
-
-    <section class="secret-zone">
-
-
-        <button
-            class="secret"
-            onclick="revealSecret()"
-            aria-label="Secret"
-        ></button>
-
-
-        <p id="secretMessage">
-
-            You found something most visitors won't.
-
-            <br><br>
-
-            The universe rewards curiosity.
-
-            Keep exploring.
-
-        </p>
-
-
-    </section>
-
-
-    <!-- =========================================
-         FINAL MESSAGE
-    ========================================= -->
-
-    <section class="final">
-
-
-        <div class="final-content">
-
-
-            <h2>
-
-                WHAT IF EVERYTHING
-                WE SEE IS ONLY
-                THE BEGINNING?
-
-            </h2>
-
-
-            <p>
-
-                Humanity has looked into space for thousands
-                of years.
-
-                <br><br>
-
-                We have discovered galaxies,
-                black holes, exoplanets and cosmic mysteries.
-
-                <br><br>
-
-                But the greatest discoveries may still
-                be waiting beyond what we can see.
-
-            </p>
-
-
-            <div class="final-word">
-
-                KEEP LOOKING.
-
-            </div>
-
-
-        </div>
-
-
-    </section>
-
-
-    <!-- =========================================
-         FOOTER
-    ========================================= -->
-
-    <footer>
-
-        THE UNIVERSE
-        •
-        BEYOND WHAT WE SEE
-
-    </footer>
-
-
-    <!-- =========================================
-         JAVASCRIPT
-    ========================================= -->
-
-    <script>
-
-
-        /* =========================================
-           COSMIC FACTS
-        ========================================= */
-
-        const facts = [
-
-            "A day on Venus is longer than a year on Venus.",
-
-            "Light from the Sun takes about 8 minutes to reach Earth.",
-
-            "There are more stars in the observable universe than you could count in a lifetime.",
-
-            "Some galaxies are so far away that the light we see from them began its journey billions of years ago.",
-
-            "A neutron star contains an enormous amount of matter packed into a very small space.",
-
-            "The universe is expanding.",
-
-            "Scientists have discovered thousands of planets outside our Solar System."
-
-        ];
-
-
-        let factIndex = 0;
-
-
-        function showFact() {
-
-            const fact =
-                document.getElementById("fact");
-
-
-            fact.innerHTML =
-                facts[factIndex];
-
-
-            factIndex++;
-
-
-            if (factIndex >= facts.length) {
-
-                factIndex = 0;
-
-            }
-
-        }
-
-
-        /* =========================================
-           SECRET EASTER EGG
-        ========================================= */
-
-        function revealSecret() {
-
-            const message =
-                document.getElementById(
-                    "secretMessage"
-                );
-
-
-            if (
-                message.style.display ===
-                "block"
-            ) {
-
-                message.style.display =
-                    "none";
-
-            }
-
-            else {
-
-                message.style.display =
-                    "block";
-
-            }
-
-        }
-
-
-    </script>
-
-
+<div id="stars"></div>
+
+<nav>
+<div class="logo">THE UNIVERSE</div>
+<ul class="navlinks">
+<li><a class="active" href="index.html">HOME</a></li>
+<li><a href="journey.html">JOURNEY</a></li>
+<li><a href="unknown.html">THE UNKNOWN</a></li>
+<li><a href="life.html">ARE WE ALONE?</a></li>
+<li><a href="future.html">THE FUTURE</a></li>
+</ul>
+</nav>
+
+<audio id="spaceAudio" loop preload="none">
+<source src="assets/space.mp3" type="audio/mpeg">
+</audio>
+<button class="music" id="musicBtn">♪ MUSIC OFF</button>
+
+<main>
+<section class="hero">
+<div class="hero-content reveal">
+<div class="label">AN INTERACTIVE EXPLORATION</div>
+<h1>THE UNIVERSE<br><span>BEYOND WHAT WE SEE</span></h1>
+<p>Look beyond the familiar. Explore the scale, mysteries, possibilities and unanswered questions of the universe.</p>
+<a class="btn" href="journey.html">BEGIN THE JOURNEY →</a>
+</div>
+</section>
+
+<section class="reveal">
+<div class="section-label">THE FIRST QUESTION</div>
+<h2>HOW MUCH DO<br>WE REALLY KNOW?</h2>
+<p class="section-text">We can observe distant galaxies, stars and planets across unimaginable distances. Yet every discovery seems to create another question. The universe is not simply something we see — it is something we are still learning to understand.</p>
+
+<div class="cards">
+<div class="card">
+<div class="card-number">01</div>
+<h3>WHAT WE SEE</h3>
+<p>Light from stars, galaxies and worlds tells us stories from across cosmic time.</p>
+</div>
+<div class="card">
+<div class="card-number">02</div>
+<h3>WHAT WE DON'T</h3>
+<p>Some of the universe's most important components remain invisible and mysterious.</p>
+</div>
+<div class="card">
+<div class="card-number">03</div>
+<h3>WHAT COMES NEXT</h3>
+<p>New instruments and ideas may reveal possibilities we have not yet imagined.</p>
+</div>
+</div>
+</section>
+
+<section class="closing reveal">
+<div class="section-label">LOOK CLOSER</div>
+<h2>WHAT IF<br>EVERYTHING WE SEE<br>IS ONLY THE BEGINNING?</h2>
+<br><br>
+<a class="btn" href="journey.html">EXPLORE →</a>
+</section>
+</main>
+
+<footer>THE UNIVERSE • BEYOND WHAT WE SEE</footer>
+
+<script>
+const stars=document.getElementById("stars");
+for(let i=0;i<140;i++){
+    const s=document.createElement("span");
+    s.className="star";
+    s.style.left=Math.random()*100+"%";
+    s.style.top=Math.random()*100+"%";
+    s.style.opacity=(Math.random()*.7+.15);
+    s.style.animationDuration=(5+Math.random()*12)+"s";
+    s.style.animationDelay=(-Math.random()*12)+"s";
+    stars.appendChild(s);
+}
+
+const audio=document.getElementById("spaceAudio");
+const musicBtn=document.getElementById("musicBtn");
+let musicOn=localStorage.getItem("universeMusic")==="on";
+
+function updateMusic(){
+    if(musicOn){
+        audio.play().then(()=>{
+            musicBtn.textContent="♪ MUSIC ON";
+        }).catch(()=>{
+            musicOn=false;
+            localStorage.setItem("universeMusic","off");
+            musicBtn.textContent="♪ MUSIC OFF";
+        });
+    }else{
+        audio.pause();
+        musicBtn.textContent="♪ MUSIC OFF";
+    }
+}
+musicBtn.onclick=()=>{
+    musicOn=!musicOn;
+    localStorage.setItem("universeMusic",musicOn?"on":"off");
+    updateMusic();
+};
+
+if(musicOn) musicBtn.textContent="♪ MUSIC ON";
+
+const observer=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")});
+},{threshold:.15});
+document.querySelectorAll(".reveal").forEach(x=>observer.observe(x));
+</script>
 </body>
-
 </html>
