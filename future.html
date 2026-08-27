@@ -1,988 +1,1814 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
 
-    <title>Beyond Today | The Universe</title>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-    <style>
+<title>The Future | The Universe</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
 
-        html {
-            scroll-behavior: smooth;
-        }
+/* =========================
+   RESET
+========================= */
 
-        body {
-            background: #02030a;
-            color: white;
-            font-family: Arial, Helvetica, sans-serif;
-            overflow-x: hidden;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        /* =========================
-           STARS
-        ========================= */
+html {
+    scroll-behavior: smooth;
+}
 
-        .stars,
-        .stars::before,
-        .stars::after {
-            position: fixed;
-            inset: 0;
-            content: "";
-            pointer-events: none;
-            z-index: -2;
-        }
+body {
 
-        .stars {
-            background-image:
-                radial-gradient(2px 2px at 10% 20%, white, transparent),
-                radial-gradient(1px 1px at 25% 70%, white, transparent),
-                radial-gradient(2px 2px at 40% 35%, white, transparent),
-                radial-gradient(1px 1px at 55% 15%, white, transparent),
-                radial-gradient(2px 2px at 70% 65%, white, transparent),
-                radial-gradient(1px 1px at 85% 25%, white, transparent),
-                radial-gradient(2px 2px at 95% 80%, white, transparent);
+    background: #010106;
 
-            background-size: 600px 600px;
+    color: white;
 
-            animation: moveStars 50s linear infinite;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
-            opacity: 0.6;
-        }
+    overflow-x: hidden;
+}
 
-        @keyframes moveStars {
 
-            from {
-                transform: translateY(0);
-            }
+/* =========================
+   STAR FIELD
+========================= */
 
-            to {
-                transform: translateY(-600px);
-            }
+.stars {
 
-        }
+    position: fixed;
 
-        /* =========================
-           NAVIGATION
-        ========================= */
+    inset: 0;
 
-        nav {
+    z-index: -5;
 
-            position: fixed;
+    pointer-events: none;
 
-            top: 0;
-            left: 0;
+    background-image:
 
-            width: 100%;
+        radial-gradient(
+            2px 2px at 5% 20%,
+            white,
+            transparent
+        ),
 
-            padding: 22px 6%;
+        radial-gradient(
+            1px 1px at 14% 70%,
+            white,
+            transparent
+        ),
 
-            display: flex;
+        radial-gradient(
+            2px 2px at 28% 35%,
+            white,
+            transparent
+        ),
 
-            justify-content: space-between;
+        radial-gradient(
+            1px 1px at 42% 80%,
+            white,
+            transparent
+        ),
 
-            align-items: center;
+        radial-gradient(
+            2px 2px at 55% 16%,
+            white,
+            transparent
+        ),
 
-            background: rgba(2, 3, 10, 0.5);
+        radial-gradient(
+            1px 1px at 69% 60%,
+            white,
+            transparent
+        ),
 
-            backdrop-filter: blur(12px);
+        radial-gradient(
+            2px 2px at 83% 25%,
+            white,
+            transparent
+        ),
 
-            z-index: 1000;
-        }
+        radial-gradient(
+            1px 1px at 94% 75%,
+            white,
+            transparent
+        );
 
-        .logo {
+    background-size:
+        650px 650px;
 
-            font-size: 18px;
+    animation:
+        starMove 85s linear infinite;
 
-            font-weight: bold;
+    opacity:
+        0.65;
+}
 
-            letter-spacing: 3px;
-        }
+@keyframes starMove {
 
-        .nav-links {
+    from {
+        transform:
+            translateY(0);
+    }
 
-            display: flex;
+    to {
+        transform:
+            translateY(-650px);
+    }
+}
 
-            gap: 28px;
 
-            list-style: none;
-        }
+/* =========================
+   NAVIGATION
+========================= */
 
-        .nav-links a {
+nav {
 
-            color: white;
+    position: fixed;
 
-            text-decoration: none;
+    top: 0;
+    left: 0;
 
-            font-size: 12px;
+    width: 100%;
 
-            letter-spacing: 1px;
+    padding:
+        22px 6%;
 
-            transition: 0.3s;
-        }
+    display:
+        flex;
 
-        .nav-links a:hover {
+    justify-content:
+        space-between;
 
-            opacity: 0.5;
-        }
+    align-items:
+        center;
 
-        /* =========================
-           HERO
-        ========================= */
+    background:
+        rgba(
+            1,
+            1,
+            6,
+            0.5
+        );
 
-        .hero {
+    backdrop-filter:
+        blur(14px);
 
-            min-height: 90vh;
+    border-bottom:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.06
+        );
 
-            display: flex;
+    z-index:
+        1000;
+}
 
-            align-items: center;
+.logo {
 
-            justify-content: center;
+    font-size:
+        17px;
 
-            text-align: center;
+    font-weight:
+        bold;
 
-            padding: 130px 20px 80px;
-        }
+    letter-spacing:
+        4px;
+}
 
-        .hero-content {
+.nav-links {
 
-            max-width: 900px;
-        }
+    display:
+        flex;
 
-        .small-title {
+    gap:
+        28px;
 
-            font-size: 12px;
+    list-style:
+        none;
+}
 
-            letter-spacing: 6px;
+.nav-links a {
 
-            opacity: 0.5;
+    color:
+        white;
 
-            margin-bottom: 25px;
-        }
+    text-decoration:
+        none;
 
-        .hero h1 {
+    font-size:
+        11px;
 
-            font-size: clamp(55px, 10vw, 115px);
+    letter-spacing:
+        1.5px;
 
-            letter-spacing: 7px;
+    opacity:
+        0.7;
 
-            line-height: 0.95;
-        }
+    transition:
+        0.3s;
+}
 
-        .hero h1 span {
+.nav-links a:hover {
 
-            opacity: 0.45;
-        }
+    opacity:
+        1;
 
-        .hero p {
+    letter-spacing:
+        2px;
+}
 
-            max-width: 700px;
 
-            margin: 35px auto;
+/* =========================
+   COMMON
+========================= */
 
-            line-height: 1.9;
+.label {
 
-            opacity: 0.65;
-        }
+    font-size:
+        10px;
 
-        /* =========================
-           FUTURE CARDS
-        ========================= */
+    letter-spacing:
+        6px;
 
-        .future {
+    opacity:
+        0.4;
 
-            width: 90%;
+    margin-bottom:
+        25px;
+}
 
-            max-width: 1150px;
 
-            margin: auto;
+/* =========================
+   HERO
+========================= */
 
-            padding: 80px 0 130px;
-        }
+.hero {
 
-        .future-grid {
+    min-height:
+        100vh;
 
-            display: grid;
+    display:
+        flex;
 
-            grid-template-columns: repeat(2, 1fr);
+    justify-content:
+        center;
 
-            gap: 25px;
-        }
+    align-items:
+        center;
 
-        .future-card {
+    text-align:
+        center;
 
-            min-height: 300px;
+    padding:
+        130px 20px 80px;
 
-            padding: 40px;
+    position:
+        relative;
 
-            border: 1px solid rgba(255,255,255,0.14);
+    overflow:
+        hidden;
+}
 
-            border-radius: 25px;
+.hero::before {
 
-            background: rgba(255,255,255,0.035);
+    content:
+        "";
 
-            backdrop-filter: blur(10px);
+    position:
+        absolute;
 
-            transition: 0.5s;
-        }
+    width:
+        600px;
 
-        .future-card:hover {
+    height:
+        600px;
 
-            transform: translateY(-10px);
+    border-radius:
+        50%;
 
-            border-color: rgba(255,255,255,0.45);
+    background:
+        radial-gradient(
+            circle,
+            rgba(
+                255,
+                255,
+                255,
+                0.07
+            ),
+            transparent 70%
+        );
 
-            background: rgba(255,255,255,0.06);
-        }
+    filter:
+        blur(30px);
 
-        .future-icon {
+    animation:
+        pulse 6s
+        ease-in-out
+        infinite;
+}
 
-            font-size: 50px;
+@keyframes pulse {
 
-            margin-bottom: 25px;
-        }
+    0%,
+    100% {
 
-        .future-card h2 {
+        transform:
+            scale(0.8);
 
-            font-size: 28px;
+        opacity:
+            0.4;
+    }
 
-            margin-bottom: 18px;
-        }
+    50% {
 
-        .future-card p {
+        transform:
+            scale(1.15);
 
-            font-size: 14px;
+        opacity:
+            1;
+    }
+}
 
-            line-height: 1.8;
+.hero-content {
 
-            opacity: 0.65;
-        }
+    position:
+        relative;
 
-        /* =========================
-           TIMELINE
-        ========================= */
+    z-index:
+        2;
 
-        .timeline-section {
+    max-width:
+        950px;
+}
 
-            padding: 130px 20px;
+.hero h1 {
 
-            text-align: center;
-        }
+    font-size:
+        clamp(
+            60px,
+            11vw,
+            130px
+        );
 
-        .timeline-section h2 {
+    line-height:
+        0.88;
 
-            font-size: clamp(35px, 6vw, 70px);
+    letter-spacing:
+        8px;
+}
 
-            letter-spacing: 4px;
+.hero h1 span {
 
-            margin-bottom: 70px;
-        }
+    display:
+        block;
 
-        .timeline {
+    opacity:
+        0.4;
 
-            max-width: 1000px;
+    font-weight:
+        400;
+}
 
-            margin: auto;
+.hero p {
 
-            display: flex;
+    max-width:
+        680px;
 
-            justify-content: center;
+    margin:
+        40px auto;
 
-            align-items: center;
+    line-height:
+        1.9;
 
-            flex-wrap: wrap;
+    opacity:
+        0.6;
 
-            gap: 0;
-        }
+    font-size:
+        15px;
+}
 
-        .timeline-item {
+.explore-button {
 
-            position: relative;
+    display:
+        inline-block;
 
-            width: 180px;
+    padding:
+        17px 30px;
 
-            padding: 30px 15px;
-        }
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.3
+        );
 
-        .timeline-item::after {
+    border-radius:
+        30px;
 
-            content: "";
+    color:
+        white;
 
-            position: absolute;
+    text-decoration:
+        none;
 
-            top: 50%;
+    font-size:
+        10px;
 
-            right: -1px;
+    letter-spacing:
+        2px;
 
-            width: 2px;
+    transition:
+        0.4s;
+}
 
-            height: 80px;
+.explore-button:hover {
 
-            background: rgba(255,255,255,0.15);
+    background:
+        white;
 
-            transform: translateY(-50%);
-        }
+    color:
+        black;
 
-        .timeline-item:last-child::after {
+    transform:
+        translateY(-5px);
+}
 
-            display: none;
-        }
 
-        .timeline-year {
+/* =========================
+   INTRO
+========================= */
 
-            font-size: 12px;
+.intro {
 
-            letter-spacing: 2px;
+    min-height:
+        80vh;
 
-            opacity: 0.45;
+    padding:
+        130px 20px;
 
-            margin-bottom: 12px;
-        }
+    display:
+        flex;
 
-        .timeline-item h3 {
+    justify-content:
+        center;
 
-            font-size: 17px;
+    align-items:
+        center;
 
-            margin-bottom: 10px;
-        }
+    text-align:
+        center;
+}
 
-        .timeline-item p {
+.intro-content {
 
-            font-size: 12px;
+    max-width:
+        800px;
+}
 
-            line-height: 1.6;
+.intro h2 {
 
-            opacity: 0.55;
-        }
+    font-size:
+        clamp(
+            40px,
+            6vw,
+            75px
+        );
 
-        /* =========================
-           COSMIC PROFILE
-        ========================= */
+    letter-spacing:
+        4px;
 
-        .profile {
+    margin-bottom:
+        30px;
+}
 
-            min-height: 80vh;
+.intro p {
 
-            padding: 120px 20px;
+    line-height:
+        2;
 
-            display: flex;
+    opacity:
+        0.55;
 
-            justify-content: center;
+    font-size:
+        15px;
+}
 
-            align-items: center;
 
-            text-align: center;
-        }
+/* =========================
+   FUTURE PATHS
+========================= */
 
-        .profile-box {
+.paths {
 
-            max-width: 750px;
+    min-height:
+        100vh;
 
-            width: 100%;
+    padding:
+        130px 20px;
 
-            padding: 60px 30px;
+    text-align:
+        center;
+}
 
-            border: 1px solid rgba(255,255,255,0.16);
+.paths h2 {
 
-            border-radius: 30px;
+    font-size:
+        clamp(
+            38px,
+            6vw,
+            70px
+        );
 
-            background: rgba(255,255,255,0.035);
+    letter-spacing:
+        4px;
 
-            backdrop-filter: blur(12px);
-        }
+    margin-bottom:
+        20px;
+}
 
-        .profile-box h2 {
+.paths-intro {
 
-            font-size: clamp(35px, 6vw, 65px);
+    max-width:
+        650px;
 
-            letter-spacing: 4px;
+    margin:
+        auto;
 
-            margin-bottom: 20px;
-        }
+    line-height:
+        1.9;
 
-        .profile-box p {
+    opacity:
+        0.55;
+}
 
-            opacity: 0.6;
+.path-grid {
 
-            margin-bottom: 40px;
-        }
+    max-width:
+        1100px;
 
-        .profile-options {
+    margin:
+        80px auto 0;
 
-            display: flex;
+    display:
+        grid;
 
-            justify-content: center;
+    grid-template-columns:
+        repeat(
+            3,
+            1fr
+        );
 
-            flex-wrap: wrap;
+    gap:
+        25px;
+}
 
-            gap: 15px;
-        }
+.path-card {
 
-        .profile-btn {
+    min-height:
+        320px;
 
-            padding: 15px 24px;
+    padding:
+        35px 25px;
 
-            border-radius: 30px;
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
 
-            border: 1px solid rgba(255,255,255,0.25);
+    border-radius:
+        25px;
 
-            background: transparent;
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.025
+        );
 
-            color: white;
+    text-align:
+        left;
 
-            cursor: pointer;
+    cursor:
+        pointer;
 
-            font-size: 12px;
+    transition:
+        0.5s;
+}
 
-            letter-spacing: 1px;
+.path-card:hover {
 
-            transition: 0.3s;
-        }
+    transform:
+        translateY(-10px);
 
-        .profile-btn:hover {
+    border-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.4
+        );
 
-            background: white;
+    box-shadow:
+        0 20px 50px
+        rgba(
+            0,
+            0,
+            0,
+            0.3
+        );
+}
 
-            color: black;
-        }
+.path-icon {
 
-        #profileResult {
+    font-size:
+        45px;
 
-            margin-top: 40px;
+    margin-bottom:
+        25px;
+}
 
-            line-height: 1.8;
+.path-card h3 {
 
-            min-height: 80px;
+    font-size:
+        24px;
 
-            opacity: 0.75;
-        }
+    margin-bottom:
+        15px;
+}
 
-        /* =========================
-           FINAL QUESTION
-        ========================= */
+.path-card p {
 
-        .final {
+    font-size:
+        13px;
 
-            min-height: 100vh;
+    line-height:
+        1.8;
 
-            display: flex;
+    opacity:
+        0.5;
+}
 
-            justify-content: center;
+.path-more {
 
-            align-items: center;
+    margin-top:
+        25px;
 
-            text-align: center;
+    font-size:
+        9px;
 
-            padding: 120px 20px;
-        }
+    letter-spacing:
+        2px;
 
-        .final-content {
+    opacity:
+        0.35;
+}
 
-            max-width: 900px;
-        }
 
-        .final h2 {
+/* =========================
+   FUTURE TIMELINE
+========================= */
 
-            font-size: clamp(40px, 7vw, 85px);
+.timeline {
 
-            letter-spacing: 5px;
+    min-height:
+        100vh;
 
-            line-height: 1.05;
+    padding:
+        130px 20px;
 
-            margin-bottom: 40px;
-        }
+    text-align:
+        center;
+}
 
-        .final p {
+.timeline h2 {
 
-            max-width: 650px;
+    font-size:
+        clamp(
+            38px,
+            6vw,
+            70px
+        );
 
-            margin: auto;
+    letter-spacing:
+        4px;
 
-            line-height: 1.9;
+    margin-bottom:
+        20px;
+}
 
-            opacity: 0.6;
-        }
+.timeline-intro {
 
-        .keep-looking {
+    max-width:
+        650px;
 
-            margin-top: 70px;
+    margin:
+        auto;
 
-            font-size: clamp(30px, 5vw, 60px);
+    line-height:
+        1.9;
 
-            letter-spacing: 6px;
+    opacity:
+        0.55;
+}
 
-            animation: breathe 4s ease-in-out infinite;
-        }
+.timeline-list {
 
-        @keyframes breathe {
+    max-width:
+        850px;
 
-            0%, 100% {
+    margin:
+        80px auto 0;
 
-                opacity: 0.45;
+    text-align:
+        left;
 
-                transform: scale(1);
-            }
+    position:
+        relative;
+}
 
-            50% {
+.timeline-list::before {
 
-                opacity: 1;
+    content:
+        "";
 
-                transform: scale(1.04);
-            }
+    position:
+        absolute;
 
-        }
+    left:
+        18px;
 
-        /* =========================
-           FOOTER
-        ========================= */
+    top:
+        0;
 
-        footer {
+    bottom:
+        0;
 
-            padding: 50px 20px;
+    width:
+        1px;
 
-            text-align: center;
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.15
+        );
+}
 
-            border-top: 1px solid rgba(255,255,255,0.1);
+.timeline-item {
 
-            font-size: 11px;
+    position:
+        relative;
 
-            letter-spacing: 2px;
+    padding:
+        0 0 60px 65px;
+}
 
-            opacity: 0.5;
-        }
+.timeline-dot {
 
-        /* =========================
-           MOBILE
-        ========================= */
+    position:
+        absolute;
 
-        @media (max-width: 750px) {
+    left:
+        10px;
 
-            .nav-links {
+    top:
+        3px;
 
-                display: none;
-            }
+    width:
+        17px;
 
-            .future-grid {
+    height:
+        17px;
 
-                grid-template-columns: 1fr;
-            }
+    border:
+        1px solid
+        white;
 
-            .timeline {
+    border-radius:
+        50%;
 
-                flex-direction: column;
-            }
+    background:
+        #010106;
 
-            .timeline-item {
+    transition:
+        0.4s;
+}
 
-                width: 100%;
+.timeline-item:hover
+.timeline-dot {
 
-                max-width: 300px;
-            }
+    transform:
+        scale(1.5);
 
-            .timeline-item::after {
+    box-shadow:
+        0 0 25px
+        rgba(
+            255,
+            255,
+            255,
+            0.4
+        );
+}
 
-                top: auto;
+.timeline-year {
 
-                bottom: 0;
+    font-size:
+        10px;
 
-                right: 50%;
+    letter-spacing:
+        3px;
 
-                width: 80px;
+    opacity:
+        0.35;
 
-                height: 1px;
+    margin-bottom:
+        10px;
+}
 
-                transform: translateX(50%);
-            }
+.timeline-item h3 {
 
-        }
+    font-size:
+        25px;
 
-    </style>
+    margin-bottom:
+        12px;
+}
+
+.timeline-item p {
+
+    font-size:
+        13px;
+
+    line-height:
+        1.8;
+
+    opacity:
+        0.5;
+}
+
+
+/* =========================
+   CHOOSE THE FUTURE
+========================= */
+
+.choose {
+
+    min-height:
+        90vh;
+
+    padding:
+        130px 20px;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    text-align:
+        center;
+}
+
+.choose-box {
+
+    max-width:
+        900px;
+
+    width:
+        100%;
+
+    padding:
+        65px 30px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.14
+        );
+
+    border-radius:
+        30px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.025
+        );
+}
+
+.choose h2 {
+
+    font-size:
+        clamp(
+            38px,
+            6vw,
+            70px
+        );
+
+    letter-spacing:
+        4px;
+
+    margin-bottom:
+        20px;
+}
+
+.choose p {
+
+    max-width:
+        650px;
+
+    margin:
+        auto;
+
+    line-height:
+        1.9;
+
+    opacity:
+        0.55;
+}
+
+.future-buttons {
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        15px;
+
+    margin-top:
+        45px;
+}
+
+.future-button {
+
+    padding:
+        15px 23px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.18
+        );
+
+    border-radius:
+        25px;
+
+    background:
+        transparent;
+
+    color:
+        white;
+
+    cursor:
+        pointer;
+
+    font-size:
+        9px;
+
+    letter-spacing:
+        2px;
+
+    transition:
+        0.4s;
+}
+
+.future-button:hover {
+
+    background:
+        white;
+
+    color:
+        black;
+}
+
+.future-result {
+
+    margin:
+        40px auto 0;
+
+    max-width:
+        650px;
+
+    line-height:
+        1.9;
+
+    min-height:
+        80px;
+
+    opacity:
+        0.6;
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+.final {
+
+    min-height:
+        100vh;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    text-align:
+        center;
+
+    padding:
+        120px 20px;
+}
+
+.final-content {
+
+    max-width:
+        950px;
+}
+
+.final h2 {
+
+    font-size:
+        clamp(
+            45px,
+            8vw,
+            100px
+        );
+
+    line-height:
+        0.95;
+
+    letter-spacing:
+        6px;
+
+    margin-bottom:
+        35px;
+}
+
+.final h2 span {
+
+    display:
+        block;
+
+    opacity:
+        0.4;
+
+    font-weight:
+        400;
+}
+
+.final p {
+
+    max-width:
+        700px;
+
+    margin:
+        auto;
+
+    line-height:
+        2;
+
+    opacity:
+        0.55;
+}
+
+.final-line {
+
+    margin-top:
+        65px;
+
+    font-size:
+        13px;
+
+    letter-spacing:
+        5px;
+
+    opacity:
+        0.4;
+
+    animation:
+        breathe 4s
+        ease-in-out
+        infinite;
+}
+
+@keyframes breathe {
+
+    0%,
+    100% {
+        opacity:
+            0.25;
+    }
+
+    50% {
+        opacity:
+            1;
+    }
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    padding:
+        50px 20px;
+
+    text-align:
+        center;
+
+    border-top:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        3px;
+
+    opacity:
+        0.4;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+
+    .nav-links {
+        display:
+            none;
+    }
+
+    .path-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+</style>
 
 </head>
 
+
 <body>
 
-    <div class="stars"></div>
+
+<div class="stars"></div>
 
 
-    <!-- NAVIGATION -->
+<!-- =========================
+     NAVIGATION
+========================= -->
 
-    <nav>
+<nav>
 
-        <div class="logo">
-            THE UNIVERSE
+    <div class="logo">
+        THE UNIVERSE
+    </div>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="index.html">
+                HOME
+            </a>
+        </li>
+
+        <li>
+            <a href="journey.html">
+                JOURNEY
+            </a>
+        </li>
+
+        <li>
+            <a href="unknown.html">
+                THE UNKNOWN
+            </a>
+        </li>
+
+        <li>
+            <a href="life.html">
+                ARE WE ALONE?
+            </a>
+        </li>
+
+        <li>
+            <a href="future.html">
+                THE FUTURE
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="label">
+            CHAPTER 04 • THE FUTURE
         </div>
 
-        <ul class="nav-links">
+        <h1>
 
-            <li>
-                <a href="index.html">HOME</a>
-            </li>
+            WHERE DO
 
-            <li>
-                <a href="journey.html">JOURNEY</a>
-            </li>
+            <span>
+                WE GO NEXT?
+            </span>
 
-            <li>
-                <a href="unknown.html">THE UNKNOWN</a>
-            </li>
+        </h1>
 
-            <li>
-                <a href="life.html">ARE WE ALONE?</a>
-            </li>
+        <p>
 
-            <li>
-                <a href="future.html">THE FUTURE</a>
-            </li>
+            For thousands of years, humans looked
+            at the sky and wondered what was beyond it.
 
-        </ul>
+            <br><br>
 
-    </nav>
+            Now we are beginning to go there.
+
+        </p>
+
+        <a
+            href="#paths"
+            class="explore-button"
+        >
+
+            EXPLORE THE FUTURE →
+
+        </a>
+
+    </div>
+
+</section>
 
 
-    <!-- HERO -->
+<!-- =========================
+     INTRO
+========================= -->
 
-    <section class="hero">
+<section class="intro">
 
-        <div class="hero-content">
+    <div class="intro-content">
 
-            <div class="small-title">
-                THE NEXT CHAPTER
-            </div>
-
-            <h1>
-                BEYOND <span>TODAY</span>
-            </h1>
-
-            <p>
-                Humanity has only just begun exploring the universe.
-                The next discoveries may completely change how we
-                understand our place among the stars.
-            </p>
-
+        <div class="label">
+            FROM OBSERVERS TO EXPLORERS
         </div>
-
-    </section>
-
-
-    <!-- FUTURE -->
-
-    <section class="future">
-
-        <div class="future-grid">
-
-
-            <div class="future-card">
-
-                <div class="future-icon">
-                    🚀
-                </div>
-
-                <h2>
-                    FUTURE SPACECRAFT
-                </h2>
-
-                <p>
-                    New technologies may allow future missions
-                    to travel farther, observe more distant worlds
-                    and explore places that are currently beyond
-                    our reach.
-                </p>
-
-            </div>
-
-
-            <div class="future-card">
-
-                <div class="future-icon">
-                    🌙
-                </div>
-
-                <h2>
-                    A RETURN TO THE MOON
-                </h2>
-
-                <p>
-                    The Moon remains an important destination for
-                    scientific research and future exploration.
-                </p>
-
-            </div>
-
-
-            <div class="future-card">
-
-                <div class="future-icon">
-                    🔴
-                </div>
-
-                <h2>
-                    MARS
-                </h2>
-
-                <p>
-                    Mars is one of the most studied planets beyond
-                    Earth. Future missions may reveal more about
-                    its history and whether it once had environments
-                    suitable for life.
-                </p>
-
-            </div>
-
-
-            <div class="future-card">
-
-                <div class="future-icon">
-                    🔭
-                </div>
-
-                <h2>
-                    NEXT-GENERATION TELESCOPES
-                </h2>
-
-                <p>
-                    More powerful observatories could allow
-                    scientists to study distant galaxies,
-                    stars and exoplanets in greater detail.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- TIMELINE -->
-
-    <section class="timeline-section">
 
         <h2>
-            FROM THEN TO NEXT
+            THE NEXT CHAPTER
         </h2>
 
-        <div class="timeline">
+        <p>
+
+            Humanity's relationship with space is
+            changing.
+
+            <br><br>
+
+            We are developing better telescopes,
+            exploring other worlds, studying distant
+            planets and imagining journeys farther
+            than ever before.
+
+            <br><br>
+
+            The future of space exploration is not
+            a single destination.
+
+            It is a direction.
+
+        </p>
+
+    </div>
+
+</section>
 
 
-            <div class="timeline-item">
+<!-- =========================
+     FUTURE PATHS
+========================= -->
 
-                <div class="timeline-year">
-                    PAST
-                </div>
+<section
+    class="paths"
+    id="paths"
+>
 
-                <h3>
-                    LOOK UP
-                </h3>
+    <div class="label">
+        POSSIBLE DIRECTIONS
+    </div>
 
-                <p>
-                    Humans first began wondering about the stars.
-                </p>
+    <h2>
+        THREE PATHS FORWARD
+    </h2>
 
+    <p class="paths-intro">
+
+        Choose a path to explore how humanity
+        could continue its journey beyond Earth.
+
+    </p>
+
+
+    <div class="path-grid">
+
+
+        <div
+            class="path-card"
+            onclick="showPath('moon')"
+        >
+
+            <div class="path-icon">
+                ◐
             </div>
 
-
-            <div class="timeline-item">
-
-                <div class="timeline-year">
-                    PRESENT
-                </div>
-
-                <h3>
-                    LOOK DEEPER
-                </h3>
-
-                <p>
-                    Telescopes now reveal distant galaxies and worlds.
-                </p>
-
-            </div>
-
-
-            <div class="timeline-item">
-
-                <div class="timeline-year">
-                    NEXT
-                </div>
-
-                <h3>
-                    GO FURTHER
-                </h3>
-
-                <p>
-                    Future missions may explore places we cannot reach today.
-                </p>
-
-            </div>
-
-
-            <div class="timeline-item">
-
-                <div class="timeline-year">
-                    UNKNOWN
-                </div>
-
-                <h3>
-                    DISCOVER
-                </h3>
-
-                <p>
-                    The biggest discoveries may be the ones we cannot predict.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- COSMIC PROFILE -->
-
-    <section class="profile">
-
-        <div class="profile-box">
-
-            <h2>
-                YOUR COSMIC IDENTITY
-            </h2>
+            <h3>
+                THE MOON
+            </h3>
 
             <p>
-                What fascinates you most about the universe?
+
+                The Moon could become an important
+                destination for science, technology
+                and future exploration.
+
             </p>
 
-            <div class="profile-options">
-
-                <button
-                    class="profile-btn"
-                    onclick="chooseProfile('mystery')">
-                    THE UNKNOWN
-                </button>
-
-                <button
-                    class="profile-btn"
-                    onclick="chooseProfile('planets')">
-                    NEW WORLDS
-                </button>
-
-                <button
-                    class="profile-btn"
-                    onclick="chooseProfile('life')">
-                    LIFE
-                </button>
-
-                <button
-                    class="profile-btn"
-                    onclick="chooseProfile('exploration')">
-                    EXPLORATION
-                </button>
-
+            <div class="path-more">
+                EXPLORE PATH →
             </div>
-
-            <div id="profileResult"></div>
 
         </div>
 
-    </section>
 
+        <div
+            class="path-card"
+            onclick="showPath('mars')"
+        >
 
-    <!-- FINAL -->
+            <div class="path-icon">
+                ◉
+            </div>
 
-    <section class="final">
-
-        <div class="final-content">
-
-            <h2>
-                HOW MUCH OF THE<br>
-                UNIVERSE DO WE<br>
-                REALLY UNDERSTAND?
-            </h2>
+            <h3>
+                MARS
+            </h3>
 
             <p>
-                We have mapped galaxies, discovered thousands of
-                planets and observed light that has travelled for
-                billions of years.
 
-                <br><br>
+                Mars is one of the most fascinating
+                nearby worlds for future robotic and
+                human exploration.
 
-                Yet the universe still holds mysteries we cannot
-                fully explain.
-
-                <br><br>
-
-                Perhaps the greatest discovery is still waiting
-                somewhere beyond what we can see.
             </p>
 
-            <div class="keep-looking">
-                KEEP LOOKING. 🌌
+            <div class="path-more">
+                EXPLORE PATH →
             </div>
 
         </div>
 
-    </section>
+
+        <div
+            class="path-card"
+            onclick="showPath('stars')"
+        >
+
+            <div class="path-icon">
+                ✦
+            </div>
+
+            <h3>
+                THE STARS
+            </h3>
+
+            <p>
+
+                Interstellar travel remains an enormous
+                challenge, but future generations may
+                develop technologies we cannot yet imagine.
+
+            </p>
+
+            <div class="path-more">
+                EXPLORE PATH →
+            </div>
+
+        </div>
 
 
-    <!-- FOOTER -->
-
-    <footer>
-        THE UNIVERSE • BEYOND WHAT WE SEE
-    </footer>
+    </div>
 
 
-    <!-- JAVASCRIPT -->
+    <div
+        class="future-result"
+        id="pathResult"
+    >
 
-    <script>
+        Select a path above.
 
-        function chooseProfile(type) {
+    </div>
 
-            const result =
-                document.getElementById("profileResult");
+</section>
 
-            if (type === "mystery") {
 
-                result.innerHTML =
-                    "<strong>YOUR TYPE: THE COSMIC DETECTIVE 🔎</strong><br>" +
-                    "You are drawn to the questions that have no easy answers.";
+<!-- =========================
+     TIMELINE
+========================= -->
 
-            }
+<section class="timeline">
 
-            else if (type === "planets") {
+    <div class="label">
+        A POSSIBLE COSMIC TIMELINE
+    </div>
 
-                result.innerHTML =
-                    "<strong>YOUR TYPE: THE WORLD SEEKER 🪐</strong><br>" +
-                    "You want to discover worlds beyond our own.";
+    <h2>
+        THE JOURNEY AHEAD
+    </h2>
 
-            }
+    <p class="timeline-intro">
 
-            else if (type === "life") {
+        The future cannot be predicted perfectly.
+        But we can imagine the possibilities.
 
-                result.innerHTML =
-                    "<strong>YOUR TYPE: THE LIFE HUNTER 🔭</strong><br>" +
-                    "You are fascinated by one of the biggest questions: are we alone?";
+    </p>
 
-            }
 
-            else {
+    <div class="timeline-list">
 
-                result.innerHTML =
-                    "<strong>YOUR TYPE: THE SPACE EXPLORER 🚀</strong><br>" +
-                    "You would rather go beyond the horizon and discover what is out there.";
 
-            }
+        <div class="timeline-item">
 
-        }
+            <div class="timeline-dot"></div>
 
-    </script>
+            <div class="timeline-year">
+                NOW
+            </div>
+
+            <h3>
+                OBSERVE
+            </h3>
+
+            <p>
+
+                Powerful observatories study distant
+                galaxies, stars, planets and cosmic
+                phenomena.
+
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                NEXT
+            </div>
+
+            <h3>
+                EXPLORE
+            </h3>
+
+            <p>
+
+                Robotic missions and human exploration
+                may take us deeper into our Solar System.
+
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                BEYOND
+            </div>
+
+            <h3>
+                EXPAND
+            </h3>
+
+            <p>
+
+                Future technologies could eventually
+                allow humanity to explore places that
+                are currently beyond our reach.
+
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                UNKNOWN
+            </div>
+
+            <h3>
+                DISCOVER
+            </h3>
+
+            <p>
+
+                The most important discoveries may be
+                things we cannot predict today.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CHOOSE THE FUTURE
+========================= -->
+
+<section class="choose">
+
+    <div class="choose-box">
+
+        <div class="label">
+            YOUR CHOICE
+        </div>
+
+        <h2>
+            IF YOU COULD GO...
+        </h2>
+
+        <p>
+
+            Imagine you are part of humanity's next
+            great space mission.
+
+            <br><br>
+
+            Where would you choose to explore?
+
+        </p>
+
+
+        <div class="future-buttons">
+
+            <button
+                class="future-button"
+                onclick="chooseFuture('moon')"
+            >
+                THE MOON
+            </button>
+
+            <button
+                class="future-button"
+                onclick="chooseFuture('mars')"
+            >
+                MARS
+            </button>
+
+            <button
+                class="future-button"
+                onclick="chooseFuture('stars')"
+            >
+                ANOTHER STAR
+            </button>
+
+            <button
+                class="future-button"
+                onclick="chooseFuture('unknown')"
+            >
+                SOMEWHERE UNKNOWN
+            </button>
+
+        </div>
+
+
+        <div
+            class="future-result"
+            id="choiceResult"
+        >
+
+            Your destination is waiting.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FINAL
+========================= -->
+
+<section class="final">
+
+    <div class="final-content">
+
+        <div class="label">
+            END OF THE JOURNEY
+        </div>
+
+        <h2>
+
+            THE FUTURE
+
+            <span>
+                HAS NOT BEEN WRITTEN.
+            </span>
+
+        </h2>
+
+        <p>
+
+            The universe is already billions of years old.
+
+            <br><br>
+
+            But our story of exploring it has only just
+            begun.
+
+            <br><br>
+
+            Every telescope we build.
+
+            Every question we ask.
+
+            Every world we explore.
+
+            <br><br>
+
+            Takes us one step beyond what we see.
+
+        </p>
+
+        <div class="final-line">
+
+            LOOK UP.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    THE UNIVERSE
+    •
+    BEYOND WHAT WE SEE
+
+</footer>
+
+
+<script>
+
+
+/* =========================
+   PATH INFORMATION
+========================= */
+
+const pathData = {
+
+    moon:
+        "The Moon is our nearest natural neighbour in space. Future missions could help us understand its history, test new technologies and prepare for exploration farther from Earth.",
+
+    mars:
+        "Mars preserves clues about its ancient environment. Robotic missions continue to study the planet, while future human missions remain an important goal of space exploration.",
+
+    stars:
+        "Travelling to another star is far beyond today's practical capabilities. Yet studying nearby stars and their planets helps us understand what future interstellar exploration might one day involve."
+
+};
+
+
+/* =========================
+   SHOW PATH
+========================= */
+
+function showPath(type) {
+
+    document.getElementById(
+        "pathResult"
+    ).innerHTML =
+        pathData[type];
+
+}
+
+
+/* =========================
+   CHOOSE FUTURE
+========================= */
+
+function chooseFuture(type) {
+
+    const result =
+        document.getElementById(
+            "choiceResult"
+        );
+
+
+    const choices = {
+
+        moon:
+            "You chose the Moon — our closest step into deep space. Sometimes the greatest journeys begin with the nearest destination.",
+
+        mars:
+            "You chose Mars — a world that has fascinated humanity for generations. Perhaps one day people will experience its landscape firsthand.",
+
+        stars:
+            "You chose another star — the most ambitious destination on this list. The distance is enormous, but imagination often comes before technology.",
+
+        unknown:
+            "You chose somewhere unknown — perhaps the most fitting choice for this website. The greatest discoveries may be destinations we haven't even imagined yet."
+
+    };
+
+
+    result.innerHTML =
+        choices[type];
+
+}
+
+
+</script>
+
 
 </body>
+
 </html>
