@@ -8,50 +8,327 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:#02040a;color:#f4f6fa;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
-#stars{position:fixed;inset:0;z-index:-1}
-.star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:drift linear infinite}
-@keyframes drift{to{transform:translateY(-100px);opacity:.1}}
-nav{position:fixed;top:0;width:100%;min-height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;background:#02040abd;backdrop-filter:blur(18px);border-bottom:1px solid #ffffff10;z-index:100}
-.logo{font-size:14px;letter-spacing:4px;font-weight:bold}.navlinks{display:flex;gap:28px;list-style:none}.navlinks a{color:#aeb5c0;text-decoration:none;font-size:11px;letter-spacing:1.5px}.navlinks a:hover,.navlinks .active{color:#fff}
-.music{position:fixed;right:25px;bottom:25px;z-index:100;border:1px solid #ffffff2d;background:#080b12df;color:white;padding:12px 17px;border-radius:30px;cursor:pointer;font-size:11px;letter-spacing:1.5px}
-.hero{min-height:78vh;padding:170px 9% 100px;display:flex;align-items:center;background:radial-gradient(circle at 70% 40%,#8c9aad0c,transparent 40%)}
-.label,.section-label{font-size:10px;letter-spacing:4px;color:#778291;margin-bottom:22px}
-h1{font-size:clamp(55px,9vw,115px);line-height:.88;letter-spacing:-5px}
-.hero p{max-width:700px;color:#9ca5b1;line-height:1.8;margin-top:30px}
+body{
+    background:#02040a;
+    color:#f4f6fa;
+    font-family:Arial,Helvetica,sans-serif;
+    overflow-x:hidden
+}
+
+#stars{
+    position:fixed;
+    inset:0;
+    z-index:-1
+}
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:#fff;
+    border-radius:50%;
+    animation:drift linear infinite
+}
+
+@keyframes drift{
+    to{
+        transform:translateY(-100px);
+        opacity:.1
+    }
+}
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    min-height:76px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+    background:#02040abd;
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid #ffffff10;
+    z-index:100
+}
+
+.logo{
+    font-size:14px;
+    letter-spacing:4px;
+    font-weight:bold
+}
+
+.navlinks{
+    display:flex;
+    gap:28px;
+    list-style:none
+}
+
+.navlinks a{
+    color:#aeb5c0;
+    text-decoration:none;
+    font-size:11px;
+    letter-spacing:1.5px
+}
+
+.navlinks a:hover,
+.navlinks .active{
+    color:#fff
+}
+
+.music{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    z-index:100;
+    border:1px solid #ffffff2d;
+    background:#080b12e8;
+    color:white;
+    padding:12px 17px;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:11px;
+    letter-spacing:1.5px
+}
+
+.music:hover{background:#ffffff1c}
+
+.hero{
+    min-height:78vh;
+    padding:170px 9% 100px;
+    display:flex;
+    align-items:center;
+    background:radial-gradient(circle at 70% 40%,#8c9aad0c,transparent 40%)
+}
+
+.label,
+.section-label{
+    font-size:10px;
+    letter-spacing:4px;
+    color:#778291;
+    margin-bottom:22px
+}
+
+h1{
+    font-size:clamp(55px,9vw,115px);
+    line-height:.88;
+    letter-spacing:-5px
+}
+
+.hero p{
+    max-width:700px;
+    color:#9ca5b1;
+    line-height:1.8;
+    margin-top:30px
+}
+
 section{padding:100px 9%}
-h2{font-size:clamp(40px,6vw,72px);letter-spacing:-3px;line-height:.95}
-.paths{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:55px}
-.path{min-height:300px;padding:35px;border:1px solid #ffffff14;background:#ffffff04;cursor:pointer;transition:.4s}
-.path:hover,.path.active{transform:translateY(-8px);border-color:#ffffff45}
-.path-num{color:#667282;font-size:10px;letter-spacing:3px}
-.path h3{margin-top:80px;font-size:25px;letter-spacing:2px}
-.path p{color:#858f9c;margin-top:15px;line-height:1.7;font-size:13px}
-.path-info{margin-top:25px;padding:25px;border-left:2px solid #8994a3;background:#ffffff05;color:#aab2bd;line-height:1.7}
-.timeline{margin-top:70px;border-left:1px solid #ffffff22}
-.step{padding:0 0 55px 45px;position:relative}
-.step:before{content:"";position:absolute;left:-5px;top:0;width:9px;height:9px;border-radius:50%;background:#aeb6c0;box-shadow:0 0 25px #fff}
-.step h3{font-size:20px;letter-spacing:3px}
-.step p{color:#858f9b;line-height:1.7;margin-top:10px;max-width:600px}
-.choice{text-align:center;min-height:65vh;background:radial-gradient(circle at center,#8793a40b,transparent 60%)}
-.choices{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:50px}
-.choice-btn{padding:17px 22px;border:1px solid #ffffff22;background:#ffffff04;color:#dce1e7;cursor:pointer;font-size:11px;letter-spacing:2px;transition:.3s}
-.choice-btn:hover{background:white;color:#05070c}
-.response{min-height:100px;max-width:750px;margin:30px auto 0;padding:30px;border:1px solid #ffffff15;color:#aab3be;line-height:1.8}
-.final{min-height:75vh;display:flex;flex-direction:column;justify-content:center}
-.final h2{font-size:clamp(45px,8vw,105px)}
-.final p{max-width:650px;color:#9099a6;line-height:1.8;margin-top:30px}
-.look{font-size:clamp(50px,9vw,120px);letter-spacing:12px;margin-top:45px}
-footer{padding:35px 9%;border-top:1px solid #ffffff0d;color:#555e6b;font-size:10px;letter-spacing:2px}
-@media(max-width:850px){nav{padding:14px 5%;align-items:flex-start}.logo{display:none}.navlinks{gap:10px;flex-wrap:wrap;justify-content:center}.navlinks a{font-size:9px}.hero,section{padding-left:7%;padding-right:7%}.paths{grid-template-columns:1fr}.music{right:15px;bottom:15px}}
+
+h2{
+    font-size:clamp(40px,6vw,72px);
+    letter-spacing:-3px;
+    line-height:.95
+}
+
+.paths{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-top:55px
+}
+
+.path{
+    min-height:300px;
+    padding:35px;
+    border:1px solid #ffffff14;
+    background:#ffffff04;
+    cursor:pointer;
+    transition:.4s
+}
+
+.path:hover,
+.path.active{
+    transform:translateY(-8px);
+    border-color:#ffffff45
+}
+
+.path-num{
+    color:#667282;
+    font-size:10px;
+    letter-spacing:3px
+}
+
+.path h3{
+    margin-top:80px;
+    font-size:25px;
+    letter-spacing:2px
+}
+
+.path p{
+    color:#858f9c;
+    margin-top:15px;
+    line-height:1.7;
+    font-size:13px
+}
+
+.path-info{
+    margin-top:25px;
+    padding:25px;
+    border-left:2px solid #8994a3;
+    background:#ffffff05;
+    color:#aab2bd;
+    line-height:1.7
+}
+
+.timeline{
+    margin-top:70px;
+    border-left:1px solid #ffffff22
+}
+
+.step{
+    padding:0 0 55px 45px;
+    position:relative
+}
+
+.step:before{
+    content:"";
+    position:absolute;
+    left:-5px;
+    top:0;
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:#aeb6c0;
+    box-shadow:0 0 25px #fff
+}
+
+.step h3{
+    font-size:20px;
+    letter-spacing:3px
+}
+
+.step p{
+    color:#858f9b;
+    line-height:1.7;
+    margin-top:10px;
+    max-width:600px
+}
+
+.choice{
+    text-align:center;
+    min-height:65vh;
+    background:radial-gradient(circle at center,#8793a40b,transparent 60%)
+}
+
+.choices{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+    margin-top:50px
+}
+
+.choice-btn{
+    padding:17px 22px;
+    border:1px solid #ffffff22;
+    background:#ffffff04;
+    color:#dce1e7;
+    cursor:pointer;
+    font-size:11px;
+    letter-spacing:2px;
+    transition:.3s
+}
+
+.choice-btn:hover{
+    background:white;
+    color:#05070c
+}
+
+.response{
+    min-height:100px;
+    max-width:750px;
+    margin:30px auto 0;
+    padding:30px;
+    border:1px solid #ffffff15;
+    color:#aab3be;
+    line-height:1.8
+}
+
+.final{
+    min-height:75vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center
+}
+
+.final h2{
+    font-size:clamp(45px,8vw,105px)
+}
+
+.final p{
+    max-width:650px;
+    color:#9099a6;
+    line-height:1.8;
+    margin-top:30px
+}
+
+.look{
+    font-size:clamp(50px,9vw,120px);
+    letter-spacing:12px;
+    margin-top:45px
+}
+
+footer{
+    padding:35px 9%;
+    border-top:1px solid #ffffff0d;
+    color:#555e6b;
+    font-size:10px;
+    letter-spacing:2px
+}
+
+@media(max-width:850px){
+
+ nav{
+    padding:14px 5%;
+    align-items:flex-start
+ }
+
+ .logo{display:none}
+
+ .navlinks{
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:center
+ }
+
+ .navlinks a{font-size:9px}
+
+ .hero,
+ section{
+    padding-left:7%;
+    padding-right:7%
+ }
+
+ .paths{
+    grid-template-columns:1fr
+ }
+
+ .music{
+    right:15px;
+    bottom:15px
+ }
+}
 </style>
 </head>
 
 <body>
+
 <div id="stars"></div>
 
 <nav>
+
 <div class="logo">THE UNIVERSE</div>
+
 <ul class="navlinks">
 <li><a href="index.html">HOME</a></li>
 <li><a href="journey.html">JOURNEY</a></li>
@@ -59,100 +336,301 @@ footer{padding:35px 9%;border-top:1px solid #ffffff0d;color:#555e6b;font-size:10
 <li><a href="life.html">ARE WE ALONE?</a></li>
 <li><a class="active" href="future.html">THE FUTURE</a></li>
 </ul>
+
 </nav>
 
-<audio id="spaceAudio" loop preload="none"><source src="assets/space.mp3" type="audio/mpeg"></audio>
+<audio id="spaceAudio" loop preload="auto">
+<source src="assets/space.mp3" type="audio/mpeg">
+</audio>
+
 <button class="music" id="musicBtn">♪ MUSIC OFF</button>
 
 <section class="hero">
+
 <div>
+
 <div class="label">CHAPTER 04 • THE FUTURE</div>
+
 <h1>WHERE DO<br>WE GO NEXT?</h1>
-<p>For thousands of years, humans looked at the sky and wondered what was beyond it. Now we are beginning to go there.</p>
+
+<p>
+For thousands of years, humans looked at the sky and wondered what
+was beyond it. Now we are beginning to go there.
+</p>
+
 </div>
+
 </section>
 
 <section>
+
 <div class="section-label">THE NEXT CHAPTER</div>
+
 <h2>THE FUTURE<br>IS IN MOTION.</h2>
-<p style="max-width:700px;color:#929ba7;line-height:1.8;margin-top:25px">Humanity's relationship with space is changing through telescopes, robotic missions, exploration and new technology. The next chapter will be written by what we choose to discover.</p>
+
+<p style="max-width:700px;color:#929ba7;line-height:1.8;margin-top:25px">
+
+Humanity's relationship with space is changing through telescopes,
+robotic missions, exploration and new technology. The next chapter
+will be written by what we choose to discover.
+
+</p>
 
 <div class="paths">
-<div class="path" data-info="The Moon is our nearest natural neighbour and an important destination for scientific research, technology development and future exploration.">
-<div class="path-num">01</div><h3>THE MOON</h3><p>RETURN • BUILD • LEARN</p>
+
+<div class="path"
+data-info="The Moon is our nearest natural neighbour and an important destination for scientific research, technology development and future exploration.">
+
+<div class="path-num">01</div>
+
+<h3>THE MOON</h3>
+
+<p>RETURN • BUILD • LEARN</p>
+
 </div>
-<div class="path" data-info="Mars is a major target for robotic exploration and future human missions. Scientists are investigating its history, geology and potential habitability.">
-<div class="path-num">02</div><h3>MARS</h3><p>EXPLORE • UNDERSTAND</p>
+
+<div class="path"
+data-info="Mars is a major target for robotic exploration and future human missions. Scientists are investigating its history, geology and potential habitability.">
+
+<div class="path-num">02</div>
+
+<h3>MARS</h3>
+
+<p>EXPLORE • UNDERSTAND</p>
+
 </div>
-<div class="path" data-info="Interstellar travel remains far beyond today's practical capabilities, but studying other stars helps us understand how planetary systems form and evolve.">
-<div class="path-num">03</div><h3>THE STARS</h3><p>IMAGINE • DISCOVER</p>
+
+<div class="path"
+data-info="Interstellar travel remains far beyond today's practical capabilities, but studying other stars helps us understand how planetary systems form and evolve.">
+
+<div class="path-num">03</div>
+
+<h3>THE STARS</h3>
+
+<p>IMAGINE • DISCOVER</p>
+
 </div>
+
 </div>
-<div class="path-info" id="pathInfo">Select a destination to see what could lie ahead.</div>
+
+<div class="path-info" id="pathInfo">
+Select a destination to see what could lie ahead.
+</div>
+
 </section>
 
 <section>
+
 <div class="section-label">THE JOURNEY AHEAD</div>
+
 <h2>ONE STEP<br>AT A TIME.</h2>
 
 <div class="timeline">
-<div class="step"><h3>NOW — OBSERVE</h3><p>Telescopes and instruments allow us to study the universe across different forms of light and information.</p></div>
-<div class="step"><h3>NEXT — EXPLORE</h3><p>Robotic missions and human exploration can take scientific investigation to new worlds.</p></div>
-<div class="step"><h3>BEYOND — EXPAND</h3><p>Future generations may develop technologies that extend humanity's reach farther into space.</p></div>
-<div class="step"><h3>UNKNOWN — DISCOVER</h3><p>The most important discoveries may be the ones nobody has predicted yet.</p></div>
+
+<div class="step">
+
+<h3>NOW — OBSERVE</h3>
+
+<p>
+Telescopes and instruments allow us to study the universe across
+different forms of light and information.
+</p>
+
 </div>
+
+<div class="step">
+
+<h3>NEXT — EXPLORE</h3>
+
+<p>
+Robotic missions and human exploration can take scientific
+investigation to new worlds.
+</p>
+
+</div>
+
+<div class="step">
+
+<h3>BEYOND — EXPAND</h3>
+
+<p>
+Future generations may develop technologies that extend humanity's
+reach farther into space.
+</p>
+
+</div>
+
+<div class="step">
+
+<h3>UNKNOWN — DISCOVER</h3>
+
+<p>
+The most important discoveries may be the ones nobody has
+predicted yet.
+</p>
+
+</div>
+
+</div>
+
 </section>
 
 <section class="choice">
+
 <div class="section-label">A FUTURE TO IMAGINE</div>
+
 <h2>IF YOU COULD GO...</h2>
+
 <div class="choices">
-<button class="choice-btn" data-response="The Moon: close enough to study in detail, distant enough to feel like another world.">THE MOON</button>
-<button class="choice-btn" data-response="Mars: a world of ancient landscapes, unanswered questions and enormous challenges.">MARS</button>
-<button class="choice-btn" data-response="ANOTHER STAR: today, this remains an extraordinary scientific and engineering challenge — but imagination starts where the known ends.">ANOTHER STAR</button>
-<button class="choice-btn" data-response="SOMEWHERE UNKNOWN: perhaps the most exciting destination is one humanity has not yet named.">SOMEWHERE UNKNOWN</button>
+
+<button class="choice-btn"
+data-response="The Moon: close enough to study in detail, distant enough to feel like another world.">
+THE MOON
+</button>
+
+<button class="choice-btn"
+data-response="Mars: a world of ancient landscapes, unanswered questions and enormous challenges.">
+MARS
+</button>
+
+<button class="choice-btn"
+data-response="ANOTHER STAR: today, this remains an extraordinary scientific and engineering challenge — but imagination starts where the known ends.">
+ANOTHER STAR
+</button>
+
+<button class="choice-btn"
+data-response="SOMEWHERE UNKNOWN: perhaps the most exciting destination is one humanity has not yet named.">
+SOMEWHERE UNKNOWN
+</button>
+
 </div>
-<div class="response" id="response">Choose a destination.</div>
+
+<div class="response" id="response">
+Choose a destination.
+</div>
+
 </section>
 
 <section class="final">
-<div class="section-label">THE END OF THIS JOURNEY</div>
-<h2>THE FUTURE<br>HAS NOT<br>BEEN WRITTEN.</h2>
-<p>The universe is already billions of years old.<br><br>But our story of exploring it has only just begun.</p>
-<div class="look">LOOK UP.</div>
+
+<div class="section-label">
+THE END OF THIS JOURNEY
+</div>
+
+<h2>
+THE FUTURE<br>
+HAS NOT<br>
+BEEN WRITTEN.
+</h2>
+
+<p>
+The universe is already billions of years old.
+<br><br>
+But our story of exploring it has only just begun.
+</p>
+
+<div class="look">
+LOOK UP.
+</div>
+
 </section>
 
-<footer>THE UNIVERSE • BEYOND WHAT WE SEE</footer>
+<footer>
+THE UNIVERSE • BEYOND WHAT WE SEE
+</footer>
 
 <script>
+
+/* STAR FIELD */
+
 const stars=document.getElementById("stars");
+
 for(let i=0;i<150;i++){
- let s=document.createElement("span");s.className="star";
- s.style.left=Math.random()*100+"%";s.style.top=Math.random()*100+"%";
- s.style.animationDuration=5+Math.random()*12+"s";s.style.animationDelay=-Math.random()*10+"s";
+
+ let s=document.createElement("span");
+
+ s.className="star";
+ s.style.left=Math.random()*100+"%";
+ s.style.top=Math.random()*100+"%";
+ s.style.animationDuration=5+Math.random()*12+"s";
+ s.style.animationDelay=-Math.random()*10+"s";
+
  stars.appendChild(s);
 }
 
-const paths=document.querySelectorAll(".path"),pathInfo=document.getElementById("pathInfo");
-paths.forEach(p=>p.onclick=()=>{
- paths.forEach(x=>x.classList.remove("active"));
- p.classList.add("active");
- pathInfo.textContent=p.dataset.info;
+/* FUTURE PATHS */
+
+const paths=document.querySelectorAll(".path");
+const pathInfo=document.getElementById("pathInfo");
+
+paths.forEach(path=>{
+
+ path.onclick=()=>{
+
+  paths.forEach(x=>x.classList.remove("active"));
+
+  path.classList.add("active");
+
+  pathInfo.textContent=path.dataset.info;
+
+ };
+
 });
+
+/* DESTINATION CHOICES */
 
 const response=document.getElementById("response");
-document.querySelectorAll(".choice-btn").forEach(btn=>{
- btn.onclick=()=>response.textContent=btn.dataset.response;
+
+document.querySelectorAll(".choice-btn").forEach(button=>{
+
+ button.onclick=()=>{
+
+  response.textContent=button.dataset.response;
+
+ };
+
 });
 
-const audio=document.getElementById("spaceAudio"),musicBtn=document.getElementById("musicBtn");
-let musicOn=localStorage.getItem("universeMusic")==="on";
-musicBtn.textContent=musicOn?"♪ MUSIC ON":"♪ MUSIC OFF";
-musicBtn.onclick=()=>{
- musicOn=!musicOn;localStorage.setItem("universeMusic",musicOn?"on":"off");
- if(musicOn)audio.play().then(()=>musicBtn.textContent="♪ MUSIC ON").catch(()=>{});
- else{audio.pause();musicBtn.textContent="♪ MUSIC OFF"}
-};
+/* MUSIC */
+
+const audio=document.getElementById("spaceAudio");
+const musicBtn=document.getElementById("musicBtn");
+
+audio.volume=0.45;
+
+musicBtn.addEventListener("click",async function(){
+
+ if(audio.paused){
+
+  try{
+
+   await audio.play();
+
+   musicBtn.textContent="♪ MUSIC ON";
+
+   localStorage.setItem("universeMusic","on");
+
+  }catch(error){
+
+   console.log("Music error:",error);
+
+   musicBtn.textContent="♪ TRY AGAIN";
+
+  }
+
+ }else{
+
+  audio.pause();
+
+  musicBtn.textContent="♪ MUSIC OFF";
+
+  localStorage.setItem("universeMusic","off");
+
+ }
+
+});
+
 </script>
+
 </body>
 </html>
