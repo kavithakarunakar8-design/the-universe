@@ -9,43 +9,258 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:#02040a;color:#f4f6fa;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+
 #stars{position:fixed;inset:0;z-index:-1}
-.star{position:absolute;width:2px;height:2px;background:white;border-radius:50%;opacity:.5;animation:drift linear infinite}
-@keyframes drift{to{transform:translateY(-100px);opacity:.15}}
-nav{position:fixed;top:0;width:100%;min-height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;background:rgba(2,4,10,.75);backdrop-filter:blur(18px);border-bottom:1px solid #ffffff12;z-index:100}
-.logo{font-size:14px;letter-spacing:4px;font-weight:bold}.navlinks{display:flex;gap:28px;list-style:none}.navlinks a{color:#aeb5c0;text-decoration:none;font-size:11px;letter-spacing:1.5px}.navlinks a:hover,.navlinks .active{color:#fff}
-.music{position:fixed;right:25px;bottom:25px;z-index:100;border:1px solid #ffffff2d;background:#080b12d9;color:white;padding:12px 17px;border-radius:30px;cursor:pointer;font-size:11px;letter-spacing:1.5px}
-.hero{min-height:75vh;padding:170px 9% 100px;display:flex;align-items:center;background:radial-gradient(circle at 70% 40%,#77869b12,transparent 40%)}
-.label,.section-label{font-size:10px;letter-spacing:4px;color:#778291;margin-bottom:22px}
-h1{font-size:clamp(55px,9vw,115px);line-height:.88;letter-spacing:-5px}
-.hero p{max-width:650px;color:#9ca5b1;line-height:1.8;margin-top:30px}
-section{padding:100px 9%}
-h2{font-size:clamp(40px,6vw,72px);letter-spacing:-3px;line-height:.95}
-.intro{max-width:650px;color:#919aa7;line-height:1.8;margin-top:22px}
-.destinations{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:55px}
-.destination{min-height:340px;padding:30px;border:1px solid #ffffff14;background:linear-gradient(150deg,#ffffff09,#ffffff02);cursor:pointer;transition:.4s;position:relative}
-.destination:hover,.destination.selected{transform:translateY(-8px);border-color:#ffffff45;background:#ffffff0c}
-.destination span{font-size:10px;color:#657182;letter-spacing:3px}
-.destination h3{position:absolute;bottom:70px;font-size:22px;letter-spacing:2px}
-.destination p{position:absolute;bottom:30px;color:#77818f;font-size:12px}
-.info{
-    margin-top:25px;padding:30px;border-left:2px solid #8994a3;background:#ffffff06;
-    min-height:90px;color:#aab2bd;line-height:1.7;
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    opacity:.5;
+    animation:drift linear infinite
 }
-.ending{min-height:65vh;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(circle at center,#8491a40b,transparent 60%)}
-.btn{display:inline-block;padding:16px 24px;border:1px solid #ffffff40;color:white;text-decoration:none;font-size:11px;letter-spacing:2px;transition:.35s;margin-top:30px}
-.btn:hover{background:white;color:#05070c;transform:translateY(-3px)}
-footer{padding:35px 9%;border-top:1px solid #ffffff0d;color:#555e6b;font-size:10px;letter-spacing:2px}
-@media(max-width:850px){nav{padding:14px 5%;align-items:flex-start}.logo{display:none}.navlinks{gap:10px;flex-wrap:wrap;justify-content:center}.navlinks a{font-size:9px}.hero,section{padding-left:7%;padding-right:7%}.destinations{grid-template-columns:1fr 1fr}.music{right:15px;bottom:15px}}
-@media(max-width:520px){.destinations{grid-template-columns:1fr}}
+
+@keyframes drift{
+    to{transform:translateY(-100px);opacity:.15}
+}
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    min-height:76px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+    background:rgba(2,4,10,.75);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid #ffffff12;
+    z-index:100
+}
+
+.logo{
+    font-size:14px;
+    letter-spacing:4px;
+    font-weight:bold
+}
+
+.navlinks{
+    display:flex;
+    gap:28px;
+    list-style:none
+}
+
+.navlinks a{
+    color:#aeb5c0;
+    text-decoration:none;
+    font-size:11px;
+    letter-spacing:1.5px;
+    transition:.3s
+}
+
+.navlinks a:hover,
+.navlinks .active{color:#fff}
+
+.music{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    z-index:100;
+    border:1px solid #ffffff2d;
+    background:#080b12e8;
+    color:white;
+    padding:12px 17px;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:11px;
+    letter-spacing:1.5px
+}
+
+.music:hover{background:#ffffff1c}
+
+.hero{
+    min-height:75vh;
+    padding:170px 9% 100px;
+    display:flex;
+    align-items:center;
+    background:radial-gradient(circle at 70% 40%,#77869b12,transparent 40%)
+}
+
+.label,
+.section-label{
+    font-size:10px;
+    letter-spacing:4px;
+    color:#778291;
+    margin-bottom:22px
+}
+
+h1{
+    font-size:clamp(55px,9vw,115px);
+    line-height:.88;
+    letter-spacing:-5px
+}
+
+.hero p{
+    max-width:650px;
+    color:#9ca5b1;
+    line-height:1.8;
+    margin-top:30px
+}
+
+section{padding:100px 9%}
+
+h2{
+    font-size:clamp(40px,6vw,72px);
+    letter-spacing:-3px;
+    line-height:.95
+}
+
+.intro{
+    max-width:650px;
+    color:#919aa7;
+    line-height:1.8;
+    margin-top:22px
+}
+
+.destinations{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-top:55px
+}
+
+.destination{
+    min-height:340px;
+    padding:30px;
+    border:1px solid #ffffff14;
+    background:linear-gradient(150deg,#ffffff09,#ffffff02);
+    cursor:pointer;
+    transition:.4s;
+    position:relative
+}
+
+.destination:hover,
+.destination.selected{
+    transform:translateY(-8px);
+    border-color:#ffffff45;
+    background:#ffffff0c
+}
+
+.destination span{
+    font-size:10px;
+    color:#657182;
+    letter-spacing:3px
+}
+
+.destination h3{
+    position:absolute;
+    bottom:70px;
+    font-size:22px;
+    letter-spacing:2px
+}
+
+.destination p{
+    position:absolute;
+    bottom:30px;
+    color:#77818f;
+    font-size:12px
+}
+
+.info{
+    margin-top:25px;
+    padding:30px;
+    border-left:2px solid #8994a3;
+    background:#ffffff06;
+    min-height:90px;
+    color:#aab2bd;
+    line-height:1.7;
+    transition:.3s
+}
+
+.ending{
+    min-height:65vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    background:radial-gradient(circle at center,#8491a40b,transparent 60%)
+}
+
+.btn{
+    display:inline-block;
+    padding:16px 24px;
+    border:1px solid #ffffff40;
+    color:white;
+    text-decoration:none;
+    font-size:11px;
+    letter-spacing:2px;
+    transition:.35s;
+    margin-top:30px
+}
+
+.btn:hover{
+    background:white;
+    color:#05070c;
+    transform:translateY(-3px)
+}
+
+footer{
+    padding:35px 9%;
+    border-top:1px solid #ffffff0d;
+    color:#555e6b;
+    font-size:10px;
+    letter-spacing:2px
+}
+
+@media(max-width:850px){
+    nav{
+        padding:14px 5%;
+        align-items:flex-start
+    }
+
+    .logo{display:none}
+
+    .navlinks{
+        gap:10px;
+        flex-wrap:wrap;
+        justify-content:center
+    }
+
+    .navlinks a{font-size:9px}
+
+    .hero,
+    section{
+        padding-left:7%;
+        padding-right:7%
+    }
+
+    .destinations{
+        grid-template-columns:1fr 1fr
+    }
+
+    .music{
+        right:15px;
+        bottom:15px
+    }
+}
+
+@media(max-width:520px){
+    .destinations{
+        grid-template-columns:1fr
+    }
+}
 </style>
 </head>
 
 <body>
+
 <div id="stars"></div>
 
 <nav>
 <div class="logo">THE UNIVERSE</div>
+
 <ul class="navlinks">
 <li><a href="index.html">HOME</a></li>
 <li><a class="active" href="journey.html">JOURNEY</a></li>
@@ -55,72 +270,168 @@ footer{padding:35px 9%;border-top:1px solid #ffffff0d;color:#555e6b;font-size:10
 </ul>
 </nav>
 
-<audio id="spaceAudio" loop preload="none"><source src="assets/space.mp3" type="audio/mpeg"></audio>
+<audio id="spaceAudio" loop preload="auto">
+<source src="assets/space.mp3" type="audio/mpeg">
+</audio>
+
 <button class="music" id="musicBtn">♪ MUSIC OFF</button>
 
 <section class="hero">
 <div>
 <div class="label">CHAPTER 01 • THE JOURNEY</div>
+
 <h1>FROM HERE<br>TO DEEP SPACE</h1>
-<p>Our cosmic address begins on Earth. Zoom outward and the scale of the universe becomes almost impossible to imagine.</p>
+
+<p>
+Our cosmic address begins on Earth. Zoom outward and the scale
+of the universe becomes almost impossible to imagine.
+</p>
 </div>
 </section>
 
 <section>
+
 <div class="section-label">INTERACTIVE SCALE</div>
+
 <h2>HOW FAR<br>CAN YOU GO?</h2>
-<p class="intro">Select a destination. Each step takes us farther from the familiar and closer to the vastness of the cosmos.</p>
+
+<p class="intro">
+Select a destination. Each step takes us farther from the familiar
+and closer to the vastness of the cosmos.
+</p>
 
 <div class="destinations">
-<div class="destination selected" data-info="Earth is the only world currently known to support life. From here, humanity began its journey of looking outward.">
-<span>01 • HOME</span><h3>EARTH</h3><p>OUR BEGINNING</p>
-</div>
-<div class="destination" data-info="The Solar System contains the Sun, planets, dwarf planets, moons, asteroids and comets — our local cosmic neighbourhood.">
-<span>02 • LOCAL</span><h3>SOLAR SYSTEM</h3><p>OUR NEIGHBOURHOOD</p>
-</div>
-<div class="destination" data-info="The Milky Way is a vast galaxy containing our Solar System among an enormous population of stars.">
-<span>03 • GALACTIC</span><h3>MILKY WAY</h3><p>OUR GALAXY</p>
-</div>
-<div class="destination" data-info="Deep space takes us beyond our galactic neighbourhood toward distant galaxies and some of the universe's greatest mysteries.">
-<span>04 • BEYOND</span><h3>DEEP SPACE</h3><p>THE UNKNOWN</p>
-</div>
+
+<div class="destination selected"
+data-info="Earth is the only world currently known to support life. From here, humanity began its journey of looking outward.">
+<span>01 • HOME</span>
+<h3>EARTH</h3>
+<p>OUR BEGINNING</p>
 </div>
 
-<div class="info" id="info">Earth is the only world currently known to support life. From here, humanity began its journey of looking outward.</div>
+<div class="destination"
+data-info="The Solar System contains the Sun, planets, dwarf planets, moons, asteroids and comets — our local cosmic neighbourhood.">
+<span>02 • LOCAL</span>
+<h3>SOLAR SYSTEM</h3>
+<p>OUR NEIGHBOURHOOD</p>
+</div>
+
+<div class="destination"
+data-info="The Milky Way is a vast galaxy containing our Solar System among an enormous population of stars.">
+<span>03 • GALACTIC</span>
+<h3>MILKY WAY</h3>
+<p>OUR GALAXY</p>
+</div>
+
+<div class="destination"
+data-info="Deep space takes us beyond our galactic neighbourhood toward distant galaxies and some of the universe's greatest mysteries.">
+<span>04 • BEYOND</span>
+<h3>DEEP SPACE</h3>
+<p>THE UNKNOWN</p>
+</div>
+
+</div>
+
+<div class="info" id="info">
+Earth is the only world currently known to support life.
+From here, humanity began its journey of looking outward.
+</div>
+
 </section>
 
 <section class="ending">
+
 <div class="section-label">THE NEXT STEP</div>
+
 <h2>THERE IS ALWAYS<br>MORE BEYOND.</h2>
+
 <a class="btn" href="unknown.html">ENTER THE UNKNOWN →</a>
+
 </section>
 
 <footer>CHAPTER 01 • THE JOURNEY</footer>
 
 <script>
+
+/* STAR FIELD */
 const stars=document.getElementById("stars");
+
 for(let i=0;i<140;i++){
- let s=document.createElement("span");s.className="star";
- s.style.left=Math.random()*100+"%";s.style.top=Math.random()*100+"%";
- s.style.animationDuration=5+Math.random()*12+"s";s.style.animationDelay=-Math.random()*10+"s";
+
+ let s=document.createElement("span");
+
+ s.className="star";
+ s.style.left=Math.random()*100+"%";
+ s.style.top=Math.random()*100+"%";
+ s.style.animationDuration=5+Math.random()*12+"s";
+ s.style.animationDelay=-Math.random()*10+"s";
+
  stars.appendChild(s);
 }
-const destinations=document.querySelectorAll(".destination"),info=document.getElementById("info");
-destinations.forEach(d=>d.onclick=()=>{
- destinations.forEach(x=>x.classList.remove("selected"));
- d.classList.add("selected");
- info.style.opacity=0;
- setTimeout(()=>{info.textContent=d.dataset.info;info.style.opacity=1},180);
+
+/* DESTINATION INTERACTION */
+const destinations=document.querySelectorAll(".destination");
+const info=document.getElementById("info");
+
+destinations.forEach(destination=>{
+
+ destination.onclick=()=>{
+
+  destinations.forEach(x=>x.classList.remove("selected"));
+
+  destination.classList.add("selected");
+
+  info.style.opacity=0;
+
+  setTimeout(()=>{
+
+   info.textContent=destination.dataset.info;
+   info.style.opacity=1;
+
+  },180);
+ };
+
 });
 
-const audio=document.getElementById("spaceAudio"),musicBtn=document.getElementById("musicBtn");
-let musicOn=localStorage.getItem("universeMusic")==="on";
-musicBtn.textContent=musicOn?"♪ MUSIC ON":"♪ MUSIC OFF";
-musicBtn.onclick=()=>{
- musicOn=!musicOn;localStorage.setItem("universeMusic",musicOn?"on":"off");
- if(musicOn)audio.play().then(()=>musicBtn.textContent="♪ MUSIC ON").catch(()=>{});
- else{audio.pause();musicBtn.textContent="♪ MUSIC OFF"}
-};
+/* MUSIC */
+const audio=document.getElementById("spaceAudio");
+const musicBtn=document.getElementById("musicBtn");
+
+audio.volume=0.45;
+
+musicBtn.addEventListener("click",async function(){
+
+ if(audio.paused){
+
+  try{
+
+   await audio.play();
+
+   musicBtn.textContent="♪ MUSIC ON";
+
+   localStorage.setItem("universeMusic","on");
+
+  }catch(error){
+
+   console.log("Music error:",error);
+
+   musicBtn.textContent="♪ TRY AGAIN";
+
+  }
+
+ }else{
+
+  audio.pause();
+
+  musicBtn.textContent="♪ MUSIC OFF";
+
+  localStorage.setItem("universeMusic","off");
+
+ }
+
+});
+
 </script>
+
 </body>
 </html>
