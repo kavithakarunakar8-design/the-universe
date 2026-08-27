@@ -1,788 +1,1974 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Are We Alone? | The Universe</title>
-
-    <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: #02030a;
-            color: white;
-            font-family: Arial, Helvetica, sans-serif;
-            overflow-x: hidden;
-        }
-
-        /* =========================
-           STARS
-        ========================= */
-
-        .stars,
-        .stars::before,
-        .stars::after {
-            position: fixed;
-            inset: 0;
-            content: "";
-            pointer-events: none;
-            z-index: -2;
-        }
-
-        .stars {
-            background-image:
-                radial-gradient(2px 2px at 10% 20%, white, transparent),
-                radial-gradient(1px 1px at 20% 70%, white, transparent),
-                radial-gradient(2px 2px at 35% 40%, white, transparent),
-                radial-gradient(1px 1px at 50% 15%, white, transparent),
-                radial-gradient(2px 2px at 65% 65%, white, transparent),
-                radial-gradient(1px 1px at 80% 30%, white, transparent),
-                radial-gradient(2px 2px at 90% 80%, white, transparent);
-            background-size: 600px 600px;
-            animation: moveStars 50s linear infinite;
-            opacity: 0.6;
-        }
-
-        @keyframes moveStars {
-
-            from {
-                transform: translateY(0);
-            }
-
-            to {
-                transform: translateY(-600px);
-            }
-
-        }
-
-        /* =========================
-           NAVIGATION
-        ========================= */
-
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 22px 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(2, 3, 10, 0.5);
-            backdrop-filter: blur(12px);
-            z-index: 1000;
-        }
-
-        .logo {
-            font-size: 18px;
-            font-weight: bold;
-            letter-spacing: 3px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 28px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 12px;
-            letter-spacing: 1px;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.5;
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            min-height: 85vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 130px 20px 80px;
-        }
-
-        .hero-content {
-            max-width: 900px;
-        }
-
-        .small-title {
-            font-size: 12px;
-            letter-spacing: 6px;
-            opacity: 0.5;
-            margin-bottom: 25px;
-        }
-
-        .hero h1 {
-            font-size: clamp(50px, 9vw, 105px);
-            line-height: 1;
-            letter-spacing: 6px;
-        }
-
-        .hero h1 span {
-            opacity: 0.45;
-        }
-
-        .hero p {
-            max-width: 700px;
-            margin: 35px auto;
-            line-height: 1.9;
-            opacity: 0.65;
-        }
-
-        /* =========================
-           BIG QUESTION
-        ========================= */
-
-        .big-question {
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 100px 20px;
-        }
-
-        .big-question h2 {
-            font-size: clamp(35px, 7vw, 80px);
-            letter-spacing: 4px;
-            margin-bottom: 30px;
-        }
-
-        .big-question p {
-            max-width: 700px;
-            margin: auto;
-            line-height: 1.9;
-            opacity: 0.6;
-        }
-
-        /* =========================
-           DISCOVERY CARDS
-        ========================= */
-
-        .discoveries {
-            width: 90%;
-            max-width: 1150px;
-            margin: auto;
-            padding: 80px 0 120px;
-        }
-
-        .discovery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-        }
-
-        .discovery-card {
-            padding: 40px;
-            min-height: 330px;
-            border: 1px solid rgba(255,255,255,0.14);
-            border-radius: 25px;
-            background: rgba(255,255,255,0.035);
-            backdrop-filter: blur(10px);
-            transition: 0.5s;
-        }
-
-        .discovery-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(255,255,255,0.45);
-            background: rgba(255,255,255,0.06);
-        }
-
-        .icon {
-            font-size: 50px;
-            margin-bottom: 25px;
-        }
-
-        .discovery-card h2 {
-            font-size: 28px;
-            margin-bottom: 18px;
-        }
-
-        .discovery-card p {
-            font-size: 14px;
-            line-height: 1.8;
-            opacity: 0.65;
-        }
-
-        /* =========================
-           EXOPLANET SECTION
-        ========================= */
-
-        .exoplanet {
-            min-height: 85vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 100px 20px;
-        }
-
-        .planet {
-            width: 240px;
-            height: 240px;
-            margin: 0 auto 45px;
-            border-radius: 50%;
-
-            background:
-                radial-gradient(
-                    circle at 35% 30%,
-                    rgba(255,255,255,0.35),
-                    rgba(255,255,255,0.05) 25%,
-                    #090b16 70%
-                );
-
-            box-shadow:
-                0 0 45px rgba(255,255,255,0.12),
-                inset -30px -20px 50px rgba(0,0,0,0.7);
-
-            animation: planetFloat 5s ease-in-out infinite;
-        }
-
-        @keyframes planetFloat {
-
-            0%, 100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-15px);
-            }
-
-        }
-
-        .exoplanet h2 {
-            font-size: clamp(35px, 6vw, 70px);
-            letter-spacing: 4px;
-            margin-bottom: 25px;
-        }
-
-        .exoplanet p {
-            max-width: 700px;
-            margin: auto;
-            line-height: 1.9;
-            opacity: 0.65;
-        }
-
-        /* =========================
-           LIFE INGREDIENTS
-        ========================= */
-
-        .ingredients {
-            padding: 120px 8%;
-            text-align: center;
-        }
-
-        .ingredients h2 {
-            font-size: clamp(35px, 6vw, 70px);
-            margin-bottom: 60px;
-            letter-spacing: 3px;
-        }
-
-        .ingredient-grid {
-            max-width: 1000px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .ingredient {
-            padding: 35px 20px;
-            border: 1px solid rgba(255,255,255,0.13);
-            border-radius: 20px;
-            background: rgba(255,255,255,0.03);
-            transition: 0.4s;
-        }
-
-        .ingredient:hover {
-            transform: translateY(-7px);
-            background: rgba(255,255,255,0.06);
-        }
-
-        .ingredient strong {
-            display: block;
-            margin-bottom: 12px;
-            letter-spacing: 2px;
-        }
-
-        .ingredient span {
-            font-size: 13px;
-            opacity: 0.55;
-        }
-
-        /* =========================
-           SIGNAL SECTION
-        ========================= */
-
-        .signals {
-            min-height: 70vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 100px 20px;
-        }
-
-        .signal-box {
-            max-width: 800px;
-        }
-
-        .signal {
-            font-size: 50px;
-            letter-spacing: 12px;
-            margin-bottom: 40px;
-            animation: signalPulse 2.5s infinite;
-        }
-
-        @keyframes signalPulse {
-
-            0%, 100% {
-                opacity: 0.25;
-            }
-
-            50% {
-                opacity: 1;
-            }
-
-        }
-
-        .signals h2 {
-            font-size: clamp(35px, 6vw, 65px);
-            margin-bottom: 25px;
-        }
-
-        .signals p {
-            line-height: 1.9;
-            opacity: 0.6;
-        }
-
-        /* =========================
-           INTERACTIVE QUESTION
-        ========================= */
-
-        .interaction {
-            min-height: 85vh;
-            padding: 120px 20px;
-            text-align: center;
-        }
-
-        .interaction h2 {
-            font-size: clamp(35px, 6vw, 70px);
-            letter-spacing: 3px;
-            margin-bottom: 25px;
-        }
-
-        .interaction p {
-            opacity: 0.6;
-            margin-bottom: 45px;
-        }
-
-        .choices {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .choice {
-            padding: 18px 30px;
-            border: 1px solid rgba(255,255,255,0.25);
-            border-radius: 40px;
-            background: transparent;
-            color: white;
-            cursor: pointer;
-            letter-spacing: 2px;
-            transition: 0.4s;
-        }
-
-        .choice:hover {
-            background: white;
-            color: black;
-        }
-
-        #result {
-            margin: 45px auto 0;
-            max-width: 650px;
-            line-height: 1.8;
-            min-height: 50px;
-            opacity: 0.75;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            padding: 50px 20px;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 11px;
-            letter-spacing: 2px;
-            opacity: 0.5;
-        }
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 750px) {
-
-            .nav-links {
-                display: none;
-            }
-
-            .discovery-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .ingredient-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .planet {
-                width: 190px;
-                height: 190px;
-            }
-
-        }
-
-    </style>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Are We Alone? | The Universe</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    background: #010106;
+
+    color: white;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   STARS
+========================= */
+
+.stars {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -5;
+
+    pointer-events: none;
+
+    background-image:
+
+        radial-gradient(
+            2px 2px at 6% 15%,
+            white,
+            transparent
+        ),
+
+        radial-gradient(
+            1px 1px at 17% 72%,
+            white,
+            transparent
+        ),
+
+        radial-gradient(
+            2px 2px at 31% 30%,
+            white,
+            transparent
+        ),
+
+        radial-gradient(
+            1px 1px at 45% 82%,
+            white,
+            transparent
+        ),
+
+        radial-gradient(
+            2px 2px at 57% 18%,
+            white,
+            transparent
+        ),
+
+        radial-gradient(
+            1px 1px at 70% 58%,
+            white,
+            transparent
+        ),
+
+        radial-gradient(
+            2px 2px at 84% 24%,
+            white,
+            transparent
+        ),
+
+        radial-gradient(
+            1px 1px at 95% 75%,
+            white,
+            transparent
+        );
+
+    background-size:
+        650px 650px;
+
+    animation:
+        starMove 80s linear infinite;
+
+    opacity:
+        0.65;
+}
+
+@keyframes starMove {
+
+    from {
+        transform:
+            translateY(0);
+    }
+
+    to {
+        transform:
+            translateY(-650px);
+    }
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    padding:
+        22px 6%;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    background:
+        rgba(
+            1,
+            1,
+            6,
+            0.5
+        );
+
+    backdrop-filter:
+        blur(14px);
+
+    border-bottom:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.06
+        );
+
+    z-index:
+        1000;
+}
+
+.logo {
+
+    font-size:
+        17px;
+
+    font-weight:
+        bold;
+
+    letter-spacing:
+        4px;
+}
+
+.nav-links {
+
+    display:
+        flex;
+
+    gap:
+        28px;
+
+    list-style:
+        none;
+}
+
+.nav-links a {
+
+    color:
+        white;
+
+    text-decoration:
+        none;
+
+    font-size:
+        11px;
+
+    letter-spacing:
+        1.5px;
+
+    opacity:
+        0.7;
+
+    transition:
+        0.3s;
+}
+
+.nav-links a:hover {
+
+    opacity:
+        1;
+
+    letter-spacing:
+        2px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+
+    min-height:
+        100vh;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    text-align:
+        center;
+
+    padding:
+        130px 20px 80px;
+
+    position:
+        relative;
+}
+
+.hero::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        550px;
+
+    height:
+        550px;
+
+    border-radius:
+        50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(
+                255,
+                255,
+                255,
+                0.06
+            ),
+            transparent 70%
+        );
+
+    filter:
+        blur(25px);
+
+    animation:
+        pulse 6s
+        ease-in-out
+        infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+
+        transform:
+            scale(0.8);
+
+        opacity:
+            0.4;
+    }
+
+    50% {
+
+        transform:
+            scale(1.15);
+
+        opacity:
+            1;
+    }
+}
+
+.hero-content {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    max-width:
+        950px;
+}
+
+.label {
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        6px;
+
+    opacity:
+        0.4;
+
+    margin-bottom:
+        25px;
+}
+
+.hero h1 {
+
+    font-size:
+        clamp(
+            55px,
+            10vw,
+            120px
+        );
+
+    line-height:
+        0.9;
+
+    letter-spacing:
+        7px;
+}
+
+.hero h1 span {
+
+    display:
+        block;
+
+    opacity:
+        0.4;
+
+    font-weight:
+        400;
+}
+
+.hero p {
+
+    max-width:
+        680px;
+
+    margin:
+        40px auto;
+
+    line-height:
+        1.9;
+
+    opacity:
+        0.6;
+
+    font-size:
+        15px;
+}
+
+.start-search {
+
+    display:
+        inline-block;
+
+    padding:
+        17px 30px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.3
+        );
+
+    border-radius:
+        30px;
+
+    color:
+        white;
+
+    text-decoration:
+        none;
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        2px;
+
+    transition:
+        0.4s;
+}
+
+.start-search:hover {
+
+    background:
+        white;
+
+    color:
+        black;
+
+    transform:
+        translateY(-5px);
+}
+
+
+/* =========================
+   SIGNAL SECTION
+========================= */
+
+.signal-section {
+
+    min-height:
+        100vh;
+
+    padding:
+        130px 20px;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    text-align:
+        center;
+}
+
+.signal-box {
+
+    width:
+        100%;
+
+    max-width:
+        900px;
+
+    padding:
+        65px 35px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.15
+        );
+
+    border-radius:
+        30px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.03
+        );
+
+    backdrop-filter:
+        blur(12px);
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+}
+
+.signal-box h2 {
+
+    font-size:
+        clamp(
+            38px,
+            6vw,
+            70px
+        );
+
+    letter-spacing:
+        4px;
+
+    margin-bottom:
+        20px;
+}
+
+.signal-intro {
+
+    max-width:
+        650px;
+
+    margin:
+        auto;
+
+    line-height:
+        1.9;
+
+    opacity:
+        0.55;
+}
+
+
+/* SIGNAL DISPLAY */
+
+.signal-display {
+
+    height:
+        150px;
+
+    margin:
+        50px auto 30px;
+
+    max-width:
+        700px;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+
+    overflow:
+        hidden;
+
+    border-top:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    border-bottom:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+}
+
+.signal-bar {
+
+    width:
+        4px;
+
+    height:
+        25px;
+
+    background:
+        white;
+
+    opacity:
+        0.15;
+
+    transform:
+        scaleY(0.5);
+
+    transition:
+        0.2s;
+}
+
+.signal-display.searching
+.signal-bar {
+
+    animation:
+        signalPulse
+        0.8s
+        infinite
+        alternate;
+}
+
+@keyframes signalPulse {
+
+    from {
+
+        transform:
+            scaleY(0.4);
+
+        opacity:
+            0.15;
+    }
+
+    to {
+
+        transform:
+            scaleY(
+                var(
+                    --height,
+                    1
+                )
+            );
+
+        opacity:
+            0.8;
+    }
+}
+
+.signal-status {
+
+    min-height:
+        30px;
+
+    font-size:
+        11px;
+
+    letter-spacing:
+        2px;
+
+    opacity:
+        0.55;
+}
+
+.search-button {
+
+    margin-top:
+        30px;
+
+    padding:
+        16px 28px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.25
+        );
+
+    border-radius:
+        30px;
+
+    background:
+        transparent;
+
+    color:
+        white;
+
+    cursor:
+        pointer;
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        2px;
+
+    transition:
+        0.4s;
+}
+
+.search-button:hover {
+
+    background:
+        white;
+
+    color:
+        black;
+}
+
+.signal-result {
+
+    margin:
+        30px auto 0;
+
+    max-width:
+        650px;
+
+    line-height:
+        1.9;
+
+    opacity:
+        0;
+
+    max-height:
+        0;
+
+    overflow:
+        hidden;
+
+    transition:
+        0.8s;
+}
+
+.signal-result.detected {
+
+    opacity:
+        0.75;
+
+    max-height:
+        300px;
+}
+
+
+/* =========================
+   HABITABLE WORLDS
+========================= */
+
+.worlds {
+
+    min-height:
+        100vh;
+
+    padding:
+        130px 20px;
+
+    text-align:
+        center;
+}
+
+.worlds h2 {
+
+    font-size:
+        clamp(
+            38px,
+            6vw,
+            70px
+        );
+
+    letter-spacing:
+        4px;
+
+    margin-bottom:
+        20px;
+}
+
+.worlds-intro {
+
+    max-width:
+        650px;
+
+    margin:
+        auto;
+
+    line-height:
+        1.9;
+
+    opacity:
+        0.55;
+}
+
+.world-grid {
+
+    max-width:
+        1050px;
+
+    margin:
+        80px auto 0;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            1fr
+        );
+
+    gap:
+        25px;
+}
+
+.world-card {
+
+    min-height:
+        280px;
+
+    padding:
+        35px 25px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+
+    border-radius:
+        25px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.025
+        );
+
+    cursor:
+        pointer;
+
+    transition:
+        0.5s;
+
+    text-align:
+        left;
+}
+
+.world-card:hover {
+
+    transform:
+        translateY(-10px);
+
+    border-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.4
+        );
+}
+
+.world-symbol {
+
+    width:
+        75px;
+
+    height:
+        75px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.18
+        );
+
+    border-radius:
+        50%;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    font-size:
+        30px;
+
+    margin-bottom:
+        25px;
+}
+
+.world-card h3 {
+
+    font-size:
+        23px;
+
+    margin-bottom:
+        12px;
+}
+
+.world-card p {
+
+    font-size:
+        13px;
+
+    line-height:
+        1.8;
+
+    opacity:
+        0.5;
+}
+
+
+/* =========================
+   INGREDIENTS
+========================= */
+
+.ingredients {
+
+    min-height:
+        100vh;
+
+    padding:
+        130px 20px;
+
+    text-align:
+        center;
+}
+
+.ingredients h2 {
+
+    font-size:
+        clamp(
+            38px,
+            6vw,
+            70px
+        );
+
+    letter-spacing:
+        4px;
+
+    margin-bottom:
+        20px;
+}
+
+.ingredients-intro {
+
+    max-width:
+        650px;
+
+    margin:
+        auto;
+
+    line-height:
+        1.9;
+
+    opacity:
+        0.55;
+}
+
+.ingredient-list {
+
+    max-width:
+        850px;
+
+    margin:
+        70px auto 0;
+
+    text-align:
+        left;
+}
+
+.ingredient {
+
+    padding:
+        30px 0;
+
+    border-bottom:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.09
+        );
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    gap:
+        30px;
+
+    cursor:
+        pointer;
+}
+
+.ingredient-left {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        20px;
+}
+
+.ingredient-number {
+
+    font-size:
+        12px;
+
+    opacity:
+        0.3;
+}
+
+.ingredient h3 {
+
+    font-size:
+        20px;
+}
+
+.ingredient-arrow {
+
+    opacity:
+        0.3;
+
+    transition:
+        0.3s;
+}
+
+.ingredient:hover
+.ingredient-arrow {
+
+    transform:
+        translateX(8px);
+
+    opacity:
+        1;
+}
+
+.ingredient-info {
+
+    max-height:
+        0;
+
+    overflow:
+        hidden;
+
+    opacity:
+        0;
+
+    transition:
+        0.5s;
+
+    line-height:
+        1.8;
+
+    font-size:
+        13px;
+}
+
+.ingredient-info.open {
+
+    max-height:
+        150px;
+
+    opacity:
+        0.55;
+
+    padding:
+        15px 0 5px 52px;
+}
+
+
+/* =========================
+   BIG QUESTION
+========================= */
+
+.question {
+
+    min-height:
+        85vh;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    text-align:
+        center;
+
+    padding:
+        120px 20px;
+}
+
+.question-content {
+
+    max-width:
+        850px;
+}
+
+.question h2 {
+
+    font-size:
+        clamp(
+            40px,
+            7vw,
+            90px
+        );
+
+    letter-spacing:
+        5px;
+
+    line-height:
+        1.05;
+
+    margin-bottom:
+        35px;
+}
+
+.question p {
+
+    max-width:
+        650px;
+
+    margin:
+        auto;
+
+    line-height:
+        1.9;
+
+    opacity:
+        0.55;
+}
+
+.question-word {
+
+    margin-top:
+        60px;
+
+    font-size:
+        clamp(
+            25px,
+            4vw,
+            45px
+        );
+
+    letter-spacing:
+        8px;
+
+    opacity:
+        0.45;
+
+    animation:
+        breathe 4s
+        ease-in-out
+        infinite;
+}
+
+@keyframes breathe {
+
+    0%,
+    100% {
+        opacity:
+            0.3;
+    }
+
+    50% {
+        opacity:
+            1;
+    }
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    padding:
+        50px 20px;
+
+    text-align:
+        center;
+
+    border-top:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        3px;
+
+    opacity:
+        0.4;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+
+    .nav-links {
+        display:
+            none;
+    }
+
+    .world-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .ingredient {
+
+        align-items:
+            flex-start;
+    }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-    <div class="stars"></div>
 
-    <!-- NAVIGATION -->
+<div class="stars"></div>
 
-    <nav>
 
-        <div class="logo">
-            THE UNIVERSE
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+
+    <div class="logo">
+        THE UNIVERSE
+    </div>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="index.html">
+                HOME
+            </a>
+        </li>
+
+        <li>
+            <a href="journey.html">
+                JOURNEY
+            </a>
+        </li>
+
+        <li>
+            <a href="unknown.html">
+                THE UNKNOWN
+            </a>
+        </li>
+
+        <li>
+            <a href="life.html">
+                ARE WE ALONE?
+            </a>
+        </li>
+
+        <li>
+            <a href="future.html">
+                THE FUTURE
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="label">
+            CHAPTER 03 • THE SEARCH
         </div>
 
-        <ul class="nav-links">
+        <h1>
 
-            <li><a href="index.html">HOME</a></li>
+            ARE WE
 
-            <li><a href="journey.html">JOURNEY</a></li>
+            <span>
+                ALONE?
+            </span>
 
-            <li><a href="unknown.html">THE UNKNOWN</a></li>
+        </h1>
 
-            <li><a href="life.html">ARE WE ALONE?</a></li>
+        <p>
 
-            <li><a href="future.html">THE FUTURE</a></li>
+            Somewhere among the enormous number of
+            stars in the universe, could another world
+            have looked toward the sky and asked the
+            same question?
 
-        </ul>
+            <br><br>
 
-    </nav>
+            We don't know.
+
+            So we search.
+
+        </p>
+
+        <a
+            href="#signal"
+            class="start-search"
+        >
+
+            BEGIN THE SEARCH →
+
+        </a>
+
+    </div>
+
+</section>
 
 
-    <!-- HERO -->
+<!-- =========================
+     SIGNAL SEARCH
+========================= -->
 
-    <section class="hero">
+<section
+    class="signal-section"
+    id="signal"
+>
 
-        <div class="hero-content">
+    <div class="signal-box">
 
-            <div class="small-title">
-                THE SEARCH FOR LIFE
-            </div>
-
-            <h1>
-                ARE WE <span>ALONE?</span>
-            </h1>
-
-            <p>
-                Somewhere among the countless stars may be worlds
-                with conditions very different from our own.
-                Scientists are searching for clues that could help
-                us understand whether life exists beyond Earth.
-            </p>
-
+        <div class="label">
+            DEEP SPACE LISTENING
         </div>
-
-    </section>
-
-
-    <!-- BIG QUESTION -->
-
-    <section class="big-question">
-
-        <div>
-
-            <h2>
-                WHAT WOULD LIFE<br>
-                LOOK LIKE ELSEWHERE?
-            </h2>
-
-            <p>
-                We have only one confirmed example of life:
-                Earth. That makes the search for life beyond
-                our planet one of science's greatest questions.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- DISCOVERY CARDS -->
-
-    <section class="discoveries">
-
-        <div class="discovery-grid">
-
-            <div class="discovery-card">
-
-                <div class="icon">🪐</div>
-
-                <h2>EXOPLANETS</h2>
-
-                <p>
-                    Exoplanets are planets that orbit stars
-                    outside our Solar System. Thousands have
-                    been confirmed, showing that planets are
-                    common throughout our galaxy.
-                </p>
-
-            </div>
-
-
-            <div class="discovery-card">
-
-                <div class="icon">🌍</div>
-
-                <h2>HABITABLE WORLDS</h2>
-
-                <p>
-                    Scientists study worlds where conditions
-                    might allow liquid water to exist.
-                    This region is often called the habitable zone.
-                </p>
-
-            </div>
-
-
-            <div class="discovery-card">
-
-                <div class="icon">🧬</div>
-
-                <h2>INGREDIENTS FOR LIFE</h2>
-
-                <p>
-                    Water, suitable chemistry and a stable
-                    environment are among the factors scientists
-                    investigate when considering potential habitability.
-                </p>
-
-            </div>
-
-
-            <div class="discovery-card">
-
-                <div class="icon">🔭</div>
-
-                <h2>SPACE TELESCOPES</h2>
-
-                <p>
-                    Powerful telescopes can study distant stars
-                    and planets and sometimes analyse the light
-                    passing through an exoplanet's atmosphere.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- EXOPLANET -->
-
-    <section class="exoplanet">
-
-        <div>
-
-            <div class="planet"></div>
-
-            <h2>
-                A WORLD WE CANNOT VISIT
-            </h2>
-
-            <p>
-                Imagine discovering a planet many light-years
-                away. We may never physically reach it, yet
-                the light arriving from that distant world can
-                tell scientists remarkable things about it.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- INGREDIENTS -->
-
-    <section class="ingredients">
 
         <h2>
-            THE INGREDIENTS OF POSSIBILITY
+            SEARCH FOR A SIGNAL
         </h2>
 
-        <div class="ingredient-grid">
+        <p class="signal-intro">
 
-            <div class="ingredient">
+            Scientists use powerful instruments to
+            study signals and patterns from space.
 
-                <strong>LIQUID WATER</strong>
+            <br><br>
 
-                <span>
-                    An important ingredient for life as we know it.
-                </span>
+            This interactive simulation represents
+            the idea of that search.
 
-            </div>
-
-
-            <div class="ingredient">
-
-                <strong>CHEMISTRY</strong>
-
-                <span>
-                    Complex chemistry plays a central role in life.
-                </span>
-
-            </div>
+        </p>
 
 
-            <div class="ingredient">
-
-                <strong>ENERGY</strong>
-
-                <span>
-                    Living systems need sources of usable energy.
-                </span>
-
-            </div>
+        <div
+            class="signal-display"
+            id="signalDisplay"
+        >
 
         </div>
 
-    </section>
+
+        <div
+            class="signal-status"
+            id="signalStatus"
+        >
+
+            SYSTEM READY
+
+        </div>
 
 
-    <!-- SIGNALS -->
+        <button
+            class="search-button"
+            id="searchButton"
+            onclick="searchSignal()"
+        >
 
-    <section class="signals">
+            SCAN THE COSMOS
 
-        <div class="signal-box">
+        </button>
 
-            <div class="signal">
-                • • •
+
+        <div
+            class="signal-result"
+            id="signalResult"
+        >
+
+            <strong>
+                SIGNAL ANALYSIS COMPLETE
+            </strong>
+
+            <br><br>
+
+            A repeating pattern has been detected
+            in this simulation.
+
+            <br><br>
+
+            Does it represent life?
+
+            We cannot say.
+
+            <br><br>
+
+            <strong>
+                THE SEARCH CONTINUES.
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     HABITABLE WORLDS
+========================= -->
+
+<section class="worlds">
+
+    <div class="label">
+        POSSIBLE DESTINATIONS
+    </div>
+
+    <h2>
+        WORLDS THAT MAKE US WONDER
+    </h2>
+
+    <p class="worlds-intro">
+
+        Scientists search for environments where
+        conditions could potentially support life.
+
+        Click a world category to explore the idea.
+
+    </p>
+
+
+    <div class="world-grid">
+
+
+        <div
+            class="world-card"
+            onclick="worldMessage('ocean')"
+        >
+
+            <div class="world-symbol">
+                ≋
             </div>
 
-            <h2>
-                LISTENING TO THE COSMOS
-            </h2>
+            <h3>
+                OCEAN WORLDS
+            </h3>
 
             <p>
-                Scientists search the sky for signals and
-                other evidence that could reveal information
-                about distant worlds. So far, no confirmed
-                evidence of extraterrestrial life has been found.
+
+                Worlds where liquid water may exist
+                beneath an icy surface.
+
             </p>
 
         </div>
 
-    </section>
+
+        <div
+            class="world-card"
+            onclick="worldMessage('exoplanet')"
+        >
+
+            <div class="world-symbol">
+                ◉
+            </div>
+
+            <h3>
+                EXOPLANETS
+            </h3>
+
+            <p>
+
+                Planets orbiting stars beyond
+                our Solar System.
+
+            </p>
+
+        </div>
 
 
-    <!-- INTERACTIVE QUESTION -->
+        <div
+            class="world-card"
+            onclick="worldMessage('extreme')"
+        >
 
-    <section class="interaction">
+            <div class="world-symbol">
+                ✦
+            </div>
+
+            <h3>
+                EXTREME WORLDS
+            </h3>
+
+            <p>
+
+                Environments very different from
+                anything found naturally on Earth.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- =========================
+     INGREDIENTS OF LIFE
+========================= -->
+
+<section class="ingredients">
+
+    <div class="label">
+        THE SEARCH FOR LIFE
+    </div>
+
+    <h2>
+        WHAT DO WE LOOK FOR?
+    </h2>
+
+    <p class="ingredients-intro">
+
+        When scientists investigate whether a world
+        could potentially support life, they consider
+        many physical and chemical conditions.
+
+        Click each one.
+
+    </p>
+
+
+    <div class="ingredient-list">
+
+
+        <div class="ingredient"
+             onclick="toggleIngredient(1)">
+
+            <div class="ingredient-left">
+
+                <div class="ingredient-number">
+                    01
+                </div>
+
+                <h3>
+                    LIQUID WATER
+                </h3>
+
+            </div>
+
+            <div class="ingredient-arrow">
+                +
+            </div>
+
+        </div>
+
+        <div
+            class="ingredient-info"
+            id="ingredient1"
+        >
+
+            Liquid water is considered important
+            because life as we know it depends on
+            water. Scientists therefore look for
+            environments where liquid water could
+            exist.
+
+        </div>
+
+
+        <div class="ingredient"
+             onclick="toggleIngredient(2)">
+
+            <div class="ingredient-left">
+
+                <div class="ingredient-number">
+                    02
+                </div>
+
+                <h3>
+                    CHEMICAL INGREDIENTS
+                </h3>
+
+            </div>
+
+            <div class="ingredient-arrow">
+                +
+            </div>
+
+        </div>
+
+        <div
+            class="ingredient-info"
+            id="ingredient2"
+        >
+
+            Scientists investigate the presence of
+            elements and molecules that could take
+            part in biological chemistry.
+
+        </div>
+
+
+        <div class="ingredient"
+             onclick="toggleIngredient(3)">
+
+            <div class="ingredient-left">
+
+                <div class="ingredient-number">
+                    03
+                </div>
+
+                <h3>
+                    ENERGY
+                </h3>
+
+            </div>
+
+            <div class="ingredient-arrow">
+                +
+            </div>
+
+        </div>
+
+        <div
+            class="ingredient-info"
+            id="ingredient3"
+        >
+
+            Life needs energy.
+
+            Scientists therefore consider possible
+            energy sources available in different
+            environments.
+
+        </div>
+
+
+        <div class="ingredient"
+             onclick="toggleIngredient(4)">
+
+            <div class="ingredient-left">
+
+                <div class="ingredient-number">
+                    04
+                </div>
+
+                <h3>
+                    STABILITY
+                </h3>
+
+            </div>
+
+            <div class="ingredient-arrow">
+                +
+            </div>
+
+        </div>
+
+        <div
+            class="ingredient-info"
+            id="ingredient4"
+        >
+
+            A potentially habitable environment
+            would need suitable conditions to remain
+            available for long enough for complex
+            chemistry to develop.
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BIG QUESTION
+========================= -->
+
+<section class="question">
+
+    <div class="question-content">
+
+        <div class="label">
+            THE QUESTION THAT STARTED THE SEARCH
+        </div>
 
         <h2>
-            WHAT DO YOU THINK?
+
+            IF LIFE EXISTS
+            ELSEWHERE...
+
         </h2>
 
         <p>
-            Could life exist somewhere beyond Earth?
+
+            ...would we recognise it?
+
+            <br><br>
+
+            Perhaps life somewhere else would look
+            completely different from life on Earth.
+
+            <br><br>
+
+            Perhaps we are searching in the wrong way.
+
+            <br><br>
+
+            Or perhaps, somewhere in the universe,
+            another civilisation is asking the exact
+            same question.
+
         </p>
 
-        <div class="choices">
-
-            <button class="choice" onclick="answer('yes')">
-                YES
-            </button>
-
-            <button class="choice" onclick="answer('no')">
-                NO
-            </button>
-
-            <button class="choice" onclick="answer('unknown')">
-                WE DON'T KNOW
-            </button>
-
+        <div class="question-word">
+            LISTEN.
         </div>
 
-        <div id="result"></div>
+    </div>
 
-    </section>
-
-
-    <!-- FOOTER -->
-
-    <footer>
-        THE UNIVERSE • BEYOND WHAT WE SEE
-    </footer>
+</section>
 
 
-    <script>
+<footer>
 
-        function answer(choice) {
+    THE UNIVERSE
+    •
+    BEYOND WHAT WE SEE
 
-            const result = document.getElementById("result");
+</footer>
 
-            if (choice === "yes") {
 
-                result.innerHTML =
-                "It is possible — but possibility is not proof. Scientists continue searching for evidence.";
+<script>
 
-            }
 
-            else if (choice === "no") {
+/* =========================
+   SIGNAL BARS
+========================= */
 
-                result.innerHTML =
-                "We cannot conclude that yet. The universe is enormous, and we have explored only a tiny fraction of it.";
+const display =
+    document.getElementById(
+        "signalDisplay"
+    );
 
-            }
 
-            else {
+for (
+    let i = 0;
+    i < 70;
+    i++
+) {
 
-                result.innerHTML =
-                "And that is the scientific answer: we don't know yet. The search continues.";
+    const bar =
+        document.createElement(
+            "div"
+        );
 
-            }
+    bar.className =
+        "signal-bar";
 
-        }
+    bar.style.setProperty(
+        "--height",
+        (
+            Math.random() *
+            2
+            + 0.4
+        )
+    );
 
-    </script>
+    display.appendChild(
+        bar
+    );
+
+}
+
+
+/* =========================
+   SIGNAL SEARCH
+========================= */
+
+function searchSignal() {
+
+    const button =
+        document.getElementById(
+            "searchButton"
+        );
+
+    const status =
+        document.getElementById(
+            "signalStatus"
+        );
+
+    const result =
+        document.getElementById(
+            "signalResult"
+        );
+
+
+    if (
+        button.disabled
+    ) {
+
+        return;
+
+    }
+
+
+    button.disabled =
+        true;
+
+    button.innerHTML =
+        "SCANNING...";
+
+    status.innerHTML =
+        "SEARCHING DEEP SPACE";
+
+    display.classList.add(
+        "searching"
+    );
+
+
+    setTimeout(
+        function() {
+
+            status.innerHTML =
+                "ANALYSING SIGNAL PATTERNS";
+
+        },
+        1800
+    );
+
+
+    setTimeout(
+        function() {
+
+            status.innerHTML =
+                "UNUSUAL PATTERN DETECTED";
+
+        },
+        3600
+    );
+
+
+    setTimeout(
+        function() {
+
+            display.classList.remove(
+                "searching"
+            );
+
+            status.innerHTML =
+                "SCAN COMPLETE";
+
+            button.innerHTML =
+                "SCAN AGAIN";
+
+            button.disabled =
+                false;
+
+            result.classList.add(
+                "detected"
+            );
+
+        },
+        5000
+    );
+
+}
+
+
+/* =========================
+   WORLD MESSAGES
+========================= */
+
+function worldMessage(type) {
+
+    const messages = {
+
+        ocean:
+            "Some moons and planets may contain subsurface oceans. These hidden environments are especially interesting because liquid water can be important for life as we know it.",
+
+        exoplanet:
+            "Thousands of exoplanets have been confirmed. Some orbit within regions around their stars where temperatures could potentially allow liquid water under suitable conditions.",
+
+        extreme:
+            "Life on Earth survives in surprisingly extreme environments. This teaches scientists that the range of environments that life might tolerate could be wider than we once imagined."
+
+    };
+
+
+    alert(
+        messages[type]
+    );
+
+}
+
+
+/* =========================
+   INGREDIENT ACCORDIONS
+========================= */
+
+function toggleIngredient(number) {
+
+    const item =
+        document.getElementById(
+            "ingredient" + number
+        );
+
+
+    item.classList.toggle(
+        "open"
+    );
+
+}
+
+
+</script>
+
 
 </body>
+
 </html>
