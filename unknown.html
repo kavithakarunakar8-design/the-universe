@@ -8,41 +8,269 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:#02040a;color:#f4f6fa;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
-#stars{position:fixed;inset:0;z-index:-1}
-.star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:drift linear infinite}
-@keyframes drift{to{transform:translateY(-100px);opacity:.1}}
-nav{position:fixed;top:0;width:100%;min-height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;background:#02040abd;backdrop-filter:blur(18px);border-bottom:1px solid #ffffff10;z-index:100}
-.logo{font-size:14px;letter-spacing:4px;font-weight:bold}.navlinks{display:flex;gap:28px;list-style:none}.navlinks a{color:#aeb5c0;text-decoration:none;font-size:11px;letter-spacing:1.5px}.navlinks a:hover,.navlinks .active{color:#fff}
-.music{position:fixed;right:25px;bottom:25px;z-index:100;border:1px solid #ffffff2d;background:#080b12df;color:white;padding:12px 17px;border-radius:30px;cursor:pointer;font-size:11px;letter-spacing:1.5px}
-.hero{min-height:75vh;padding:170px 9% 100px;display:flex;align-items:center}
-.label,.section-label{font-size:10px;letter-spacing:4px;color:#778291;margin-bottom:22px}
-h1{font-size:clamp(55px,9vw,115px);line-height:.88;letter-spacing:-5px}
-.hero p{max-width:680px;color:#9ca5b1;line-height:1.8;margin-top:30px}
+body{
+    background:#02040a;
+    color:#f4f6fa;
+    font-family:Arial,Helvetica,sans-serif;
+    overflow-x:hidden
+}
+
+#stars{
+    position:fixed;
+    inset:0;
+    z-index:-1
+}
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:#fff;
+    border-radius:50%;
+    animation:drift linear infinite
+}
+
+@keyframes drift{
+    to{
+        transform:translateY(-100px);
+        opacity:.1
+    }
+}
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    min-height:76px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+    background:#02040abd;
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid #ffffff10;
+    z-index:100
+}
+
+.logo{
+    font-size:14px;
+    letter-spacing:4px;
+    font-weight:bold
+}
+
+.navlinks{
+    display:flex;
+    gap:28px;
+    list-style:none
+}
+
+.navlinks a{
+    color:#aeb5c0;
+    text-decoration:none;
+    font-size:11px;
+    letter-spacing:1.5px
+}
+
+.navlinks a:hover,
+.navlinks .active{
+    color:#fff
+}
+
+.music{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    z-index:100;
+    border:1px solid #ffffff2d;
+    background:#080b12e8;
+    color:white;
+    padding:12px 17px;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:11px;
+    letter-spacing:1.5px
+}
+
+.music:hover{background:#ffffff1c}
+
+.hero{
+    min-height:75vh;
+    padding:170px 9% 100px;
+    display:flex;
+    align-items:center
+}
+
+.label,
+.section-label{
+    font-size:10px;
+    letter-spacing:4px;
+    color:#778291;
+    margin-bottom:22px
+}
+
+h1{
+    font-size:clamp(55px,9vw,115px);
+    line-height:.88;
+    letter-spacing:-5px
+}
+
+.hero p{
+    max-width:680px;
+    color:#9ca5b1;
+    line-height:1.8;
+    margin-top:30px
+}
+
 section{padding:100px 9%}
-h2{font-size:clamp(40px,6vw,72px);letter-spacing:-3px;line-height:.95}
-.archive{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:55px}
-.mystery{border:1px solid #ffffff15;background:#ffffff05;padding:35px;min-height:330px;cursor:pointer;transition:.4s}
-.mystery:hover,.mystery.open{transform:translateY(-7px);border-color:#ffffff45}
-.file{font-size:10px;color:#6e7988;letter-spacing:3px}
-.mystery h3{font-size:25px;margin-top:70px;letter-spacing:1px}
-.mystery p{color:#8d96a3;line-height:1.7;margin-top:18px;font-size:14px}
-.extra{max-height:0;overflow:hidden;transition:.5s;color:#c1c7cf!important}
-.mystery.open .extra{max-height:160px;margin-top:20px}
-.question{min-height:60vh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;background:radial-gradient(circle at center,#7c89990b,transparent 60%)}
-.question-box{max-width:800px;min-height:120px;margin-top:35px;padding:30px;border:1px solid #ffffff18;background:#ffffff05;color:#b5bdc8;line-height:1.8;display:flex;align-items:center}
-.btn{display:inline-block;padding:16px 24px;border:1px solid #ffffff40;color:#fff;background:#ffffff03;cursor:pointer;font-size:11px;letter-spacing:2px;margin-top:30px}
-.btn:hover{background:white;color:#05070c}
-footer{padding:35px 9%;border-top:1px solid #ffffff0d;color:#555e6b;font-size:10px;letter-spacing:2px}
-@media(max-width:850px){nav{padding:14px 5%;align-items:flex-start}.logo{display:none}.navlinks{gap:10px;flex-wrap:wrap;justify-content:center}.navlinks a{font-size:9px}.hero,section{padding-left:7%;padding-right:7%}.archive{grid-template-columns:1fr}.music{right:15px;bottom:15px}}
+
+h2{
+    font-size:clamp(40px,6vw,72px);
+    letter-spacing:-3px;
+    line-height:.95
+}
+
+.archive{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-top:55px
+}
+
+.mystery{
+    border:1px solid #ffffff15;
+    background:#ffffff05;
+    padding:35px;
+    min-height:330px;
+    cursor:pointer;
+    transition:.4s
+}
+
+.mystery:hover,
+.mystery.open{
+    transform:translateY(-7px);
+    border-color:#ffffff45
+}
+
+.file{
+    font-size:10px;
+    color:#6e7988;
+    letter-spacing:3px
+}
+
+.mystery h3{
+    font-size:25px;
+    margin-top:70px;
+    letter-spacing:1px
+}
+
+.mystery p{
+    color:#8d96a3;
+    line-height:1.7;
+    margin-top:18px;
+    font-size:14px
+}
+
+.extra{
+    max-height:0;
+    overflow:hidden;
+    transition:.5s;
+    color:#c1c7cf!important
+}
+
+.mystery.open .extra{
+    max-height:160px;
+    margin-top:20px
+}
+
+.question{
+    min-height:60vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:flex-start;
+    background:radial-gradient(circle at center,#7c89990b,transparent 60%)
+}
+
+.question-box{
+    max-width:800px;
+    min-height:120px;
+    margin-top:35px;
+    padding:30px;
+    border:1px solid #ffffff18;
+    background:#ffffff05;
+    color:#b5bdc8;
+    line-height:1.8;
+    display:flex;
+    align-items:center
+}
+
+.btn{
+    display:inline-block;
+    padding:16px 24px;
+    border:1px solid #ffffff40;
+    color:#fff;
+    background:#ffffff03;
+    cursor:pointer;
+    font-size:11px;
+    letter-spacing:2px;
+    margin-top:30px
+}
+
+.btn:hover{
+    background:white;
+    color:#05070c
+}
+
+footer{
+    padding:35px 9%;
+    border-top:1px solid #ffffff0d;
+    color:#555e6b;
+    font-size:10px;
+    letter-spacing:2px
+}
+
+@media(max-width:850px){
+
+ nav{
+    padding:14px 5%;
+    align-items:flex-start
+ }
+
+ .logo{display:none}
+
+ .navlinks{
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:center
+ }
+
+ .navlinks a{font-size:9px}
+
+ .hero,
+ section{
+    padding-left:7%;
+    padding-right:7%
+ }
+
+ .archive{
+    grid-template-columns:1fr
+ }
+
+ .music{
+    right:15px;
+    bottom:15px
+ }
+}
 </style>
 </head>
 
 <body>
+
 <div id="stars"></div>
 
 <nav>
 <div class="logo">THE UNIVERSE</div>
+
 <ul class="navlinks">
 <li><a href="index.html">HOME</a></li>
 <li><a href="journey.html">JOURNEY</a></li>
@@ -52,84 +280,205 @@ footer{padding:35px 9%;border-top:1px solid #ffffff0d;color:#555e6b;font-size:10
 </ul>
 </nav>
 
-<audio id="spaceAudio" loop preload="none"><source src="assets/space.mp3" type="audio/mpeg"></audio>
+<audio id="spaceAudio" loop preload="auto">
+<source src="assets/space.mp3" type="audio/mpeg">
+</audio>
+
 <button class="music" id="musicBtn">♪ MUSIC OFF</button>
 
 <section class="hero">
+
 <div>
+
 <div class="label">CHAPTER 02 • THE UNKNOWN</div>
+
 <h1>WHAT WE<br>DO NOT KNOW</h1>
-<p>Some of the biggest mysteries in modern science are hidden in plain sight. We can observe their effects, but their true nature remains uncertain.</p>
+
+<p>
+Some of the biggest mysteries in modern science are hidden in plain sight.
+We can observe their effects, but their true nature remains uncertain.
+</p>
+
 </div>
+
 </section>
 
 <section>
+
 <div class="section-label">COSMIC MYSTERY ARCHIVE</div>
+
 <h2>THREE GREAT<br>QUESTIONS.</h2>
 
 <div class="archive">
+
 <div class="mystery">
+
 <div class="file">FILE 01</div>
+
 <h3>BLACK HOLES</h3>
-<p>Regions of spacetime where gravity is so strong that even light cannot escape once it crosses the event horizon.</p>
-<p class="extra">Scientists study black holes through their effects on nearby matter, light and spacetime. They remain among the most extreme objects known.</p>
+
+<p>
+Regions of spacetime where gravity is so strong that even light cannot
+escape once it crosses the event horizon.
+</p>
+
+<p class="extra">
+Scientists study black holes through their effects on nearby matter,
+light and spacetime. They remain among the most extreme objects known.
+</p>
+
 </div>
 
 <div class="mystery">
+
 <div class="file">FILE 02</div>
+
 <h3>DARK MATTER</h3>
-<p>An unseen form of matter inferred from its gravitational effects on galaxies and other cosmic structures.</p>
-<p class="extra">It does not appear to interact strongly with light, making it difficult to observe directly. Its exact nature remains unknown.</p>
+
+<p>
+An unseen form of matter inferred from its gravitational effects on
+galaxies and other cosmic structures.
+</p>
+
+<p class="extra">
+It does not appear to interact strongly with light, making it difficult
+to observe directly. Its exact nature remains unknown.
+</p>
+
 </div>
 
 <div class="mystery">
+
 <div class="file">FILE 03</div>
+
 <h3>DARK ENERGY</h3>
-<p>A name given to whatever is associated with the accelerated expansion of the universe.</p>
-<p class="extra">Scientists know that cosmic expansion is accelerating, but the underlying cause is still one of modern cosmology's major questions.</p>
+
+<p>
+A name given to whatever is associated with the accelerated expansion
+of the universe.
+</p>
+
+<p class="extra">
+Scientists know that cosmic expansion is accelerating, but the underlying
+cause is still one of modern cosmology's major questions.
+</p>
+
 </div>
+
 </div>
+
 </section>
 
 <section class="question">
+
 <div class="section-label">A QUESTION FOR YOU</div>
+
 <h2>WHAT WOULD<br>YOU ASK?</h2>
-<button class="btn" id="questionBtn">REVEAL A QUESTION</button>
-<div class="question-box" id="questionBox">The universe is full of questions. Are you ready to ask one?</div>
-<br>
-<a class="btn" href="life.html">ARE WE ALONE? →</a>
+
+<button class="btn" id="questionBtn">
+REVEAL A QUESTION
+</button>
+
+<div class="question-box" id="questionBox">
+The universe is full of questions. Are you ready to ask one?
+</div>
+
+<a class="btn" href="life.html">
+ARE WE ALONE? →
+</a>
+
 </section>
 
-<footer>CHAPTER 02 • THE UNKNOWN</footer>
+<footer>
+CHAPTER 02 • THE UNKNOWN
+</footer>
 
 <script>
+
+/* STAR FIELD */
 const stars=document.getElementById("stars");
+
 for(let i=0;i<150;i++){
- let s=document.createElement("span");s.className="star";
- s.style.left=Math.random()*100+"%";s.style.top=Math.random()*100+"%";
- s.style.animationDuration=5+Math.random()*12+"s";s.style.animationDelay=-Math.random()*10+"s";
+
+ let s=document.createElement("span");
+
+ s.className="star";
+ s.style.left=Math.random()*100+"%";
+ s.style.top=Math.random()*100+"%";
+ s.style.animationDuration=5+Math.random()*12+"s";
+ s.style.animationDelay=-Math.random()*10+"s";
+
  stars.appendChild(s);
 }
-document.querySelectorAll(".mystery").forEach(x=>x.onclick=()=>x.classList.toggle("open"));
 
+/* MYSTERY CARDS */
+document.querySelectorAll(".mystery").forEach(card=>{
+
+ card.onclick=()=>{
+    card.classList.toggle("open");
+ };
+
+});
+
+/* QUESTIONS */
 const questions=[
+
 "If the universe is full of things we cannot yet see, what discovery would completely change our understanding of reality?",
+
 "Could there be forms of life unlike anything humanity has imagined?",
+
 "What might we discover if our current understanding of the universe is only an approximation?"
+
 ];
+
 document.getElementById("questionBtn").onclick=()=>{
- const q=questions[Math.floor(Math.random()*questions.length)];
- document.getElementById("questionBox").textContent=q;
+
+ const question=
+ questions[Math.floor(Math.random()*questions.length)];
+
+ document.getElementById("questionBox").textContent=question;
+
 };
 
-const audio=document.getElementById("spaceAudio"),musicBtn=document.getElementById("musicBtn");
-let musicOn=localStorage.getItem("universeMusic")==="on";
-musicBtn.textContent=musicOn?"♪ MUSIC ON":"♪ MUSIC OFF";
-musicBtn.onclick=()=>{
- musicOn=!musicOn;localStorage.setItem("universeMusic",musicOn?"on":"off");
- if(musicOn)audio.play().then(()=>musicBtn.textContent="♪ MUSIC ON").catch(()=>{});
- else{audio.pause();musicBtn.textContent="♪ MUSIC OFF"}
-};
+/* MUSIC */
+const audio=document.getElementById("spaceAudio");
+const musicBtn=document.getElementById("musicBtn");
+
+audio.volume=0.45;
+
+musicBtn.addEventListener("click",async function(){
+
+ if(audio.paused){
+
+  try{
+
+   await audio.play();
+
+   musicBtn.textContent="♪ MUSIC ON";
+
+   localStorage.setItem("universeMusic","on");
+
+  }catch(error){
+
+   console.log("Music error:",error);
+
+   musicBtn.textContent="♪ TRY AGAIN";
+
+  }
+
+ }else{
+
+  audio.pause();
+
+  musicBtn.textContent="♪ MUSIC OFF";
+
+  localStorage.setItem("universeMusic","off");
+
+ }
+
+});
+
 </script>
+
 </body>
 </html>
