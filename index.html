@@ -50,7 +50,7 @@ nav{
     top:0;
     left:0;
     width:100%;
-    height:76px;
+    min-height:76px;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -84,7 +84,7 @@ nav{
     bottom:25px;
     z-index:100;
     border:1px solid rgba(255,255,255,.18);
-    background:rgba(8,11,18,.82);
+    background:rgba(8,11,18,.88);
     color:white;
     padding:12px 17px;
     border-radius:30px;
@@ -93,7 +93,9 @@ nav{
     font-size:11px;
     letter-spacing:1.5px;
 }
-.music:hover{background:rgba(255,255,255,.12)}
+.music:hover{
+    background:rgba(255,255,255,.12);
+}
 .hero{
     min-height:100vh;
     display:flex;
@@ -113,7 +115,11 @@ nav{
     filter:blur(10px);
     pointer-events:none;
 }
-.hero-content{max-width:900px;position:relative;z-index:2}
+.hero-content{
+    max-width:900px;
+    position:relative;
+    z-index:2;
+}
 .label{
     color:#8993a3;
     font-size:11px;
@@ -235,11 +241,23 @@ footer{
     transform:translateY(30px);
     transition:1s;
 }
-.reveal.show{opacity:1;transform:none}
+.reveal.show{
+    opacity:1;
+    transform:none;
+}
 @media(max-width:800px){
-    nav{height:auto;min-height:68px;padding:15px 5%;align-items:flex-start}
+    nav{
+        height:auto;
+        min-height:68px;
+        padding:15px 5%;
+        align-items:flex-start;
+    }
     .logo{display:none}
-    .navlinks{gap:10px;flex-wrap:wrap;justify-content:center}
+    .navlinks{
+        gap:10px;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
     .navlinks a{font-size:9px}
     .hero{padding:130px 7% 70px}
     h1{letter-spacing:-3px}
@@ -252,111 +270,183 @@ footer{
 </head>
 
 <body>
+
 <div id="stars"></div>
 
 <nav>
-<div class="logo">THE UNIVERSE</div>
-<ul class="navlinks">
-<li><a class="active" href="index.html">HOME</a></li>
-<li><a href="journey.html">JOURNEY</a></li>
-<li><a href="unknown.html">THE UNKNOWN</a></li>
-<li><a href="life.html">ARE WE ALONE?</a></li>
-<li><a href="future.html">THE FUTURE</a></li>
-</ul>
+    <div class="logo">THE UNIVERSE</div>
+    <ul class="navlinks">
+        <li><a class="active" href="index.html">HOME</a></li>
+        <li><a href="journey.html">JOURNEY</a></li>
+        <li><a href="unknown.html">THE UNKNOWN</a></li>
+        <li><a href="life.html">ARE WE ALONE?</a></li>
+        <li><a href="future.html">THE FUTURE</a></li>
+    </ul>
 </nav>
 
-<audio id="spaceAudio" loop preload="none">
-<source src="assets/space.mp3" type="audio/mpeg">
+<audio id="spaceAudio" loop preload="auto">
+    <source src="assets/space.mp3" type="audio/mpeg">
 </audio>
+
 <button class="music" id="musicBtn">♪ MUSIC OFF</button>
 
 <main>
+
 <section class="hero">
-<div class="hero-content reveal">
-<div class="label">AN INTERACTIVE EXPLORATION</div>
-<h1>THE UNIVERSE<br><span>BEYOND WHAT WE SEE</span></h1>
-<p>Look beyond the familiar. Explore the scale, mysteries, possibilities and unanswered questions of the universe.</p>
-<a class="btn" href="journey.html">BEGIN THE JOURNEY →</a>
-</div>
+    <div class="hero-content reveal">
+        <div class="label">AN INTERACTIVE EXPLORATION</div>
+
+        <h1>
+            THE UNIVERSE<br>
+            <span>BEYOND WHAT WE SEE</span>
+        </h1>
+
+        <p>
+            Look beyond the familiar. Explore the scale, mysteries,
+            possibilities and unanswered questions of the universe.
+        </p>
+
+        <a class="btn" href="journey.html">BEGIN THE JOURNEY →</a>
+    </div>
 </section>
 
 <section class="reveal">
-<div class="section-label">THE FIRST QUESTION</div>
-<h2>HOW MUCH DO<br>WE REALLY KNOW?</h2>
-<p class="section-text">We can observe distant galaxies, stars and planets across unimaginable distances. Yet every discovery seems to create another question. The universe is not simply something we see — it is something we are still learning to understand.</p>
 
-<div class="cards">
-<div class="card">
-<div class="card-number">01</div>
-<h3>WHAT WE SEE</h3>
-<p>Light from stars, galaxies and worlds tells us stories from across cosmic time.</p>
-</div>
-<div class="card">
-<div class="card-number">02</div>
-<h3>WHAT WE DON'T</h3>
-<p>Some of the universe's most important components remain invisible and mysterious.</p>
-</div>
-<div class="card">
-<div class="card-number">03</div>
-<h3>WHAT COMES NEXT</h3>
-<p>New instruments and ideas may reveal possibilities we have not yet imagined.</p>
-</div>
-</div>
+    <div class="section-label">THE FIRST QUESTION</div>
+
+    <h2>HOW MUCH DO<br>WE REALLY KNOW?</h2>
+
+    <p class="section-text">
+        We can observe distant galaxies, stars and planets across
+        unimaginable distances. Yet every discovery seems to create
+        another question. The universe is not simply something we see —
+        it is something we are still learning to understand.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-number">01</div>
+            <h3>WHAT WE SEE</h3>
+            <p>
+                Light from stars, galaxies and worlds tells us stories
+                from across cosmic time.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-number">02</div>
+            <h3>WHAT WE DON'T</h3>
+            <p>
+                Some of the universe's most important components remain
+                invisible and mysterious.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-number">03</div>
+            <h3>WHAT COMES NEXT</h3>
+            <p>
+                New instruments and ideas may reveal possibilities we
+                have not yet imagined.
+            </p>
+        </div>
+
+    </div>
+
 </section>
 
 <section class="closing reveal">
-<div class="section-label">LOOK CLOSER</div>
-<h2>WHAT IF<br>EVERYTHING WE SEE<br>IS ONLY THE BEGINNING?</h2>
-<br><br>
-<a class="btn" href="journey.html">EXPLORE →</a>
+
+    <div class="section-label">LOOK CLOSER</div>
+
+    <h2>
+        WHAT IF<br>
+        EVERYTHING WE SEE<br>
+        IS ONLY THE BEGINNING?
+    </h2>
+
+    <br><br>
+
+    <a class="btn" href="journey.html">EXPLORE →</a>
+
 </section>
+
 </main>
 
-<footer>THE UNIVERSE • BEYOND WHAT WE SEE</footer>
+<footer>
+    THE UNIVERSE • BEYOND WHAT WE SEE
+</footer>
 
 <script>
-const stars=document.getElementById("stars");
-for(let i=0;i<140;i++){
-    const s=document.createElement("span");
-    s.className="star";
-    s.style.left=Math.random()*100+"%";
-    s.style.top=Math.random()*100+"%";
-    s.style.opacity=(Math.random()*.7+.15);
-    s.style.animationDuration=(5+Math.random()*12)+"s";
-    s.style.animationDelay=(-Math.random()*12)+"s";
+/* STAR FIELD */
+const stars = document.getElementById("stars");
+
+for(let i = 0; i < 140; i++){
+    const s = document.createElement("span");
+
+    s.className = "star";
+    s.style.left = Math.random() * 100 + "%";
+    s.style.top = Math.random() * 100 + "%";
+    s.style.opacity = Math.random() * .7 + .15;
+    s.style.animationDuration = (5 + Math.random() * 12) + "s";
+    s.style.animationDelay = (-Math.random() * 12) + "s";
+
     stars.appendChild(s);
 }
 
-const audio=document.getElementById("spaceAudio");
-const musicBtn=document.getElementById("musicBtn");
-let musicOn=localStorage.getItem("universeMusic")==="on";
+/* MUSIC */
+const audio = document.getElementById("spaceAudio");
+const musicBtn = document.getElementById("musicBtn");
 
-function updateMusic(){
-    if(musicOn){
-        audio.play().then(()=>{
-            musicBtn.textContent="♪ MUSIC ON";
-        }).catch(()=>{
-            musicOn=false;
-            localStorage.setItem("universeMusic","off");
-            musicBtn.textContent="♪ MUSIC OFF";
-        });
+audio.volume = 0.45;
+
+musicBtn.addEventListener("click", async function(){
+
+    if(audio.paused){
+
+        try{
+            await audio.play();
+
+            musicBtn.textContent = "♪ MUSIC ON";
+
+            localStorage.setItem("universeMusic","on");
+
+        }catch(error){
+
+            console.log("Music error:",error);
+
+            musicBtn.textContent = "♪ TRY AGAIN";
+        }
+
     }else{
+
         audio.pause();
-        musicBtn.textContent="♪ MUSIC OFF";
+
+        musicBtn.textContent = "♪ MUSIC OFF";
+
+        localStorage.setItem("universeMusic","off");
     }
-}
-musicBtn.onclick=()=>{
-    musicOn=!musicOn;
-    localStorage.setItem("universeMusic",musicOn?"on":"off");
-    updateMusic();
-};
 
-if(musicOn) musicBtn.textContent="♪ MUSIC ON";
+});
 
-const observer=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")});
+/* SCROLL REVEAL */
+const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+
+    });
+
 },{threshold:.15});
-document.querySelectorAll(".reveal").forEach(x=>observer.observe(x));
+
+document.querySelectorAll(".reveal").forEach(element => {
+    observer.observe(element);
+});
 </script>
+
 </body>
 </html>
