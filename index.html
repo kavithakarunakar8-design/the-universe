@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>The Universe | Beyond What We See</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #02030a;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* STAR BACKGROUND */
+
+        .stars,
+        .stars::before,
+        .stars::after {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            content: "";
+            background-repeat: repeat;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .stars {
+            background-image:
+                radial-gradient(2px 2px at 20px 30px, white, transparent),
+                radial-gradient(1px 1px at 100px 150px, white, transparent),
+                radial-gradient(2px 2px at 200px 80px, white, transparent),
+                radial-gradient(1px 1px at 300px 200px, white, transparent),
+                radial-gradient(2px 2px at 400px 120px, white, transparent),
+                radial-gradient(1px 1px at 500px 250px, white, transparent),
+                radial-gradient(2px 2px at 600px 70px, white, transparent),
+                radial-gradient(1px 1px at 700px 180px, white, transparent),
+                radial-gradient(2px 2px at 800px 100px, white, transparent);
+            background-size: 900px 300px;
+            animation: moveStars 35s linear infinite;
+            opacity: 0.7;
+        }
+
+        .stars::before {
+            background-image:
+                radial-gradient(1px 1px at 50px 100px, white, transparent),
+                radial-gradient(2px 2px at 250px 50px, white, transparent),
+                radial-gradient(1px 1px at 450px 160px, white, transparent),
+                radial-gradient(2px 2px at 650px 230px, white, transparent);
+            background-size: 700px 350px;
+            animation: moveStars 55s linear infinite reverse;
+        }
+
+        @keyframes moveStars {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-300px);
+            }
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 22px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(2, 3, 10, 0.35);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.6;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 60px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .small-text {
+            font-size: 13px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            opacity: 0.65;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: clamp(60px, 10vw, 130px);
+            letter-spacing: 8px;
+            line-height: 0.95;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            font-size: clamp(20px, 3vw, 32px);
+            letter-spacing: 8px;
+            margin-top: 22px;
+            opacity: 0.8;
+        }
+
+        .description {
+            max-width: 600px;
+            margin: 35px auto;
+            line-height: 1.8;
+            font-size: 16px;
+            opacity: 0.7;
+        }
+
+        /* BUTTON */
+
+        .enter-btn {
+            display: inline-block;
+            padding: 16px 34px;
+            border: 1px solid rgba(255,255,255,0.7);
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 3px;
+            font-size: 13px;
+            transition: 0.4s;
+        }
+
+        .enter-btn:hover {
+            background: white;
+            color: #02030a;
+            transform: scale(1.05);
+        }
+
+        /* SCROLL */
+
+        .scroll {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            letter-spacing: 3px;
+            opacity: 0.5;
+        }
+
+        .arrow {
+            display: block;
+            margin-top: 10px;
+            font-size: 20px;
+            animation: bounce 1.8s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(8px);
+            }
+        }
+
+        /* SECTION */
+
+        .section {
+            min-height: 80vh;
+            padding: 120px 8%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: clamp(35px, 6vw, 70px);
+            margin-bottom: 25px;
+            letter-spacing: 3px;
+        }
+
+        .section p {
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.9;
+            opacity: 0.7;
+        }
+
+        /* COSMIC FACT */
+
+        .fact {
+            border-top: 1px solid rgba(255,255,255,0.15);
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+            padding: 80px 20px;
+        }
+
+        .fact-label {
+            font-size: 12px;
+            letter-spacing: 4px;
+            opacity: 0.5;
+            margin-bottom: 20px;
+        }
+
+        .fact h3 {
+            font-size: clamp(30px, 5vw, 55px);
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.6;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 18px 5%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            h1 {
+                letter-spacing: 4px;
+            }
+
+            .subtitle {
+                letter-spacing: 4px;
+            }
+
+            .description {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="stars"></div>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+        <div class="logo">THE UNIVERSE</div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="journey.html">JOURNEY</a></li>
+            <li><a href="unknown.html">THE UNKNOWN</a></li>
+            <li><a href="life.html">ARE WE ALONE?</a></li>
+            <li><a href="future.html">THE FUTURE</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="small-text">
+                Welcome, Explorer
+            </div>
+
+            <h1>THE UNIVERSE</h1>
+
+            <div class="subtitle">
+                BEYOND WHAT WE SEE
+            </div>
+
+            <p class="description">
+                13.8 billion years.
+                Countless worlds.
+                Questions beyond imagination.
+            </p>
+
+            <a href="journey.html" class="enter-btn">
+                ENTER THE UNKNOWN →
+            </a>
+
+        </div>
+
+        <div class="scroll">
+            SCROLL TO EXPLORE
+            <span class="arrow">↓</span>
+        </div>
+
+    </section>
+
+    <!-- INTRODUCTION -->
+
+    <section class="section">
+
+        <h2>How Far Will You Go?</h2>
+
+        <p>
+            From the world beneath our feet to galaxies billions
+            of light-years away, the universe is filled with wonders
+            we are only beginning to understand.
+        </p>
+
+    </section>
+
+    <!-- COSMIC FACT -->
+
+    <section class="fact">
+
+        <div class="fact-label">
+            COSMIC FACT
+        </div>
+
+        <h3>
+            The universe is still expanding.
+        </h3>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+        THE UNIVERSE • BEYOND WHAT WE SEE
+    </footer>
+
+</body>
+</html>
